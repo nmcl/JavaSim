@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/javasim/!svn/ver/23/JavaSim/trunk/src/test/java/org/javasim/examples/basic
+END
+Machine.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/javasim/!svn/ver/23/JavaSim/trunk/src/test/java/org/javasim/examples/basic/Machine.java
+END
+Queue.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/javasim/!svn/ver/23/JavaSim/trunk/src/test/java/org/javasim/examples/basic/Queue.java
+END
+Job.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/javasim/!svn/ver/23/JavaSim/trunk/src/test/java/org/javasim/examples/basic/Job.java
+END
+MachineShop.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/javasim/!svn/ver/23/JavaSim/trunk/src/test/java/org/javasim/examples/basic/MachineShop.java
+END
+expected_output
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/javasim/!svn/ver/23/JavaSim/trunk/src/test/java/org/javasim/examples/basic/expected_output
+END
+Arrivals.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/javasim/!svn/ver/23/JavaSim/trunk/src/test/java/org/javasim/examples/basic/Arrivals.java
+END
+Breaks.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/javasim/!svn/ver/23/JavaSim/trunk/src/test/java/org/javasim/examples/basic/Breaks.java
+END
+Main.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/javasim/!svn/ver/23/JavaSim/trunk/src/test/java/org/javasim/examples/basic/Main.java
+END

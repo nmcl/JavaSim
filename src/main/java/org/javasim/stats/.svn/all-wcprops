@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/javasim/!svn/ver/34/JavaSim/trunk/src/main/java/org/javasim/stats
+END
+SimpleHistogram.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/javasim/!svn/ver/23/JavaSim/trunk/src/main/java/org/javasim/stats/SimpleHistogram.java
+END
+StatisticsException.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/javasim/!svn/ver/23/JavaSim/trunk/src/main/java/org/javasim/stats/StatisticsException.java
+END
+Histogram.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/javasim/!svn/ver/34/JavaSim/trunk/src/main/java/org/javasim/stats/Histogram.java
+END
+Quantile.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/javasim/!svn/ver/23/JavaSim/trunk/src/main/java/org/javasim/stats/Quantile.java
+END
+PrecisionHistogram.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/javasim/!svn/ver/34/JavaSim/trunk/src/main/java/org/javasim/stats/PrecisionHistogram.java
+END
+Variance.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/javasim/!svn/ver/23/JavaSim/trunk/src/main/java/org/javasim/stats/Variance.java
+END
+Bucket.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/javasim/!svn/ver/23/JavaSim/trunk/src/main/java/org/javasim/stats/Bucket.java
+END
+Mean.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/javasim/!svn/ver/23/JavaSim/trunk/src/main/java/org/javasim/stats/Mean.java
+END
+TimeVariance.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/javasim/!svn/ver/23/JavaSim/trunk/src/main/java/org/javasim/stats/TimeVariance.java
+END
