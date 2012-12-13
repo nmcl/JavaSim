@@ -99,7 +99,7 @@ public class TriggerQueue
     protected synchronized void insert (SimulationEntity toAdd)
             throws SimulationException
     {
-        if (toAdd._isWaiting != null)
+        if (toAdd._waiting == true)
             throw (new SimulationException("Entity already waiting on event."));
 
         head.add(toAdd);
