@@ -22,7 +22,6 @@ package org.javasim.stats;
 
 public class Bucket
 {
-
     /**
      * Create bucket with name 'n' and number of entries 'initEntries'.
      */
@@ -175,5 +174,4 @@ public class Bucket
     private double name;
 
     private Bucket next;
-
-};
+}

@@ -32,7 +32,6 @@ import java.lang.ArithmeticException;
 
 public class HyperExponentialStream extends RandomStream
 {
-
     /**
      * Create stream with mean 'm' and standard deviation 'sd'.
      */
@@ -115,5 +114,4 @@ public class HyperExponentialStream extends RandomStream
     private double standardDeviation;
 
     private double p;
-
-};
+}

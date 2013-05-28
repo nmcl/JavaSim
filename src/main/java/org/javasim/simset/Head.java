@@ -109,5 +109,4 @@ public class Head  {
 
     protected Link first;
     protected Link last;
-
 }

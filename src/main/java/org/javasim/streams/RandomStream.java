@@ -36,7 +36,6 @@ import java.lang.ArithmeticException;
 
 public abstract class RandomStream
 {
-
     /**
      * In derived classes this method returns the value obtained by the stream.
      * It must be redefined by the deriving class.
@@ -162,5 +161,4 @@ public abstract class RandomStream
     static private final long sizeOfSeries = 1024;
 
     static private final long sizeOfDouble = 8;
-
 }

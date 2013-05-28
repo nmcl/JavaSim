@@ -32,7 +32,6 @@ import java.lang.IllegalArgumentException;
 
 public class SimpleHistogram extends PrecisionHistogram
 {
-
     /**
      * Create with 'nbuckets' evenly distributed over the range 'min' to 'max'.
      */
@@ -247,5 +246,4 @@ public class SimpleHistogram extends PrecisionHistogram
     private double width;
 
     private long numberBuckets;
-
-};
+}

@@ -44,8 +44,7 @@ import java.lang.IllegalArgumentException;
  */
 
 public class Histogram extends PrecisionHistogram
-{
-    
+{   
     public static final int ACCUMULATE = 0;
 
     public static final int MEAN = 1;
@@ -286,5 +285,4 @@ public class Histogram extends PrecisionHistogram
     protected long maxSize;
 
     protected int merge;
-
-};
+}

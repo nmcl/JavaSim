@@ -37,7 +37,6 @@ import java.lang.IllegalArgumentException;
 
 public class PrecisionHistogram extends Variance
 {
-
     /**
      * Create an empty histogram.
      */
@@ -300,5 +299,4 @@ public class PrecisionHistogram extends Variance
     protected long length;
 
     protected Bucket Head;
-
-};
+}

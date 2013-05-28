@@ -102,5 +102,4 @@ public class ErlangStream extends RandomStream
     private double StandardDeviation;
 
     private long k;
-
-};
+}

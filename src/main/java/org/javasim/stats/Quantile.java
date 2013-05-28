@@ -29,7 +29,6 @@ import java.lang.IllegalArgumentException;
 
 public class Quantile extends PrecisionHistogram
 {
-
     /**
      * Create with 95% probability.
      */
@@ -95,5 +94,4 @@ public class Quantile extends PrecisionHistogram
     }
 
     private double qProb;
-
-};
+}

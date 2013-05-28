@@ -30,7 +30,6 @@ import java.lang.ArithmeticException;
 
 public class ExponentialStream extends RandomStream
 {
-
     /**
      * Create stream with mean 'm'.
      */
@@ -82,5 +81,4 @@ public class ExponentialStream extends RandomStream
     }
 
     private double Mean;
-
-};
+}

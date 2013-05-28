@@ -30,7 +30,6 @@ import java.lang.ArithmeticException;
  */
 
 public class NormalStream extends RandomStream
-{
 
     /**
      * Create stream with mean 'm' and standard deviation 'sd'.
@@ -123,5 +122,4 @@ public class NormalStream extends RandomStream
     private double standardDeviation;
 
     private double z;
-
-};
+}

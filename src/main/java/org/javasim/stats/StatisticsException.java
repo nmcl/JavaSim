@@ -26,7 +26,6 @@ package org.javasim.stats;
 
 public class StatisticsException extends Exception
 {
-
     public static final long serialVersionUID = 0xdeadbeef;
     
     public StatisticsException()
@@ -38,5 +37,4 @@ public class StatisticsException extends Exception
     {
         super(s);
     }
-
 }

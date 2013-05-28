@@ -24,7 +24,6 @@ import org.javasim.SimulationProcess;
 
 public class SimulationProcessIterator
 {
-
     public SimulationProcessIterator(SimulationProcessList L)
     {
         ptr = L.Head;
@@ -73,5 +72,4 @@ class SimulationProcessCons
     private SimulationProcess Proc;
 
     private SimulationProcessCons Next;
-
-};
+}

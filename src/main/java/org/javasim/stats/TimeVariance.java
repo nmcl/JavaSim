@@ -31,7 +31,6 @@ import org.javasim.SimulationProcess;
 
 public class TimeVariance extends Variance
 {
-
     public TimeVariance()
     {
         reset();
@@ -167,5 +166,4 @@ public class TimeVariance extends Variance
     private double stime;
 
     private double total;
-
-};
+}

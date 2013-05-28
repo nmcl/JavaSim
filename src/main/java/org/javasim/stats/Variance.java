@@ -36,7 +36,6 @@ import java.lang.IllegalArgumentException;
 
 public class Variance extends Mean
 {
-
     public Variance()
     {
         reset();
@@ -163,5 +162,4 @@ public class Variance extends Mean
     }
 
     private double _sqr;
-
-};
+}

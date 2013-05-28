@@ -30,7 +30,6 @@ import java.lang.ArithmeticException;
 
 public class UniformStream extends RandomStream
 {
-
     /**
      * Create stream with low bound 'l' and high bound 'h'.
      */
@@ -94,5 +93,4 @@ public class UniformStream extends RandomStream
     private double hi;
 
     private double range;
-
-};
+}

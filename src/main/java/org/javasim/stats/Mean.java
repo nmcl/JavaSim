@@ -28,7 +28,6 @@ import java.lang.IllegalArgumentException;
 
 public class Mean
 {
-
     public Mean()
     {
         reset();
@@ -191,5 +190,4 @@ public class Mean
     protected double _Mean;
 
     protected int _Number;
-
-};
+}

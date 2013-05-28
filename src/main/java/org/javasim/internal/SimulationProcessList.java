@@ -26,7 +26,6 @@ import org.javasim.SimulationProcess;
 
 public class SimulationProcessList
 {
-
     public SimulationProcessList()
     {
         Head = null;
@@ -205,5 +204,4 @@ public class SimulationProcessList
     // package?
 
     protected SimulationProcessCons Head;
-
 }
