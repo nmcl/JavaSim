@@ -22,7 +22,6 @@ package org.javasim;
 
 public class SimulationEntity extends SimulationProcess
 {
-
     public void finalize ()
     {
         super.finalize();
@@ -233,5 +232,4 @@ public class SimulationEntity extends SimulationProcess
     private boolean _triggered;
 
     private boolean _waiting;
-
-};
+}

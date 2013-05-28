@@ -37,7 +37,6 @@ import org.javasim.internal.SimulationProcessList;
 
 public class SimulationProcess extends Thread
 {
-
     public static final int NEVER = -1;
 
     public void finalize ()
@@ -625,5 +624,4 @@ public class SimulationProcess extends Thread
     private static Thread mainThread = null;
 
     static SimulationProcess Current = null;
-
 }

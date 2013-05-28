@@ -25,7 +25,6 @@ import java.util.NoSuchElementException;
 
 public class TriggerQueue
 {
-
     public TriggerQueue()
     {
         head = new LinkedList<SimulationEntity>();
@@ -112,5 +111,4 @@ public class TriggerQueue
     }
 
     private LinkedList<SimulationEntity> head;
-
 }

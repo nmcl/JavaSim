@@ -156,5 +156,4 @@ public class Semaphore
     private long numberOfResources;
 
     private long currentResources;
-
-};
+}

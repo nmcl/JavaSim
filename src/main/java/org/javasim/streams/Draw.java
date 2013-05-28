@@ -29,7 +29,6 @@ import java.io.IOException;
 
 public class Draw
 {
-
     /**
      * Probability of true is 'p'.
      */
@@ -74,9 +73,8 @@ public class Draw
         else
             return false;
     }
-
+    
     private UniformStream s;
 
     private double prob;
-
-};
+}

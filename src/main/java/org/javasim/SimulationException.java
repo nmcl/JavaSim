@@ -33,5 +33,4 @@ public class SimulationException extends Exception
     {
         super(s);
     }
-
-};
+}

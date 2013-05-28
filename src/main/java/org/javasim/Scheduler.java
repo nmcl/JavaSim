@@ -47,7 +47,6 @@ import org.javasim.internal.SimulationProcessList;
  */
 public class Scheduler extends Thread
 {
-
     /**
       * Get the current simulation time.
       * 
@@ -262,6 +261,5 @@ public class Scheduler extends Thread
     private static boolean schedulerRunning = false;
     private static boolean _simulationReset = false;
 
-    static Scheduler theScheduler = new Scheduler();
-    
+    static Scheduler theScheduler = new Scheduler();   
 }
