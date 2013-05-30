@@ -37,8 +37,8 @@ public class PrecisionHistogramUnitTest
         
         assertEquals(hist.numberOfBuckets(), (long) 2);
         assertEquals(hist.numberOfSamples(), 2);
-        assertEquals(hist.sizeByIndex(0), 1.0);
-        assertEquals(hist.sizeByName(100.0), 1.0);
+        assertTrue(hist.sizeByIndex(0) == 1.0);
+        assertTrue(hist.sizeByName(100.0) == 1.0);
         
         hist.saveState("hist.temp");
         

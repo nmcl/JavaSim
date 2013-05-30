@@ -1,123 +1,163 @@
-<project name="JavaSim" default="uk.ac.ncl.arjuna.javasim.all" basedir=".">
+<project name="JavaSim" default="javasim.all" basedir=".">
 	<!-- class path behaviour -->
 	<property name="build.sysclasspath" value="last"/>
 
 	<!-- Set module name -->
-	<property name="uk.ac.ncl.arjuna.javasim.internal.modulename" value="javasim"/>
+	<property name="javasim.internal.modulename" value="javasim"/>
 
 	<!-- Load Build Properties File -->
-	<property file="${uk.ac.ncl.arjuna.javasim.properties}"/>
+	<property file="${javasim.properties}"/>
 
 	<!-- Set internal property defaults -->
 
-	<property name="uk.ac.ncl.arjuna.javasim.installationdirectory"
+	<property name="javasim.installationdirectory"
 	location="install"/>
 
 	<!-- Path names -->
-	<property name="uk.ac.ncl.arjuna.javasim.internal.src"
+	<property name="javasim.internal.src"
 		  value="src/main/java"/>
-	<property name="uk.ac.ncl.arjuna.javasim.internal.dest.root" value="build"/>
+	<property name="javasim.internal.dest.root" value="build"/>
 	<property
-		  name="uk.ac.ncl.arjuna.javasim.internal.example.src" value="src/test/java"/>
+		  name="javasim.internal.example.src" value="src/examples/java"/>
 	<property
-		  name="uk.ac.ncl.arjuna.javasim.internal.example.dest" value="build/test"/>
-	<property name="uk.ac.ncl.arjuna.javasim.internal.dest" value="build/classes"/>
-	<property name="uk.ac.ncl.arjuna.javasim.internal.jar.dest" value="lib"/>
-	<property name="uk.ac.ncl.arjuna.javasim.internal.javadocs.dest"
+		  name="javasim.internal.example.dest" value="build/examples"/>
+	<property
+			  name="javasim.internal.tests.dest" value="build/test"/>
+	<property
+		  name="javasim.internal.tests.src" value="src/test/java"/>
+	<property name="javasim.internal.dest" value="build/classes"/>
+	<property name="javasim.internal.jar.dest" value="lib"/>
+	<property name="javasim.internal.javadocs.dest"
 	value="javadocs"/>
 
 	<!-- Initialisation -->
-	<target name="uk.ac.ncl.arjuna.javasim.internal.init">
+	<target name="javasim.internal.init">
 		<!-- Define default build properties -->
 		<tstamp>
-			<format property="uk.ac.ncl.arjuna.javasim.date" pattern="yyyy/mm/dd hh:mm aa"/>
+			<format property="javasim.date" pattern="yyyy/mm/dd hh:mm aa"/>
 		</tstamp>
 		<!-- Make the destination directory -->
 		<mkdir
-		       dir="${uk.ac.ncl.arjuna.javasim.internal.dest}"/>
+		       dir="${javasim.internal.dest}"/>
 		<mkdir
-		       dir="${uk.ac.ncl.arjuna.javasim.internal.example.dest}"/>
+		       dir="${javasim.internal.example.dest}"/>
+		<mkdir
+			dir="${javasim.internal.tests.dest}"/>
 	</target>
 
 	<!-- Compilation targets -->
-	<target name="uk.ac.ncl.arjuna.javasim.compile"
-	depends="uk.ac.ncl.arjuna.javasim.internal.compile, uk.ac.ncl.arjuna.javasim.javadocs"/>
+	<target name="javasim.compile"
+	depends="javasim.internal.compile, javasim.javadocs"/>
 
-	<target name="uk.ac.ncl.arjuna.javasim.internal.compile" depends="uk.ac.ncl.arjuna.javasim.internal.init">
-		<echo message="Compiling module"/>
-		<javac srcdir="${uk.ac.ncl.arjuna.javasim.internal.src}"
-                       destdir="${uk.ac.ncl.arjuna.javasim.internal.dest}"
-                       excludes="${uk.ac.ncl.arjuna.javasim.internal.compile.excludes}"
+	<target name="javasim.internal.compile" depends="javasim.internal.init">
+		<echo message="Building module"/>
+		<javac srcdir="${javasim.internal.src}"
+                       destdir="${javasim.internal.dest}"
+                       excludes="${javasim.internal.compile.excludes}"
                        debug="yes"
 	        >
 			<classpath>
-				<path path="${uk.ac.ncl.arjuna.javasim.internal.src}"/>
+				<path path="${javasim.internal.src}"/>
 			</classpath>
 		</javac>
 
 	</target>
 
-	<target name="uk.ac.ncl.arjuna.javasim.internal.examples" depends="uk.ac.ncl.arjuna.javasim.internal.compile">
-		<echo message="Compiling examples"/>
-		<javac srcdir="${uk.ac.ncl.arjuna.javasim.internal.example.src}"
-                       destdir="${uk.ac.ncl.arjuna.javasim.internal.example.dest}"
-                       excludes="${uk.ac.ncl.arjuna.javasim.internal.compile.excludes}"
+	<target name="javasim.internal.examples" depends="javasim.internal.compile">
+		<echo message="Building examples"/>
+		<javac srcdir="${javasim.internal.example.src}"
+                       destdir="${javasim.internal.example.dest}"
+                       excludes="${javasim.internal.compile.excludes}"
                        debug="yes"
 	        >
 			<classpath>
 				<path
-				      path="${uk.ac.ncl.arjuna.javasim.internal.example.src}"/>
-				<path path="${uk.ac.ncl.arjuna.javasim.internal.jar.dest}/${uk.ac.ncl.arjuna.javasim.internal.modulename}.jar"/>
-				<path path="${uk.ac.ncl.arjuna.javasim.internal.jar.dest}/ext/junit-4.10.jar"/>
+				      path="${javasim.internal.example.src}"/>
+				<path path="${javasim.internal.jar.dest}/${javasim.internal.modulename}.jar"/>
 			</classpath>
 		</javac>
 	</target>
+	
+	<target name="javasim.internal.tests.compile" depends="javasim.internal.compile">
+				<echo message="Building tests"/>
+		<javac srcdir="${javasim.internal.tests.src}"
+		                       destdir="${javasim.internal.tests.dest}"
+		                       excludes="${javasim.internal.compile.excludes}"
+		                       debug="yes"
+			        >
+					<classpath>
+						<path
+						      path="${javasim.internal.tests.src}"/>
+						<path path="${javasim.internal.jar.dest}/${javasim.internal.modulename}.jar"/>
+						<path path="${javasim.internal.jar.dest}/ext/junit-4.10.jar"/>
+					</classpath>
+				</javac>
+		</target>
+	
+	<target name="javasim.internal.tests" depends="javasim.internal.tests.compile">
+			<echo message="Running tests"/>
+		<junit printsummary="yes" haltonfailure="yes">
+			<formatter type="plain"/>
+			<classpath>
+							<path
+							      path="${javasim.internal.tests.dest}"/>
+							<path path="${javasim.internal.jar.dest}/${javasim.internal.modulename}.jar"/>
+							<path path="${javasim.internal.jar.dest}/ext/junit-4.10.jar"/>
+						</classpath>
+
+			<batchtest fork="yes" todir="${javasim.internal.tests.dest}">
+				<fileset dir="${javasim.internal.tests.src}">
+					<include name="**/*UnitTest*.java"/>
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
 
 	<!-- javadocs paths -->
-	<path id="uk.ac.ncl.arjuna.javasim.javadocs.path">
+	<path id="javasim.javadocs.path">
 		<pathelement path="src/main/java"/>
 	</path>
 
-	<property name="uk.ac.ncl.arjuna.javasim.javadocs.list"
+	<property name="javasim.javadocs.list"
 	value="org.javasim.*"/>
 
 	<!-- Jar targets -->
-	<target name="uk.ac.ncl.arjuna.javasim.all"
-		depends="uk.ac.ncl.arjuna.javasim.jar, uk.ac.ncl.arjuna.javasim.internal.examples">
+	<target name="javasim.all"
+		depends="javasim.jar, javasim.internal.tests, javasim.internal.examples">
 	</target>
 
-	<target name="uk.ac.ncl.arjuna.javasim.jar" depends="uk.ac.ncl.arjuna.javasim.compile">
+	<target name="javasim.jar" depends="javasim.compile">
 		<echo message="Building jar file"/>
-		<jar jarfile="${uk.ac.ncl.arjuna.javasim.internal.jar.dest}/${uk.ac.ncl.arjuna.javasim.internal.modulename}.jar" basedir="${uk.ac.ncl.arjuna.javasim.internal.dest}"/>
+		<jar jarfile="${javasim.internal.jar.dest}/${javasim.internal.modulename}.jar" basedir="${javasim.internal.dest}"/>
 	</target>
 
-	<target name="uk.ac.ncl.arjuna.javasim.javadocs"
-				depends="uk.ac.ncl.arjuna.javasim.internal.init">
+	<target name="javasim.javadocs"
+				depends="javasim.internal.init">
 		<echo message="Building javadocs "/>
-		<mkdir dir="${uk.ac.ncl.arjuna.javasim.internal.javadocs.dest}"/>
-		<path id="uk.ac.ncl.arjuna.javasim.internal.javadocs.path">
-			<path refid="uk.ac.ncl.arjuna.javasim.javadocs.path"/>
+		<mkdir dir="${javasim.internal.javadocs.dest}"/>
+		<path id="javasim.internal.javadocs.path">
+			<path refid="javasim.javadocs.path"/>
 		</path>
 
 		<javadoc
-			sourcepathref="uk.ac.ncl.arjuna.javasim.internal.javadocs.path"
-			destdir="${uk.ac.ncl.arjuna.javasim.internal.javadocs.dest}"
-			packagenames="${uk.ac.ncl.arjuna.javasim.javadocs.list}"
+			sourcepathref="javasim.internal.javadocs.path"
+			destdir="${javasim.internal.javadocs.dest}"
+			packagenames="${javasim.javadocs.list}"
 	        >
 			<classpath>
-				<path path="${uk.ac.ncl.arjuna.javasim.internal.src}"/>
+				<path path="${javasim.internal.src}"/>
 			</classpath>
 		</javadoc>
 	</target>
 
-	<target name="install" depends="uk.ac.ncl.arjuna.javasim.jar">
+	<target name="install" depends="javasim.jar">
 
-		<echo message="Installation directory : ${uk.ac.ncl.arjuna.javasim.installationdirectory}"/>
+		<echo message="Installation directory : ${javasim.installationdirectory}"/>
 
 		<echo message="Installing jar files"/>
-		<mkdir dir="${uk.ac.ncl.arjuna.javasim.installationdirectory}/lib"/>
+		<mkdir dir="${javasim.installationdirectory}/lib"/>
 		<copy
-			todir="${uk.ac.ncl.arjuna.javasim.installationdirectory}/lib"
+			todir="${javasim.installationdirectory}/lib"
 		>
 			<fileset dir="lib">
 				<include name="*.jar"/>
@@ -125,17 +165,17 @@
 		</copy>
 
 		<echo message="Installing xml"/>
-		<mkdir dir="${uk.ac.ncl.arjuna.javasim.installationdirectory}/xml"/>
+		<mkdir dir="${javasim.installationdirectory}/xml"/>
 		<copy
-			todir="${uk.ac.ncl.arjuna.javasim.installationdirectory}/xml"
+			todir="${javasim.installationdirectory}/xml"
 		>
 			<fileset dir="xml"/>
 		</copy>
 
 		<echo message="Installing javadocs"/>
-		<mkdir dir="${uk.ac.ncl.arjuna.javasim.installationdirectory}/javadocs"/>
+		<mkdir dir="${javasim.installationdirectory}/javadocs"/>
 		<copy
-			todir="${uk.ac.ncl.arjuna.javasim.installationdirectory}/javadocs"
+			todir="${javasim.installationdirectory}/javadocs"
 		>
 			<fileset dir="javadocs"/>
 		</copy>
@@ -143,16 +183,16 @@
 	</target>
 
 	<!-- Clean targets -->
-	<target name="uk.ac.ncl.arjuna.javasim.clean">
+	<target name="javasim.clean">
 		<echo message="Cleaning module"/>
-		<delete dir="${uk.ac.ncl.arjuna.javasim.internal.dest}"/>
-		<delete dir="${uk.ac.ncl.arjuna.javasim.internal.dest.root}"/>
-		<delete dir="${uk.ac.ncl.arjuna.javasim.internal.javadocs.dest}"/>
-		<delete file="${uk.ac.ncl.arjuna.javasim.internal.jar.dest}/${uk.ac.ncl.arjuna.javasim.internal.modulename}.jar"/>
+		<delete dir="${javasim.internal.dest}"/>
+		<delete dir="${javasim.internal.dest.root}"/>
+		<delete dir="${javasim.internal.javadocs.dest}"/>
+		<delete file="${javasim.internal.jar.dest}/${javasim.internal.modulename}.jar"/>
 	</target>
 
 	<!-- Short target names -->
-	<target name="compile" depends="uk.ac.ncl.arjuna.javasim.compile"/>
-	<target name="jar" depends="uk.ac.ncl.arjuna.javasim.jar"/>
-	<target name="clean" depends="uk.ac.ncl.arjuna.javasim.clean"/>
+	<target name="compile" depends="javasim.compile"/>
+	<target name="jar" depends="javasim.jar"/>
+	<target name="clean" depends="javasim.clean"/>
 </project>

@@ -38,22 +38,22 @@ public class MeanUnitTest
         mn.setValue(MAX);
         mn.setValue(MIN);
         
-        assertEquals(mn.max(), MAX);
-        assertEquals(mn.min(), MIN);
+        assertTrue(mn.max() == MAX);
+        assertTrue(mn.min() == MIN);
         assertEquals(mn.numberOfSamples(), 2);
-        assertEquals(mn.sum(), MAX+MIN);
-        assertEquals(mn.mean(), (MAX+MIN)/2);
+        assertTrue(mn.sum() == MAX+MIN);
+        assertTrue(mn.mean() == (MAX+MIN)/2);
         
         mn.saveState("mean.tmp");
         
         mn.reset();
         
-        assertEquals(mn.mean(), 0.0);
+        assertTrue(mn.mean() == 0.0);
         
         Mean theMean = new Mean();
         
         theMean.restoreState("mean.tmp");
         
-        assertEquals(theMean.max(), MAX);
+        assertTrue(theMean.max() == MAX);
     }
 }

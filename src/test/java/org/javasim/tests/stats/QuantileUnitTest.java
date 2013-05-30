@@ -55,11 +55,11 @@ public class QuantileUnitTest
         
         q = new Quantile();
         
-        assertEquals(q.range(), 0.95);
+        assertTrue(q.range() == 0.95);
         
         for (int i = 0; i < 100; i++)
             q.setValue(i);
         
-        assertEquals(q.getValue(), 94.0);
+        assertTrue(q.getValue() == 94.0);
     }
 }

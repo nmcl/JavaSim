@@ -18,36 +18,28 @@
  * (C) 1990-2008,
  */
 
-package org.javasim.tests.stats;
+package org.javasim.tests.streams;
 
-import org.javasim.stats.Variance;
+import org.javasim.streams.Draw;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class VarianceUnitTest
+public class DrawUnitTest
 {
     @Test
     public void test () throws Exception
     {
-        Variance vn = new Variance();
+        Draw d = new Draw(0);
         
-        vn.setValue(10.0);
-        vn.setValue(20.0);
+        assertTrue(d.getBoolean());
         
-        double v = vn.variance();
+        d = new Draw(1.0, 1000);
         
-        assertTrue(v > 0.0);
-        assertTrue(vn.stdDev() == Math.sqrt(vn.variance()));
+        assertFalse(d.getBoolean());
         
-        vn.saveState("variance.temp");
+        d = new Draw(1.0, 1000, 772532, 1878892441);
         
-        vn.reset();
-        
-        assertTrue(vn.variance() == 0.0);
-        
-        vn.restoreState("variance.temp");
-        
-        assertTrue(v == vn.variance());
+        assertFalse(d.getBoolean());
     }
 }
