@@ -20,10 +20,7 @@
 
 package org.javasim.streams;
 
-import java.lang.Math;
-
 import java.io.IOException;
-import java.lang.ArithmeticException;
 
 /**
  * Returns a number from a hyperexpontial distribution with the given mean and

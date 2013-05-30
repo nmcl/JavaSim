@@ -20,9 +20,7 @@
 
 package org.javasim.streams;
 
-import java.lang.Math;
 import java.io.IOException;
-import java.lang.ArithmeticException;
 
 /**
  * Returns a number from an Erlang distribution with the given mean and standard

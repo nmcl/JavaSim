@@ -20,9 +20,7 @@
 
 package org.javasim.streams;
 
-import java.lang.Math;
 import java.io.IOException;
-import java.lang.ArithmeticException;
 
 /**
  * Returns a number from an exponential distribution with the given mean.

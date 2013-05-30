@@ -21,7 +21,6 @@
 package org.javasim.streams;
 
 import java.io.IOException;
-import java.lang.ArithmeticException;
 
 /**
  * Returns a number drawn from a uniform distribution with the given lower and

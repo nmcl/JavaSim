@@ -26,7 +26,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.IllegalArgumentException;
 
 /**
  * This histogram class maintains a fixed number of buckets. When the number of

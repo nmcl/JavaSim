@@ -20,8 +20,6 @@
 
 package org.javasim.stats;
 
-import java.lang.IllegalArgumentException;
-
 /**
  * Provides a means of obtaining the p-quantile of a distribution, i.e., the
  * value below which p-percent of the distribution lies.

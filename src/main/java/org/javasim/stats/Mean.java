@@ -24,7 +24,6 @@ import java.io.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.IllegalArgumentException;
 
 public class Mean
 {

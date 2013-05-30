@@ -20,15 +20,12 @@
 
 package org.javasim.stats;
 
-import java.lang.Math;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.IllegalArgumentException;
 
 /**
  * Used to obtain the variance of the samples given.

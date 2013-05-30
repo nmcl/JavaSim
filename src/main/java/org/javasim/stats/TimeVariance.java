@@ -21,7 +21,6 @@
 package org.javasim.stats;
 
 import java.io.*;
-import java.lang.IllegalArgumentException;
 
 import org.javasim.SimulationProcess;
 

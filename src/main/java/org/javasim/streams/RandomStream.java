@@ -21,7 +21,6 @@
 package org.javasim.streams;
 
 import java.io.IOException;
-import java.lang.ArithmeticException;
 
 /**
  * The class RandomStream is the base class from which the other distribution
