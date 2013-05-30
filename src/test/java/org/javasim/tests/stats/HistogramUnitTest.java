@@ -37,13 +37,13 @@ public class HistogramUnitTest
         
         assertEquals(hist.numberOfBuckets(), (long) 2);
         
-        hist.saveState("hist.temp");
+        hist.saveState("build/test/hist.temp");
         
         hist.reset();
         
         assertEquals(hist.numberOfBuckets(), (long) 0);
         
-        hist.restoreState("hist.temp");
+        hist.restoreState("build/test/hist.temp");
         
         assertEquals(hist.numberOfBuckets(), (long) 2);
     }
