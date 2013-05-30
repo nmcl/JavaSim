@@ -68,6 +68,7 @@
 				<path
 				      path="${uk.ac.ncl.arjuna.javasim.internal.example.src}"/>
 				<path path="${uk.ac.ncl.arjuna.javasim.internal.jar.dest}/${uk.ac.ncl.arjuna.javasim.internal.modulename}.jar"/>
+				<path path="${uk.ac.ncl.arjuna.javasim.internal.jar.dest}/ext/junit-4.10.jar"/>
 			</classpath>
 		</javac>
 	</target>
@@ -87,7 +88,6 @@
 
 	<target name="uk.ac.ncl.arjuna.javasim.jar" depends="uk.ac.ncl.arjuna.javasim.compile">
 		<echo message="Building jar file"/>
-		<mkdir dir="${uk.ac.ncl.arjuna.javasim.internal.jar.dest}"/>
 		<jar jarfile="${uk.ac.ncl.arjuna.javasim.internal.jar.dest}/${uk.ac.ncl.arjuna.javasim.internal.modulename}.jar" basedir="${uk.ac.ncl.arjuna.javasim.internal.dest}"/>
 	</target>
 
@@ -148,7 +148,7 @@
 		<delete dir="${uk.ac.ncl.arjuna.javasim.internal.dest}"/>
 		<delete dir="${uk.ac.ncl.arjuna.javasim.internal.dest.root}"/>
 		<delete dir="${uk.ac.ncl.arjuna.javasim.internal.javadocs.dest}"/>
-		<delete dir="${uk.ac.ncl.arjuna.javasim.internal.jar.dest}"/>
+		<delete file="${uk.ac.ncl.arjuna.javasim.internal.jar.dest}/${uk.ac.ncl.arjuna.javasim.internal.modulename}.jar"/>
 	</target>
 
 	<!-- Short target names -->

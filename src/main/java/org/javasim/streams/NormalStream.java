@@ -20,9 +20,7 @@
 
 package org.javasim.streams;
 
-import java.lang.Math;
 import java.io.IOException;
-import java.lang.ArithmeticException;
 
 /**
  * Returns a number from a normal distribution with the given mean and standard
@@ -30,7 +28,7 @@ import java.lang.ArithmeticException;
  */
 
 public class NormalStream extends RandomStream
-
+{
     /**
      * Create stream with mean 'm' and standard deviation 'sd'.
      */
