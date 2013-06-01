@@ -20,18 +20,17 @@
 
 package org.javasim.tests.internal;
 
-import org.javasim.RestartException;
-import org.javasim.Scheduler;
-import org.javasim.SimulationException;
 import org.javasim.SimulationProcess;
+import org.javasim.internal.SimulationProcessIterator;
+import org.javasim.internal.SimulationProcessList;
 import org.javasim.streams.ExponentialStream;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-class Dummy extends SimulationProcess
+class DummyProcess extends SimulationProcess
 {
-    public Dummy (double mean)
+    public DummyProcess (double mean)
     {
         InterArrivalTime = new ExponentialStream(mean);
     }
@@ -50,53 +49,22 @@ class Dummy extends SimulationProcess
     private ExponentialStream InterArrivalTime;
 }
 
-class Runner extends SimulationProcess
-{
-    public Runner ()
-    {
-    }
-
-    public void run ()
-    {
-        try
-        {
-            Dummy A = new Dummy(8);
-
-            A.activateDelay(2000);
-            
-            Scheduler.startSimulation();
-
-            hold(1000);
-
-            Scheduler.stopSimulation();
-
-            A.terminate();
-
-            SimulationProcess.mainResume();
-        }
-        catch (final Exception e)
-        {
-        }
-    }
-
-    public void await ()
-    {
-        this.resumeProcess();
-        SimulationProcess.mainSuspend();
-    }
-}
-
-
-public class SimulationProcessUnitTest
+public class SimulationProcessIteratorUnitTest
 {
     @Test
     public void test () throws Exception
     {
-        Runner proc = new Runner();
-
-        proc.await();
+        SimulationProcessList list = new SimulationProcessList();
+        DummyProcess d1 = new DummyProcess(0.0);
+        DummyProcess d2 = new DummyProcess(1.0);
         
-        assertTrue(proc.time() > 0.0);
-        assertTrue(proc.nextEv() != null);
+        list.insert(d1);
+        list.insert(d2, true);
+        
+        SimulationProcessIterator iter = new SimulationProcessIterator(list);
+        
+        assertEquals(iter.get(), d2);
+        assertEquals(iter.get(), d1);
+        assertEquals(iter.get(), null);
     }
 }
