@@ -214,7 +214,7 @@ public class PrecisionHistogram extends Variance
             numberEntries = iFile.readLong();
 
             Bucket toAdd = new Bucket(bucketName, numberEntries);
-            if (Head != null)
+            if (ptr != null)
                 ptr.setCdr(toAdd);
             else
                 Head = toAdd;
@@ -231,12 +231,17 @@ public class PrecisionHistogram extends Variance
 
     public void print ()
     {
+        System.out.println("PrecisionHistogram Data:");
+        
         if (length == 0)
             System.out.println("Empty histogram.");
         else
+        {
+            System.out.println("Number of buckets: "+length);
             for (Bucket ptr = Head; ptr != null; ptr = ptr.cdr())
                 System.out.println("Bucket : < " + ptr.name() + ", "
                         + ptr.size() + " >");
+        }
 
         super.print();
     }

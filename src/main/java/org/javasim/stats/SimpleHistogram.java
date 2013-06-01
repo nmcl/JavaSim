@@ -54,7 +54,7 @@ public class SimpleHistogram extends PrecisionHistogram
             nbuckets = 1;
 
         width = (max - min) / numberBuckets;
-        super.reset();
+        reset();
     }
 
     /**
@@ -85,7 +85,7 @@ public class SimpleHistogram extends PrecisionHistogram
         if ((max - min) / width - numberBuckets > 0)
             numberBuckets++;
 
-        super.reset();
+        reset();
     }
 
     /**
@@ -119,7 +119,8 @@ public class SimpleHistogram extends PrecisionHistogram
     }
 
     /**
-     * Empty the histogram.
+     * Empty the histogram. Always keep the number of buckets that
+     * were originally specified though.
      */
 
     public void reset ()
@@ -131,7 +132,7 @@ public class SimpleHistogram extends PrecisionHistogram
         // pre-create buckets with given width
 
         for (int i = 0; i < numberBuckets; value += width, i++)
-            super.create(value);
+            create(value);
     }
 
     /**
@@ -162,13 +163,14 @@ public class SimpleHistogram extends PrecisionHistogram
     {
         return width;
     }
-
+    
     /**
      * Print out information about the histogram.
      */
 
     public void print ()
     {
+        System.out.println("SimpleHistogram Data:");
         System.out.println("Maximum index range  : " + maxIndex);
         System.out.println("Minimum index range  : " + minIndex);
         System.out.println("Number of buckets    : " + numberBuckets);

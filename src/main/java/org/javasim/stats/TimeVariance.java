@@ -142,7 +142,7 @@ public class TimeVariance extends Variance
         stime = iFile.readDouble();
         total = iFile.readDouble();
 
-        return true;
+        return super.restoreState(iFile);
     }
 
     private double area ()
