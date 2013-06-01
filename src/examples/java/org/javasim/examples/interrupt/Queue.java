@@ -24,7 +24,6 @@ import java.util.NoSuchElementException;
 
 public class Queue
 {
-
     public Queue()
     {
         head = null;
@@ -86,14 +85,12 @@ public class Queue
     private List head;
 
     private long length;
-
-};
+}
 
 /* This is the queue on which Jobs are placed before they are used. */
 
 class List
 {
-
     public List()
     {
         work = null;
@@ -103,5 +100,4 @@ class List
     public Job work;
 
     public List next;
-
-};
+}

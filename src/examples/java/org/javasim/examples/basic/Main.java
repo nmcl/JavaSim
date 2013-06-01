@@ -22,7 +22,6 @@ package org.javasim.examples.basic;
 
 public class Main
 {
-
     public static void main (String[] args)
     {
         boolean isBreaks = false;
@@ -44,5 +43,4 @@ public class Main
 
         System.exit(0);
     }
-
 }

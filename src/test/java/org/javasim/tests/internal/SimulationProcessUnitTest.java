@@ -18,43 +18,35 @@
  * (C) 1990-2008,
  */
 
-package org.javasim.examples.interrupt;
-
-import java.io.IOException;
+package org.javasim.tests.internal;
 
 import org.javasim.RestartException;
-import org.javasim.SimulationEntity;
 import org.javasim.SimulationException;
+import org.javasim.SimulationProcess;
 import org.javasim.streams.ExponentialStream;
+import org.junit.Test;
 
-public class Signaller extends SimulationEntity
+import static org.junit.Assert.*;
+
+class Dummy extends SimulationProcess
 {
-    public Signaller(double mean)
+    public Dummy (double mean)
     {
-        sTime = new ExponentialStream(mean);
+        InterArrivalTime = new ExponentialStream(mean);
     }
 
     public void run ()
     {
-        while (!terminated())
-        {
-            try
-            {
-                hold(sTime.getNumber());
-                Job j = new Job(true);
-                interrupt(MachineShop.cpu, false);
-            }
-            catch (SimulationException e)
-            {
-            }
-            catch (RestartException e)
-            {
-            }
-            catch (IOException e)
-            {
-            }
-        }
     }
 
-    private ExponentialStream sTime;
+    private ExponentialStream InterArrivalTime;
+}
+
+public class SimulationProcessUnitTest
+{
+    @Test
+    public void test () throws Exception
+    {
+        Dummy proc = new Dummy(10.0);
+    }
 }

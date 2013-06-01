@@ -28,7 +28,6 @@ import org.javasim.SimulationProcess;
 
 public class MachineShop extends SimulationEntity
 {
-
     public MachineShop()
     {
     }
@@ -91,5 +90,4 @@ public class MachineShop extends SimulationEntity
     public static double TotalResponseTime = 0.0;
 
     public static double MachineActiveTime = 0.0;
-
-};
+}

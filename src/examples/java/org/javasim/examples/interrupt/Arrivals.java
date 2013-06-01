@@ -29,7 +29,6 @@ import org.javasim.streams.ExponentialStream;
 
 public class Arrivals extends SimulationProcess
 {
-
     public Arrivals(double mean)
     {
         InterArrivalTime = new ExponentialStream(mean);
@@ -58,5 +57,4 @@ public class Arrivals extends SimulationProcess
     }
 
     private ExponentialStream InterArrivalTime;
-
-};
+}

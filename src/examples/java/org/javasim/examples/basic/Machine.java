@@ -29,7 +29,6 @@ import org.javasim.streams.ExponentialStream;
 
 public class Machine extends SimulationProcess
 {
-
     public Machine(double mean)
     {
         STime = new ExponentialStream(mean);
@@ -128,5 +127,4 @@ public class Machine extends SimulationProcess
     private boolean working;
 
     private Job J;
-
-};
+}

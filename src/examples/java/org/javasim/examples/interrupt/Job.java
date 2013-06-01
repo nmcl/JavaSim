@@ -22,7 +22,6 @@ package org.javasim.examples.interrupt;
 
 public class Job
 {
-
     public Job(boolean isSignal)
     {
         if (isSignal)
@@ -30,5 +29,4 @@ public class Job
         else
             MachineShop.JobQ.enqueue(this);
     }
-
-};
+}

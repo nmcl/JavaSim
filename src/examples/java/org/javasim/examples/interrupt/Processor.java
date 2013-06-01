@@ -29,7 +29,6 @@ import org.javasim.streams.ExponentialStream;
 
 public class Processor extends SimulationEntity
 {
-
     public Processor(double mean)
     {
         sTime = new ExponentialStream(mean);
@@ -81,5 +80,4 @@ public class Processor extends SimulationEntity
     }
 
     private ExponentialStream sTime;
-
-};
+}

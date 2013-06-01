@@ -27,7 +27,6 @@ import org.javasim.SimulationProcess;
 
 public class MachineShop extends SimulationProcess
 {
-
     public MachineShop(boolean isBreaks)
     {
         useBreaks = isBreaks;
@@ -112,5 +111,4 @@ public class MachineShop extends SimulationProcess
     public static double MachineFailedTime = 0.0;
 
     private boolean useBreaks;
-
-};
+}

@@ -26,7 +26,6 @@ import org.javasim.SimulationException;
 
 public class Job
 {
-
     public Job()
     {
         boolean empty = false;
@@ -63,5 +62,4 @@ public class Job
     private double ResponseTime;
 
     private double ArrivalTime;
-
-};
+}

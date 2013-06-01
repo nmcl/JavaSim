@@ -22,7 +22,6 @@ package org.javasim.examples.interrupt;
 
 public class Main
 {
-
     public static void main (String[] args)
     {
         MachineShop m = new MachineShop();
@@ -31,5 +30,4 @@ public class Main
 
         System.exit(0);
     }
-
 }
