@@ -21,6 +21,7 @@
 package org.javasim.tests.internal;
 
 import org.javasim.RestartException;
+import org.javasim.Scheduler;
 import org.javasim.SimulationException;
 import org.javasim.SimulationProcess;
 import org.javasim.streams.ExponentialStream;
@@ -37,16 +38,65 @@ class Dummy extends SimulationProcess
 
     public void run ()
     {
+        try
+        {
+            hold(InterArrivalTime.getNumber());
+        }
+        catch (final Exception ex)
+        {
+        }
     }
 
     private ExponentialStream InterArrivalTime;
 }
+
+class Runner extends SimulationProcess
+{
+    public Runner ()
+    {
+    }
+
+    public void run ()
+    {
+        try
+        {
+            Dummy A = new Dummy(8);
+
+            A.activateDelay(2000);
+            
+            Scheduler.startSimulation();
+
+            hold(1000);
+
+            Scheduler.stopSimulation();
+
+            A.terminate();
+
+            SimulationProcess.mainResume();
+        }
+        catch (final Exception e)
+        {
+        }
+    }
+
+    public void await ()
+    {
+        this.resumeProcess();
+        SimulationProcess.mainSuspend();
+    }
+}
+
 
 public class SimulationProcessUnitTest
 {
     @Test
     public void test () throws Exception
     {
-        Dummy proc = new Dummy(10.0);
+        Runner proc = new Runner();
+
+        proc.await();
+        
+        assertTrue(proc.time() > 0.0);
+        assertTrue(proc.nextEv() != null);
     }
 }

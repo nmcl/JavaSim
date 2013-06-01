@@ -124,6 +124,9 @@ public class SimulationProcess extends Thread
     public void activateAfter (SimulationProcess p) throws SimulationException,
             RestartException
     {
+        if (p == this)
+            throw new SimulationException("'after' cannot be identical to self.");
+        
         if (terminated || !idle())
             return;
 
