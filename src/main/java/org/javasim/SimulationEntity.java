@@ -66,8 +66,14 @@ public class SimulationEntity extends SimulationProcess
     public final void trigger ()
     {
         _triggered = true;
+        _waiting = false;
     }
 
+    public final boolean isWaiting ()
+    {
+        return _waiting;
+    }
+    
     /**
      * Must wake up any waiting process before we "die". Currently only a single
      * process can wait on this condition, but this may change to a list later.
@@ -79,14 +85,14 @@ public class SimulationEntity extends SimulationProcess
          * Resume waiting process before this one "dies".
          */
 
-        if (_isWaiting != null)
+        if (_isWaitedOnBy != null)
         {
             // remove from queue for "immediate" activation
 
             try
             {
-                _isWaiting.cancel();
-                _isWaiting.reactivateAt(SimulationProcess.currentTime(), true);
+                _isWaitedOnBy.cancel();
+                _isWaitedOnBy.reactivateAt(SimulationProcess.currentTime(), true);
             }
             catch (RestartException e)
             {
@@ -95,7 +101,7 @@ public class SimulationEntity extends SimulationProcess
             {
             }
 
-            _isWaiting = null;
+            _isWaitedOnBy = null;
         }
 
         super.terminate();
@@ -105,7 +111,7 @@ public class SimulationEntity extends SimulationProcess
     {
         super();
 
-        _isWaiting = null;
+        _isWaitedOnBy = null;
         _interrupted = _triggered = _waiting = false;
     }
 
@@ -150,7 +156,7 @@ public class SimulationEntity extends SimulationProcess
         if (controller == this) // can't wait on self!
             throw new SimulationException("WaitFor cannot wait on self.");
 
-        controller._isWaiting = this; // resume when controller terminates
+        controller._isWaitedOnBy = this; // resume when controller terminates
 
         // make sure this is ready to run
 
@@ -225,11 +231,12 @@ public class SimulationEntity extends SimulationProcess
         _sem.get(this);
     }
 
-    protected SimulationEntity _isWaiting;
+    private SimulationEntity _isWaitedOnBy;
 
     private boolean _interrupted;
 
     private boolean _triggered;
 
     private boolean _waiting;
+
 }
