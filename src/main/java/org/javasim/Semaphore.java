@@ -40,6 +40,7 @@ public class Semaphore
         numberWaiting = 0;
         numberOfResources = 1;
         currentResources = 1;
+        waitingList = new TriggerQueue();
     }
 
     /**
@@ -53,6 +54,7 @@ public class Semaphore
         numberWaiting = 0;
         numberOfResources = number;
         currentResources = number;
+        waitingList = new TriggerQueue();
     }
 
     public void finalize ()
@@ -68,7 +70,7 @@ public class Semaphore
      * @return the number of entities blocked.
      */
 
-    public synchronized long numberWaiting ()
+    public long numberWaiting ()
     {
         return numberWaiting;
     }
@@ -82,7 +84,7 @@ public class Semaphore
      * @throws RestartException if a reset occurs while an entity is blocked.
      */
 
-    public synchronized Outcome get (SimulationEntity toWait)
+    public Outcome get (SimulationEntity toWait)
             throws RestartException
     {
         if (currentResources > 0)
@@ -112,7 +114,7 @@ public class Semaphore
      * @return the outcome
      */
 
-    public synchronized Outcome tryGet (SimulationEntity toWait)
+    public Outcome tryGet (SimulationEntity toWait)
             throws RestartException
     {
         if (currentResources == 0)
@@ -128,25 +130,26 @@ public class Semaphore
      * @return the outcome
      */
 
-    public synchronized Outcome release ()
+    public Outcome release ()
     {
+        // if there are things waiting they get triggered right here
+        // and recomsume the resource that would have been freed otherwise
+        // by this release call
         if (numberWaiting > 0)
         {
-            currentResources++;
-
-            if (currentResources > numberOfResources)
-                currentResources = numberOfResources;
-
             numberWaiting--;
 
-            // don't set trigger flag - not strictly a trigger
-
-            waitingList.triggerFirst(false);
+            waitingList.triggerFirst(true);
 
             return Outcome.DONE;
         }
         else
-            return Outcome.NOTDONE;
+        {
+            // There is nothing waiting so we can free up a resource
+            currentResources++;
+
+            return Outcome.DONE;
+        }
     }
 
     private TriggerQueue waitingList;
