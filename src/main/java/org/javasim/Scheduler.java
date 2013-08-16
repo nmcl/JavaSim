@@ -204,8 +204,7 @@ public class Scheduler extends Thread
 	    }
 	    catch (NoSuchElementException e)
 	    {
-		System.out.println("Simulation queue empty - terminating.");
-		System.exit(0);
+		System.out.println("Simulation queue empty.");
 	    }
 
 	    if (SimulationProcess.Current.evtime() < 0)
