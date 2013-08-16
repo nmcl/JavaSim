@@ -1,34 +1,0 @@
-8
-
-dir
-34
-https://svn.codehaus.org/javasim/JavaSim/trunk/src/test/java/org/javasim/examples
-https://svn.codehaus.org/javasim
-
-
-
-2008-07-07T19:55:56.850141Z
-20
-mlittle
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-f3a3a722-c53a-0410-8699-aeaf0597c410
-
-basic
-dir
-
-interrupt
-dir
-
