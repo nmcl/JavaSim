@@ -10,6 +10,6 @@ The system also comes with complete examples and test routines which illustrate 
 
 Prior to 2007 both C++SIM and JavaSim were freely available in source and binary from Newcastle University, under their own licence. However, in late 2007 the University decided that the code can be released into open source under LGPL.
 
-We are in the process of providing new releases of JavaSim and C++SIM. In the meantime, if you want the old versions then you can find C++SIM 1.7.4 GA and JavaSim 0.3 GA available from our downloads repository.
+We are in the process of providing new releases of JavaSim and C++SIM. In the meantime, if you want the old versions then you can find C++SIM 1.7.4 GA and JavaSim 0.3 GA available from distributions directory.
 
 In 2015 we moved from Codehaus.
