@@ -12,4 +12,4 @@ Prior to 2007 both C++SIM and JavaSim were freely available in source and binary
 
 We are in the process of providing new releases of JavaSim and C++SIM. In the meantime, if you want the old versions then you can find C++SIM 1.7.4 GA and JavaSim 0.3 GA available from distributions directory.
 
-In 2015 we moved from Codehaus.
+In 2015 we moved from Codehaus. All JIRAs from there were also migrated to github issues.
