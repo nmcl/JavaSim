@@ -25,6 +25,8 @@ import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.PrintWriter;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -244,6 +246,24 @@ public class PrecisionHistogram extends Variance
         }
 
         super.print();
+    }
+
+    public void write (String filename)
+    {
+      try {
+        PrintWriter out = new PrintWriter(filename);
+        out.print("#BinName\tCount\n");
+        if (length != 0)
+        {
+          for (Bucket ptr = Head; ptr != null; ptr = ptr.cdr())
+          {
+            out.print(ptr.name() + "\t" + ptr.size() + "\n");
+          }
+        }
+        out.close();
+      } catch (FileNotFoundException ex) {
+        System.err.println(ex.getMessage());
+      }
     }
 
     protected boolean isPresent (double value)

@@ -1,34 +1,0 @@
-8
-
-dir
-34
-https://svn.codehaus.org/javasim/JavaSim/trunk/src
-https://svn.codehaus.org/javasim
-
-
-
-2010-11-13T21:27:02.792449Z
-34
-mlittle
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-f3a3a722-c53a-0410-8699-aeaf0597c410
-
-main
-dir
-
-test
-dir
-

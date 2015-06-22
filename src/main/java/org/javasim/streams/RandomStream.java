@@ -67,6 +67,8 @@ public abstract class RandomStream
 
     protected RandomStream()
     {
+      if (series == null)
+      {
         series = new double[128];
 
         mSeed = 772531;
@@ -75,6 +77,7 @@ public abstract class RandomStream
         for (int i = 0; i < RandomStream.sizeOfSeries
                 / RandomStream.sizeOfDouble; i++)
             series[i] = mgen();
+      }
     }
 
     protected RandomStream(long MGSeed, long LCGSeed)
@@ -145,11 +148,11 @@ public abstract class RandomStream
         return (double) mSeed / (double) two2the26th;
     }
 
-    private long mSeed;
+    private static long mSeed = 0;
 
-    private long lSeed;
+    private static long lSeed = 0;
 
-    private double[] series;
+    private static double[] series = null;
 
     /*
      * We do this so that we can have the same results when running on most Unix
