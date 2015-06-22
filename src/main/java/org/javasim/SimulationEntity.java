@@ -238,5 +238,4 @@ public class SimulationEntity extends SimulationProcess
     private boolean _triggered;
 
     private boolean _waiting;
-
 }

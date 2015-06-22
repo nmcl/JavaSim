@@ -61,7 +61,6 @@ public class SimulationProcess extends Thread
                 }
             }
 
-            SimulationProcess.allProcesses.remove(this);
         }
     }
 
