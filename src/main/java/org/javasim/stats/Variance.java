@@ -84,12 +84,16 @@ public class Variance extends Mean
 
     /**
      * Returns the confidence.
+     * 
+     * Confidence should be between 0 and 0.9999
      */
 
-    public double confidence (double value)
+    public double confidence (double value) throws IllegalArgumentException
     {
-        System.out.println("Variance::confidence not implemented yet.");
-        return 0.0;
+        if ((value > 1) || (value < 0))
+                throw new IllegalArgumentException();
+        
+        return mean() + (1+value)*stdDev();
     }
 
     /**
