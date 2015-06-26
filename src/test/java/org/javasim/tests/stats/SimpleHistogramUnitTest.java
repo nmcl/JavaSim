@@ -35,21 +35,21 @@ public class SimpleHistogramUnitTest
         hist.setValue(10.0);
         hist.setValue(100.0);
         
-        assertEquals(hist.numberOfBuckets(), 20);
+        assertEquals(hist.numberOfBuckets(), (long) 20);
         
         assertTrue(hist.sizeByName(10.0) == 1.0);
         
         hist.print();
         
-        hist.saveState("build/test/hist.temp");
+        hist.saveState("target/hist.temp");
         
         hist.reset();
         
-        assertEquals(hist.numberOfBuckets(), 20);
+        assertEquals(hist.numberOfBuckets(), (long) 20);
         
-        hist.restoreState("build/test/hist.temp");
+        hist.restoreState("target/hist.temp");
         
-        assertEquals(hist.numberOfBuckets(), 20);
+        assertEquals(hist.numberOfBuckets(), (long) 20);
         
         hist = new SimpleHistogram(10.0, 1000.0, 4.0);
         

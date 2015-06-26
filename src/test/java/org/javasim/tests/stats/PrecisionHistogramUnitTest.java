@@ -40,13 +40,13 @@ public class PrecisionHistogramUnitTest
         assertTrue(hist.sizeByIndex(0) == 1.0);
         assertTrue(hist.sizeByName(100.0) == 1.0);
         
-        hist.saveState("build/test/hist.temp");
+        hist.saveState("target/hist.temp");
         
         hist.reset();
         
         assertEquals(hist.numberOfBuckets(), (long) 0);
         
-        hist.restoreState("build/test/hist.temp");
+        hist.restoreState("target/hist.temp");
         
         assertEquals(hist.numberOfBuckets(), (long) 2);
     }

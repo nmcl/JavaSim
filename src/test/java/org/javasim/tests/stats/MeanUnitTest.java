@@ -44,7 +44,7 @@ public class MeanUnitTest
         assertTrue(mn.sum() == MAX+MIN);
         assertTrue(mn.mean() == (MAX+MIN)/2);
         
-        mn.saveState("build/test/mean.tmp");
+        mn.saveState("target/mean.tmp");
         
         mn.reset();
         
@@ -52,7 +52,7 @@ public class MeanUnitTest
         
         Mean theMean = new Mean();
         
-        theMean.restoreState("build/test/mean.tmp");
+        theMean.restoreState("target/mean.tmp");
         
         assertTrue(theMean.max() == MAX);
     }

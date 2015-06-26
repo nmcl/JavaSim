@@ -40,13 +40,13 @@ public class VarianceUnitTest
         assertTrue(v > 0.0);
         assertTrue(vn.stdDev() == Math.sqrt(vn.variance()));
         
-        vn.saveState("build/test/variance.temp");
+        vn.saveState("target/variance.temp");
         
         vn.reset();
         
         assertTrue(vn.variance() == 0.0);
         
-        vn.restoreState("build/test/variance.temp");
+        vn.restoreState("target/variance.temp");
         
         assertTrue(v == vn.variance());
     }

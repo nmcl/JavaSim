@@ -33,7 +33,7 @@ public class BucketUnitTest
         Bucket b1 = new Bucket(20.0);
         Bucket b2 = new Bucket(20.0, 1000);
         
-        assertEquals(b2.size(), 1000);
+        assertEquals(b2.size(), (long) 1000);
         
         assertTrue(b1.equals(b2.name()));
         
