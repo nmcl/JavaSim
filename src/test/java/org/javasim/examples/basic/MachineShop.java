@@ -30,6 +30,14 @@ public class MachineShop extends SimulationProcess
     public MachineShop(boolean isBreaks)
     {
         useBreaks = isBreaks;
+
+        TotalResponseTime = 0.0;
+        TotalJobs = 0;
+        ProcessedJobs = 0;
+        JobsInQueue = 0;
+        CheckFreq = 0;
+        MachineActiveTime = 0.0;
+        MachineFailedTime = 0.0;
     }
 
     public void run ()
@@ -54,6 +62,7 @@ public class MachineShop extends SimulationProcess
             while (MachineShop.ProcessedJobs < 1000)
                 hold(1000);
 
+            System.out.println("Current time "+currentTime());
             System.out.println("Total number of jobs present " + TotalJobs);
             System.out.println("Total number of jobs processed "
                     + ProcessedJobs);

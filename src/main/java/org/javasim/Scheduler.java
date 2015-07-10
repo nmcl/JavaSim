@@ -80,13 +80,13 @@ public class Scheduler extends Thread
 	// set resetting process to idle
 
 	Scheduler.unschedule(tmp); // remove from queue
-	tmp.deactivate();
 
 	do
 	{
 	    try
 	    {
 		tmp = Scheduler.ReadyQueue.remove();
+		tmp.deactivate();
 	    }
 	    catch (NoSuchElementException e)
 	    {
