@@ -44,7 +44,7 @@ public class BasicExampleUnitTest
         {
         }
     }
-    /*
+    
     @Test
     public void testBreaks ()
     {
@@ -61,5 +61,5 @@ public class BasicExampleUnitTest
         catch (final Throwable ex)
         {
         }
-    }*/
+    }
 }
