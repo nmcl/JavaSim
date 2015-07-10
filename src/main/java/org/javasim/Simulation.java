@@ -61,7 +61,7 @@ public class Simulation
     
     public static synchronized void reset () throws SimulationException
     {
-	Simulation._simulationReset = true;
+	Simulation._reset = true;
 
 	try
 	{
@@ -69,7 +69,7 @@ public class Simulation
 	}
 	finally
 	{
-	    Simulation._simulationReset = false;
+	    Simulation._reset = false;
 	}
     }
 
@@ -83,7 +83,7 @@ public class Simulation
     
     public static synchronized boolean isReset ()
     {
-	return Simulation._simulationReset;
+	return Simulation._reset;
     }
     
     /**
@@ -94,7 +94,7 @@ public class Simulation
     
     public static synchronized void stop ()
     {
-	Simulation.schedulerRunning = false;
+	Simulation.running = false;
     }
 
     /**
@@ -104,7 +104,7 @@ public class Simulation
     
     public static synchronized void start ()
     {
-	Simulation.schedulerRunning = true;
+	Simulation.running = true;
     }
 
     /**
@@ -116,9 +116,9 @@ public class Simulation
     
     protected static synchronized boolean isStarted ()
     {
-	return Simulation.schedulerRunning;
+	return Simulation.running;
     }
     
-    private static boolean schedulerRunning = false;
-    private static boolean _simulationReset = false; 
+    private static boolean running = false;
+    private static boolean _reset = false; 
 }
