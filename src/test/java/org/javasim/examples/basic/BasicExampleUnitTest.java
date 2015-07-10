@@ -20,7 +20,7 @@
 
 package org.javasim.examples.basic;
 
-import org.javasim.Scheduler;
+import org.javasim.Simulation;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -38,7 +38,7 @@ public class BasicExampleUnitTest
         
         try
         {
-            Scheduler.reset();
+            Simulation.reset();
         }
         catch (final Throwable ex)
         {
@@ -56,7 +56,7 @@ public class BasicExampleUnitTest
 
         try
         {
-            Scheduler.reset();
+            Simulation.reset();
         }
         catch (final Throwable ex)
         {

@@ -22,6 +22,7 @@ package org.javasim.examples.basic;
 
 import org.javasim.RestartException;
 import org.javasim.Scheduler;
+import org.javasim.Simulation;
 import org.javasim.SimulationException;
 import org.javasim.SimulationProcess;
 
@@ -57,7 +58,7 @@ public class MachineShop extends SimulationProcess
                 B.activate();
             }
 
-            Scheduler.startSimulation();
+            Simulation.start();
 
             while (MachineShop.ProcessedJobs < 1000)
                 hold(1000);
@@ -77,7 +78,7 @@ public class MachineShop extends SimulationProcess
             System.out.println("Average number of jobs present = "
                     + (JobsInQueue / CheckFreq));
 
-            Scheduler.stopSimulation();
+            Simulation.stop();
 
             A.terminate();
             MachineShop.M.terminate();

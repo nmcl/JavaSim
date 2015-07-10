@@ -70,12 +70,10 @@ public class Scheduler extends Thread
      * @throws SimulationException if an error occurs.
      */
     
-    public static synchronized void reset () throws SimulationException
+    static synchronized void reset () throws SimulationException
     {
 	boolean finished = false;
 	SimulationProcess tmp = SimulationProcess.current();
-	
-	Scheduler._simulationReset = true;
 
 	// set resetting process to idle
 
@@ -130,55 +128,8 @@ public class Scheduler extends Thread
 	} while (!finished);
 
 	Scheduler.SimulatedTime = 0.0;
-	Scheduler._simulationReset = false;
 
 	SimulationProcess.Current = null;
-    }
-
-    /**
-     * Is the simulation undergoing a reset? Processes should call this
-     * method to determine whether the simulation is being reset. If it
-     * is, then they should act accordingly.
-     * 
-     * @return <code>true</code> if the simulation is being reset, <code>false</code> otherwise.
-     */
-    
-    public static synchronized boolean simulationReset ()
-    {
-	return Scheduler._simulationReset;
-    }
-    
-    /**
-     * Stop the simulation. Processes should call this
-     * method to determine whether the simulation is being stopped. If it
-     * is, then they should act accordingly.
-     */
-    
-    public static synchronized void stopSimulation ()
-    {
-	Scheduler.schedulerRunning = false;
-    }
-
-    /**
-     * Start the simulation either from the start or from where it was
-     * previously stopped.
-     */
-    
-    public static synchronized void startSimulation ()
-    {
-	Scheduler.schedulerRunning = true;
-    }
-
-    /**
-     * Has the simulation started?
-     * 
-     * @return <code>true</code> if the simulation is running, <code>false</code>
-     * otherwise.
-     */
-    
-    protected static synchronized boolean simulationStarted ()
-    {
-	return Scheduler.schedulerRunning;
     }
 
     private Scheduler ()
@@ -194,7 +145,7 @@ public class Scheduler extends Thread
     
     static synchronized boolean schedule () throws SimulationException
     {
-	if (Scheduler.simulationStarted())
+	if (Simulation.isStarted())
 	{
 	    SimulationProcess p = SimulationProcess.current();
 	    
@@ -256,9 +207,6 @@ public class Scheduler extends Thread
     
     private static double SimulatedTime = 0.0;
     private static SimulationProcessList ReadyQueue = new SimulationProcessList();
-    
-    private static boolean schedulerRunning = false;
-    private static boolean _simulationReset = false;
 
     static Scheduler theScheduler = new Scheduler();   
 }

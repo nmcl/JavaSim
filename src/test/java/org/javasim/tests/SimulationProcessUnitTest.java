@@ -21,7 +21,7 @@
 package org.javasim.tests;
 
 import org.javasim.RestartException;
-import org.javasim.Scheduler;
+import org.javasim.Simulation;
 import org.javasim.SimulationException;
 import org.javasim.SimulationProcess;
 import org.javasim.streams.ExponentialStream;
@@ -64,11 +64,11 @@ class Runner extends SimulationProcess
 
             A.activateDelay(2000);
             
-            Scheduler.startSimulation();
+            Simulation.start();
 
             hold(1000);
 
-            Scheduler.stopSimulation();
+            Simulation.stop();
 
             A.terminate();
 

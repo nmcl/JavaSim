@@ -20,7 +20,7 @@
 
 package org.javasim.examples.interrupt;
 
-import org.javasim.Scheduler;
+import org.javasim.Simulation;
 
 import org.junit.Test;
 
@@ -38,7 +38,7 @@ public class InterruptExampleUnitTest
         
         try
         {
-            Scheduler.reset();
+            Simulation.reset();
         }
         catch (final Throwable ex)
         {

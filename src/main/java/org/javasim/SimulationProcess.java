@@ -553,7 +553,7 @@ public class SimulationProcess extends Thread
         {
         }
 
-        if (Scheduler.simulationReset())
+        if (Simulation.isReset())
             throw new RestartException();
     }
 

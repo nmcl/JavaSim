@@ -22,6 +22,7 @@ package org.javasim.examples.interrupt;
 
 import org.javasim.RestartException;
 import org.javasim.Scheduler;
+import org.javasim.Simulation;
 import org.javasim.SimulationEntity;
 import org.javasim.SimulationException;
 import org.javasim.SimulationProcess;
@@ -45,14 +46,14 @@ public class MachineShop extends SimulationEntity
             A.activate();
             s.activate();
 
-            Scheduler.startSimulation();
+            Simulation.start();
 
             waitFor(cpu);
 
             System.out.println("Total jobs processed " + ProcessedJobs);
             System.out.println("Total signals processed " + SignalledJobs);
 
-            Scheduler.stopSimulation();
+            Simulation.stop();
 
             MachineShop.cpu.terminate();
             A.terminate();
