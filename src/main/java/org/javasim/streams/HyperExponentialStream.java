@@ -91,7 +91,7 @@ public class HyperExponentialStream extends RandomStream
     }
 
     /**
-     * Return a value from the stream.
+     * @return a value from the stream.
      */
 
     public double getNumber () throws IOException, ArithmeticException
