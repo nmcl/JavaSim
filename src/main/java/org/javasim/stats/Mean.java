@@ -60,7 +60,7 @@ public class Mean
     }
 
     /**
-     * @returns the number of samples.
+     * @return the number of samples.
      */
 
     public int numberOfSamples ()
@@ -69,7 +69,7 @@ public class Mean
     }
 
     /**
-     * @returns the minimum value given.
+     * @return the minimum value given.
      */
 
     public double min ()
@@ -78,7 +78,7 @@ public class Mean
     }
 
     /**
-     * @returns the maximum value given.
+     * @return the maximum value given.
      */
 
     public double max ()
@@ -87,7 +87,7 @@ public class Mean
     }
 
     /**
-     * @returns the sum of all values.
+     * @return the sum of all values.
      */
 
     public double sum ()
@@ -96,7 +96,7 @@ public class Mean
     }
 
     /**
-     * @returns the mean value.
+     * @return the mean value.
      */
 
     public double mean ()
