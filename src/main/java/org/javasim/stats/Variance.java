@@ -39,7 +39,7 @@ public class Variance extends Mean
     }
 
     /**
-     * Add 'value', updating the variance.
+     * @param Add to the instance, updating the variance.
      */
 
     public void setValue (double value) throws IllegalArgumentException
@@ -59,7 +59,7 @@ public class Variance extends Mean
     }
 
     /**
-     * Returns the variance.
+     * @return the variance.
      */
 
     public double variance ()
@@ -71,7 +71,7 @@ public class Variance extends Mean
     }
 
     /**
-     * Returns the standard deviation of the samples.
+     * @return the standard deviation of the samples.
      */
 
     public double stdDev ()
@@ -83,9 +83,9 @@ public class Variance extends Mean
     }
 
     /**
-     * Returns the confidence.
+     * @return the confidence.
      * 
-     * Confidence should be between 0 and 0.9999
+     * @param value the confidence range should be between 0 and 0.9999
      */
 
     public double confidence (double value) throws IllegalArgumentException
@@ -110,6 +110,9 @@ public class Variance extends Mean
 
     /**
      * Save the state of the histogram to the file named 'fileName'.
+     * 
+     * @param fileName the file to use.
+     * @return <code>true</code> if it succeeds, <code>false</code> otherwise.
      */
 
     public boolean saveState (String fileName) throws IOException
@@ -126,6 +129,9 @@ public class Variance extends Mean
 
     /**
      * Save the state of the histogram to the stream 'oFile'.
+     * 
+     * @param oFile the stream to use.
+     * @return <code>true</code> if it succeeds, <code>false</code> otherwise.
      */
 
     public boolean saveState (DataOutputStream oFile) throws IOException
@@ -136,6 +142,9 @@ public class Variance extends Mean
 
     /**
      * Restore the histogram state from the file 'fileName'.
+     * 
+     * @param fileName the file to use.
+     * @return <code>true</code> if it succeeds, <code>false</code> otherwise.
      */
 
     public boolean restoreState (String fileName) throws FileNotFoundException,
@@ -153,6 +162,9 @@ public class Variance extends Mean
 
     /**
      * Restore the histogram state from the stream 'iFile'.
+     * 
+     * @param iFile the stream to use.
+     * @return <code>true</code> if it succeeds, <code>false</code> otherwise.
      */
 
     public boolean restoreState (DataInputStream iFile) throws IOException
