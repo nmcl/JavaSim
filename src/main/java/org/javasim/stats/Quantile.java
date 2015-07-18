@@ -39,6 +39,8 @@ public class Quantile extends PrecisionHistogram
     /**
      * Create with the specified probability. If the probability it greater than
      * 100% (1.0) or less than or equal to 0% then throw an exception.
+     * 
+     * @param q the probability to use for this instance.
      */
 
     public Quantile(double q) throws IllegalArgumentException
@@ -51,7 +53,7 @@ public class Quantile extends PrecisionHistogram
     }
 
     /**
-     * Return the p-quantile.
+     * @return the p-quantile.
      */
 
     public double getValue ()
@@ -71,7 +73,7 @@ public class Quantile extends PrecisionHistogram
     }
 
     /**
-     * Return the p-quantile percentage.
+     * @return the p-quantile percentage.
      */
 
     public double range ()
