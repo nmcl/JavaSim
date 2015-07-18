@@ -29,6 +29,16 @@ package org.javasim;
 
 public class Semaphore
 {
+    /**
+     * The result of various operations:
+     * DONE - succeeded.
+     * NOTDONE - failed.
+     * WOULD_BLOCK - the operation would block the thread.
+     * 
+     * Note that for some operations only DONE and NOTDONE
+     * could be returned.
+     */
+     
     enum Outcome { DONE, NOTDONE, WOULD_BLOCK };
     
     /**
@@ -80,7 +90,7 @@ public class Semaphore
      * resources.
      * 
      * @param toWait the entity that will be blocked.
-     * @return an indication of the outcome.
+     * @return an indication of the outcome (DONE, NOTDONE)
      * @throws RestartException if a reset occurs while an entity is blocked.
      */
 
@@ -111,7 +121,7 @@ public class Semaphore
      * Only acquire the semaphore if it would not block the caller.
      * 
      * @param toWait the entity to block.
-     * @return the outcome
+     * @return the outcome (DONE, NOTDONE or WOULD_BLOCK)
      */
 
     public Outcome tryGet (SimulationEntity toWait)
@@ -127,7 +137,7 @@ public class Semaphore
      * Release the semaphore. No check is made to ensure the caller has
      * previously acquired the semaphore.
      * 
-     * @return the outcome
+     * @return the outcome (DONE or NOTDONE)
      */
 
     public Outcome release ()
