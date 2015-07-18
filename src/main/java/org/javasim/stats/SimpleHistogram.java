@@ -89,7 +89,7 @@ public class SimpleHistogram extends PrecisionHistogram
     }
 
     /**
-     * Add 'value' to the histogram. If it is outside the range of the histogram
+     * @param value add to the histogram. If it is outside the range of the histogram
      * then raise an exception, otherwise find the appropriate bucket and
      * increment it.
      */
@@ -137,6 +137,9 @@ public class SimpleHistogram extends PrecisionHistogram
 
     /**
      * Get the number of entries in bucket 'name'.
+     * 
+     * @param name the id of the bucket.
+     * @return the number of entries in the bucket.
      */
 
     public double sizeByName (double name) throws IllegalArgumentException
@@ -156,7 +159,7 @@ public class SimpleHistogram extends PrecisionHistogram
     }
 
     /**
-     * Return the width of each bucket.
+     * @return the width of each bucket.
      */
 
     public double Width ()
@@ -181,6 +184,9 @@ public class SimpleHistogram extends PrecisionHistogram
 
     /**
      * Save the state of the histogram to the file named 'fileName'.
+     * 
+     * @param fileName the file to use.
+     * @return <code>true</code> if it succeeded, <code>false</code> otherwise.
      */
 
     public boolean saveState (String fileName) throws IOException
@@ -197,6 +203,9 @@ public class SimpleHistogram extends PrecisionHistogram
 
     /**
      * Save the state of the histogram to the stream 'oFile'.
+     * 
+     * @param oFile the stream to use.
+     * @return <code>true</code> if it succeeded, <code>false</code> otherwise.
      */
 
     public boolean saveState (DataOutputStream oFile) throws IOException
@@ -211,6 +220,9 @@ public class SimpleHistogram extends PrecisionHistogram
 
     /**
      * Restore the histogram state from the file 'fileName'.
+     * 
+     * @param fileName the file to use.
+     * @return <code>true</code> if it succeeded, <code>false</code> otherwise.
      */
 
     public boolean restoreState (String fileName) throws FileNotFoundException,
@@ -228,6 +240,9 @@ public class SimpleHistogram extends PrecisionHistogram
 
     /**
      * Restore the histogram state from the stream 'iFile'.
+     * 
+     * @param iFile the stream to use.
+     * @return <code>true</code> if it succeeded, <code>false</code> otherwise.
      */
 
     public boolean restoreState (DataInputStream iFile) throws IOException
