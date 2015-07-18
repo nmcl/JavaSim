@@ -116,7 +116,7 @@ public class Bucket
     }
 
     /**
-     * @returns the name of the bucket.
+     * @return the name of the bucket.
      */
 
     public double name ()
