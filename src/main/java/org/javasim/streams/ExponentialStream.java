@@ -70,7 +70,7 @@ public class ExponentialStream extends RandomStream
     }
 
     /**
-     * Return stream number.
+     * @return stream number.
      */
 
     public double getNumber () throws IOException, ArithmeticException
