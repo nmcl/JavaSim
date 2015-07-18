@@ -33,7 +33,7 @@ public class Mean
     }
 
     /**
-     * Add 'value', incrementing the number of samples, the sum, mean, etc.
+     * @param add 'value', incrementing the number of samples, the sum, mean, etc.
      */
 
     public void setValue (double value) throws IllegalArgumentException
@@ -60,7 +60,7 @@ public class Mean
     }
 
     /**
-     * Returns the number of samples.
+     * @returns the number of samples.
      */
 
     public int numberOfSamples ()
@@ -69,7 +69,7 @@ public class Mean
     }
 
     /**
-     * Returns the minimum value given.
+     * @returns the minimum value given.
      */
 
     public double min ()
@@ -78,7 +78,7 @@ public class Mean
     }
 
     /**
-     * Returns the maximum value given.
+     * @returns the maximum value given.
      */
 
     public double max ()
@@ -87,7 +87,7 @@ public class Mean
     }
 
     /**
-     * Returns the sum of all values.
+     * @returns the sum of all values.
      */
 
     public double sum ()
@@ -96,7 +96,7 @@ public class Mean
     }
 
     /**
-     * Returns the mean value.
+     * @returns the mean value.
      */
 
     public double mean ()
@@ -106,6 +106,9 @@ public class Mean
 
     /**
      * Save the state of the histogram to the file named 'fileName'.
+     * 
+     * @param fileName the file to use.
+     * @return <code>true</code> if save succeeded, <code>false</code> otherwise.
      */
 
     public boolean saveState (String fileName) throws IOException
@@ -122,6 +125,9 @@ public class Mean
 
     /**
      * Save the state of the histogram to the stream 'oFile'.
+     * 
+     * @param oFile the stream to use.
+     * @return <code>true</code> if save succeeded, <code>false</code> otherwise.
      */
 
     public boolean saveState (DataOutputStream oFile) throws IOException
@@ -137,6 +143,9 @@ public class Mean
 
     /**
      * Restore the histogram state from the file 'fileName'.
+     * 
+     * @param fileName the file to use.
+     * @return <code>true</code> if the restore succeeded, <code>false</code> otherwise.
      */
 
     public boolean restoreState (String fileName) throws FileNotFoundException,
@@ -154,6 +163,9 @@ public class Mean
 
     /**
      * Restore the histogram state from the stream 'iFile'.
+     * 
+     * @param iFile the file to use.
+     * @return <code>true</code> if the restore succeeded, <code>false</code> otherwise.
      */
 
     public boolean restoreState (DataInputStream iFile) throws IOException
