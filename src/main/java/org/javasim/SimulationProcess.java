@@ -320,6 +320,9 @@ public class SimulationProcess extends Thread
      * Reactivate this process at the specified simulation time. 'AtTime' must
      * be valid.
      * 
+     * @param AtTime the time at which to reactivate this process.
+     * @throws SimulationException thrown if there's an error.
+     * @throws RestartException thrown if the simulation is restarted.
      */
 
     public void reactivateAt (double AtTime) throws SimulationException,
@@ -332,6 +335,11 @@ public class SimulationProcess extends Thread
      * Reactivate this process after 'Delay' units of simulation time. If
      * 'prior' is true then this process will appear in the simulation queue
      * before any other process with the same simulation time.
+     * 
+     * @param Delay the time to delay this process by before reactivation.
+     * @param prior prior indicates whether or not to schedule this process occurs before any other process with the same time.
+     * @throws SimulationException thrown if there's an error.
+     * @throws RestartException thrown if the simulation is restarted.
      */
 
     public void reactivateDelay (double Delay, boolean prior)
@@ -348,6 +356,10 @@ public class SimulationProcess extends Thread
 
     /**
      * Reactivate this process after 'Delay' units of simulation time.
+     * 
+     * @param Delay the time to delay this process.
+     * @throws SimulationException thrown if there's an error.
+     * @throws RestartException thrown if the simulation is restarted.
      */
 
     public void reactivateDelay (double Delay) throws SimulationException,
@@ -358,6 +370,9 @@ public class SimulationProcess extends Thread
 
     /**
      * Reactivate this process at the current simulation time.
+     * 
+     * @throws SimulationException thrown if there's an error.
+     * @throws RestartException thrown if the simulation is restarted.
      */
 
     public void reactivate () throws SimulationException, RestartException
@@ -373,6 +388,8 @@ public class SimulationProcess extends Thread
 
     /**
      * Cancels next burst of activity, process becomes idle.
+     * 
+     * @throws RestartException thrown if the simulation is restarted.
      */
 
     public void cancel () throws RestartException
@@ -427,6 +444,8 @@ public class SimulationProcess extends Thread
 
     /**
      * Is the process idle?
+     * 
+     * @return whether or not this process is idle.
      */
 
     public synchronized boolean idle ()
@@ -439,6 +458,8 @@ public class SimulationProcess extends Thread
 
     /**
      * Has the process been passivated?
+     * 
+     * @return whether or not this process is passive.
      */
 
     public boolean passivated ()
@@ -448,6 +469,8 @@ public class SimulationProcess extends Thread
 
     /**
      * Has the process been terminated?
+     * 
+     * @return whether or not this process has been terminated.
      */
 
     public boolean terminated ()
@@ -456,7 +479,8 @@ public class SimulationProcess extends Thread
     }
 
     /**
-     * Return the currently active simulation process.
+     * @return the currently active simulation process.
+     * @throws SimulationException thrown if there's an error.
      */
 
     public static SimulationProcess current () throws SimulationException
@@ -468,7 +492,7 @@ public class SimulationProcess extends Thread
     }
 
     /**
-     * Return the current simulation time.
+     * @return the current simulation time.
      */
 
     public static double currentTime ()
