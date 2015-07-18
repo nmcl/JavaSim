@@ -79,7 +79,7 @@ public class UniformStream extends RandomStream
     }
 
     /**
-     * Return a number from the stream.
+     * @return a number from the stream.
      */
 
     public double getNumber () throws IOException, ArithmeticException
