@@ -43,7 +43,7 @@ public abstract class RandomStream
     public abstract double getNumber () throws IOException, ArithmeticException;
 
     /**
-     * @returns a chi-square error measure on the uniform distribution function.
+     * @return a chi-square error measure on the uniform distribution function.
      */
 
     public final double error ()
