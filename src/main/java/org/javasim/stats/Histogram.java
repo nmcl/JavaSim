@@ -85,6 +85,8 @@ public class Histogram extends PrecisionHistogram
      * Add 'value' to the histogram. If a bucket already exists for this then it
      * is incremented, otherwise a new bucket will be created. This may require
      * the existing buckets to be merged to make room.
+     * 
+     * @param value the number to use.
      */
 
     public void setValue (double value) throws IllegalArgumentException
@@ -105,6 +107,9 @@ public class Histogram extends PrecisionHistogram
 
     /**
      * Save the state of the histogram to the file named 'fileName'.
+     * 
+     * @param fileName the name of the file to use to save the state.
+     * @return <code>true</code> if the state was written, <code>false</code> otherwise.
      */
 
     public boolean saveState (String fileName) throws IOException
@@ -121,6 +126,9 @@ public class Histogram extends PrecisionHistogram
 
     /**
      * Save the state of the histogram to the stream 'oFile'.
+     * 
+     * @param oFile the name of the DataOutputStream to use to save the state.
+     * @return <code>true</code> if the state was written, <code>false</code> otherwise.
      */
 
     public boolean saveState (DataOutputStream oFile) throws IOException
@@ -133,6 +141,9 @@ public class Histogram extends PrecisionHistogram
 
     /**
      * Restore the histogram state from the file 'fileName'.
+     * 
+     * @param fileName the name of the file to use to read the state.
+     * @return <code>true</code> if the state was read, <code>false</code> otherwise.
      */
 
     public boolean restoreState (String fileName) throws FileNotFoundException,
@@ -150,6 +161,9 @@ public class Histogram extends PrecisionHistogram
 
     /**
      * Restore the histogram state from the stream 'iFile'.
+     * 
+     * @param iFile the name of the DataInputStream to use to read the state.
+     * @return <code>true</code> if the state was read, <code>false</code> otherwise.
      */
 
     public boolean restoreState (DataInputStream iFile) throws IOException
