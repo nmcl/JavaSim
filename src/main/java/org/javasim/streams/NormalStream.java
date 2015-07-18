@@ -79,9 +79,11 @@ public class NormalStream extends RandomStream
     }
 
     /**
-     * Return a stream number. Use the polar method, due to Box, Muller and
+     * Use the polar method, due to Box, Muller and
      * Marsaglia.Taken from Seminumerical Algorithms, Knuth, Addison-Wesley,
      * p.117.
+     * 
+     * @return a stream number.
      */
 
     public double getNumber () throws IOException, ArithmeticException
