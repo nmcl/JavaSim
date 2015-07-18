@@ -15,18 +15,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, 
  * MA  02110-1301, USA.
  * 
- * (C) 1990-2008,
- */
-
-/*
- * Copyright (C) 1996, 1997, 1998,
- *
- * Department of Computing Science,
- * The University,
- * Newcastle upon Tyne,
- * UK.
- *
- * $Id: Scheduler.java,v 1.3 1998/12/07 08:28:10 nmcl Exp $
+ * (C) 20015,
  */
 
 package org.javasim;
@@ -37,10 +26,8 @@ import org.javasim.internal.SimulationProcessIterator;
 import org.javasim.internal.SimulationProcessList;
 
 /**
- * This is the scheduler: the heart of the simulation system.
- * 
- * Note: unlike in SIMULA, an active process is removed from the simulation
- * queue prior to being activated.
+ * A class to encapsulate the various methods to start, stop or
+ * reset the simulation.
  * 
  * @author marklittle
  *
