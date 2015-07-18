@@ -23,8 +23,16 @@ package org.javasim;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
+/**
+ * A TriggerQueue is used to hold simulation process instances.
+ */
+ 
 public class TriggerQueue
 {
+    /**
+     * Create a new instance.
+     */
+     
     public TriggerQueue()
     {
         head = new LinkedList<SimulationEntity>();
@@ -56,6 +64,14 @@ public class TriggerQueue
         }
     }
 
+    /**
+     * Remove the first entry from the queue, possibly trigger it and then reactivate it
+     * at the current simulation time.
+     * 
+     * @param setTrigger indicate whether or not to also trigger the removed process.
+     * @throws NoSuchElementException thrown if the queue is empty.
+     */
+     
     public synchronized void triggerFirst (boolean setTrigger)
             throws NoSuchElementException
     {
@@ -79,11 +95,24 @@ public class TriggerQueue
         }
     }
 
+    /**
+     * Remove the first instance from the queue, trigger it and activate it at
+     * the current time.
+     * 
+     * @throws NoSuchElementException thrown if the queue is empty.
+     */
+     
     public synchronized void triggerFirst () throws NoSuchElementException
     {
         triggerFirst(true);
     }
 
+    /**
+     * Remove all simulation processes from the queue and trigger them.
+     * 
+     * @throws NoSuchElementException thrown if the queue is empty.
+     */
+     
     public synchronized void triggerAll () throws NoSuchElementException
     {
         long currentNumber = head.size();
