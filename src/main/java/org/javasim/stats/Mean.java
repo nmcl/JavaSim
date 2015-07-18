@@ -33,7 +33,7 @@ public class Mean
     }
 
     /**
-     * @param add 'value', incrementing the number of samples, the sum, mean, etc.
+     * @param value add to this instance, incrementing the number of samples, the sum, mean, etc.
      */
 
     public void setValue (double value) throws IllegalArgumentException
