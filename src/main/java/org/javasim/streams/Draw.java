@@ -63,7 +63,7 @@ public class Draw
     }
 
     /**
-     * Return true with specified probability.
+     * @return true with specified probability.
      */
 
     public boolean getBoolean () throws IOException
