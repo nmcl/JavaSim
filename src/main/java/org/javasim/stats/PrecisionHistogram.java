@@ -56,7 +56,7 @@ public class PrecisionHistogram extends Variance
     }
 
     /**
-     * Add 'value' to the histogram. If a bucket already exists for this then it
+     * @param value add to the histogram. If a bucket already exists for this then it
      * is incremented, otherwise a new bucket will be created.
      */
 
@@ -98,7 +98,7 @@ public class PrecisionHistogram extends Variance
     }
 
     /**
-     * Return the number of buckets in the histogram.
+     * @return the number of buckets in the histogram.
      */
 
     public long numberOfBuckets ()
@@ -110,6 +110,9 @@ public class PrecisionHistogram extends Variance
      * There are two ways of getting the number of entries in a bucket: (i) give
      * the index number of the bucket, or (ii) give the name of the bucket. If
      * the bucket is not present then false is returned.
+     * 
+     * @param index get the bucket number to use.
+     * @return the number of entries.
      */
 
     public double sizeByIndex (long index) throws StatisticsException,
@@ -131,6 +134,11 @@ public class PrecisionHistogram extends Variance
         throw (new StatisticsException("sizeByIndex went off end of list."));
     }
 
+    /**
+     * @param name the id of the bucket to use.
+     * @return the number of items in the bucket.
+     */
+     
     public double sizeByName (double name) throws IllegalArgumentException
     {
         for (Bucket ptr = Head; ptr != null; ptr = ptr.cdr())
@@ -148,6 +156,9 @@ public class PrecisionHistogram extends Variance
 
     /**
      * Save the state of the histogram to the file named 'fileName'.
+     * 
+     * @param fileName the file to use.
+     * @return <code>true</code> if it succeeded, <code>false</code> otherwise.
      */
 
     public boolean saveState (String fileName) throws IOException
@@ -164,6 +175,9 @@ public class PrecisionHistogram extends Variance
 
     /**
      * Save the state of the histogram to the stream 'oFile'.
+     * 
+     * @param oFile the stream to use.
+     * @return <code>true</code> if it succeeded, <code>false</code> otherwise.
      */
 
     public boolean saveState (DataOutputStream oFile) throws IOException
@@ -181,6 +195,9 @@ public class PrecisionHistogram extends Variance
 
     /**
      * Restore the histogram state from the file 'fileName'.
+     * 
+     * @param fileName the file to use.
+     * @return <code>true</code> if it succeeded, <code>false</code> otherwise.
      */
 
     public boolean restoreState (String fileName) throws FileNotFoundException,
@@ -198,6 +215,9 @@ public class PrecisionHistogram extends Variance
 
     /**
      * Restore the histogram state from the stream 'iFile'.
+     * 
+     * @param iFile the stream to use.
+     * @return <code>true</code> if it succeeded, <code>false</code> otherwise.
      */
 
     public boolean restoreState (DataInputStream iFile) throws IOException
@@ -248,6 +268,12 @@ public class PrecisionHistogram extends Variance
         super.print();
     }
 
+    /**
+     * Print the contents of the instance to a file.
+     * 
+     * @param filename the name of the file.
+     */
+     
     public void write (String filename)
     {
       try {
