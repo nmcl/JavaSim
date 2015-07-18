@@ -83,7 +83,7 @@ public class ErlangStream extends RandomStream
     }
 
     /**
-     * Return a stream number.
+     * @return a stream number.
      */
 
     public double getNumber () throws IOException, ArithmeticException
