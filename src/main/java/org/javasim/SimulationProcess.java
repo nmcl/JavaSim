@@ -65,7 +65,7 @@ public class SimulationProcess extends Thread
     }
 
     /**
-     * Return the current simulation time.
+     * @return the current simulation time.
      */
 
     public final double time ()
@@ -74,7 +74,9 @@ public class SimulationProcess extends Thread
     }
 
     /**
-     * Return the next simulation process which will run.
+     * @return the next simulation process which will run.
+     * @throws SimulationException thrown if there's an error.
+     * @throws NoSuchElementException thrown if there is no next processs.
      */
 
     public synchronized SimulationProcess nextEv ()
@@ -88,7 +90,7 @@ public class SimulationProcess extends Thread
     }
 
     /**
-     * Return the simulation time at which this process will run.
+     * @return the simulation time at which this process will run.
      */
 
     public final double evtime ()
@@ -99,6 +101,10 @@ public class SimulationProcess extends Thread
     /**
      * Activate this process before process 'p'. This process must not be
      * running, or on the scheduler queue.
+     * 
+     * @param p the 'before' process.
+     * @throws SimulationException thrown if there's an error.
+     * @throws RestartException thrown if the simulation is restarted.
      */
 
     public void activateBefore (SimulationProcess p)
@@ -118,6 +124,10 @@ public class SimulationProcess extends Thread
     /**
      * Activate this process after process 'p'. This process must not be
      * running, or on the scheduler queue.
+     * 
+     * @param p the 'after' process.
+     * @throws SimulationException thrown if there's an error.
+     * @throws RestartException thrown if the simulation is restarted.
      */
 
     public void activateAfter (SimulationProcess p) throws SimulationException,
@@ -143,6 +153,11 @@ public class SimulationProcess extends Thread
      * or equal to, the current simulation time. If 'prior' is true then this
      * process will appear in the simulation queue before any other process with
      * the same simulation time.
+     * 
+     * @param AtTime the time to activate the process.
+     * @param prior indicates whether or not to schedule this process occurs before any other process with the same time.
+     * @throws SimulationException thrown if there's an error.
+     * @throws RestartException thrown if the simulation is restarted.
      */
 
     public void activateAt (double AtTime, boolean prior)
@@ -163,6 +178,10 @@ public class SimulationProcess extends Thread
      * Activate this process at the specified simulation time. This process must
      * not be running, or on the scheduler queue. 'AtTime' must be greater than,
      * or equal to, the current simulation time.
+     * 
+     * @param AtTime the time to activate this process.
+     * @throws SimulationException thrown if there's an error.
+     * @throws RestartException thrown if the simulation is restarted.
      */
 
     public void activateAt (double AtTime) throws SimulationException,
@@ -177,6 +196,11 @@ public class SimulationProcess extends Thread
      * be greater than, or equal to, zero. If 'prior' is true then this process
      * will appear in the simulation queue before any other process with the
      * same simulation time.
+     * 
+     * @param Delay the time by which to delay this process.
+     * @param prior indicates whether or not to schedule this process occurs before any other process with the same time.
+     * @throws SimulationException thrown if there's an error.
+     * @throws RestartException thrown if the simulation is restarted.
      */
 
     public void activateDelay (double Delay, boolean prior)
@@ -197,6 +221,10 @@ public class SimulationProcess extends Thread
      * This process will be activated after 'Delay' units of simulation time.
      * This process must not be running, or on the scheduler queue. 'Delay' must
      * be greater than, or equal to, zero.
+     * 
+     * @param Delay the time by which to delay this process.
+     * @throws SimulationException thrown if there's an error.
+     * @throws RestartException thrown if the simulation is restarted.
      */
 
     public void activateDelay (double Delay) throws SimulationException,
@@ -208,6 +236,9 @@ public class SimulationProcess extends Thread
     /**
      * Activate this process at the current simulation time. This process must
      * not be running, or on the scheduler queue.
+     * 
+     * @throws SimulationException thrown if there's an error.
+     * @throws RestartException thrown if the simulation is restarted.
      */
 
     public void activate () throws SimulationException, RestartException
@@ -222,6 +253,10 @@ public class SimulationProcess extends Thread
 
     /**
      * Reactivate this process before process 'p'.
+     * 
+     * @param p the process to reactivate this process before.
+     * @throws SimulationException thrown if there's an error.
+     * @throws RestartException thrown if the simulation is restarted.
      */
 
     public void reactivateBefore (SimulationProcess p)
@@ -238,6 +273,10 @@ public class SimulationProcess extends Thread
 
     /**
      * Reactivate this process after process 'p'.
+     * 
+     * @param p the process to reactivate this process after.
+     * @throws SimulationException thrown if there's an error.
+     * @throws RestartException thrown if the simulation is restarted.
      */
 
     public void reactivateAfter (SimulationProcess p)
@@ -256,6 +295,11 @@ public class SimulationProcess extends Thread
      * Reactivate this process at the specified simulation time. 'AtTime' must
      * be valid. If 'prior' is true then this process will appear in the
      * simulation queue before any other process with the same simulation time.
+     * 
+     * @param AtTime the time at which to reactivate this process.
+     * @param prior indicates whether or not to schedule this process occurs before any other process with the same time.
+     * @throws SimulationException thrown if there's an error.
+     * @throws RestartException thrown if the simulation is restarted.
      */
 
     public void reactivateAt (double AtTime, boolean prior)
@@ -275,6 +319,7 @@ public class SimulationProcess extends Thread
     /**
      * Reactivate this process at the specified simulation time. 'AtTime' must
      * be valid.
+     * 
      */
 
     public void reactivateAt (double AtTime) throws SimulationException,
