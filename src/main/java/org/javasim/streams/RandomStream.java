@@ -36,14 +36,14 @@ import java.io.IOException;
 public abstract class RandomStream
 {
     /**
-     * In derived classes this method returns the value obtained by the stream.
+     * @return In derived classes this method returns the value obtained by the stream.
      * It must be redefined by the deriving class.
      */
 
     public abstract double getNumber () throws IOException, ArithmeticException;
 
     /**
-     * Returns a chi-square error measure on the uniform distribution function.
+     * @returns a chi-square error measure on the uniform distribution function.
      */
 
     public final double error ()
