@@ -32,6 +32,11 @@ public class SimulationEntity extends SimulationProcess
      * resume it. If immediate resumption is required then this process will be
      * suspended (placed back on to the scheduler queue for "immediate"
      * resumption when the interrupted process has finished).
+     * 
+     * @param toInterrupt the process to interrupt.
+     * @param immediate specify whether immediate resumption is required.
+     * @throws SimulationException if there is a problem.
+     * @throws RestartException if the simulation has been restarted.
      */
 
     public void interrupt (SimulationEntity toInterrupt, boolean immediate)
@@ -63,12 +68,20 @@ public class SimulationEntity extends SimulationProcess
             reactivateAt(SimulationProcess.currentTime());
     }
 
+    /**
+     * Trigger this instance.
+     */
+     
     public final void trigger ()
     {
         _triggered = true;
         _waiting = false;
     }
 
+    /**
+     * @return whether or not this instance is currently waiting.
+     */
+     
     public final boolean isWaiting ()
     {
         return _waiting;
@@ -118,6 +131,11 @@ public class SimulationEntity extends SimulationProcess
     /**
      * Wait for specified period of time. If this process is interrupted then
      * the InterruptedException is thrown.
+     * 
+     * @param waitTime the time to wait.
+     * @throws SimulationException thrown if an error occurs.
+     * @throws RestartException thrown if the simulation has been restarted.
+     * @throws InterruptedException thrown if this instance has been interrupted.
      */
 
     protected void timedWait (double waitTime) throws SimulationException,
@@ -148,6 +166,12 @@ public class SimulationEntity extends SimulationProcess
      * terminated. If the calling process is interrupted before the 'controller'
      * is terminated, then the InterruptedException is thrown. If the boolean
      * parameter is true then the controller is reactivated immediately.
+     * 
+     * @param controller the process upon whose termination this instance will be resumed.
+     * @param reAct indicate whether or not the controlling process should be activated now.
+     * @throws SimulationException thrown if an error occurs.
+     * @throws RestartException thrown if the simulation has been restarted.
+     * @throws InterruptedException thrown if this instance has been interrupted.
      */
 
     protected void waitFor (SimulationEntity controller, boolean reAct)
@@ -188,6 +212,11 @@ public class SimulationEntity extends SimulationProcess
      * terminated. If the calling process is interrupted before the 'controller'
      * is terminated, then the InterruptedException is thrown. The controller
      * will not be reactivated immediately.
+     * 
+     * @param controller the process upon whose termination this instance will be resumed.
+     * @throws SimulationException thrown if an error occurs.
+     * @throws RestartException thrown if the simulation has been restarted.
+     * @throws InterruptedException thrown if this instance has been interrupted.
      */
 
     protected void waitFor (SimulationEntity controller)
@@ -201,6 +230,11 @@ public class SimulationEntity extends SimulationProcess
      * restarted pending some application specific event which uses the trigger
      * queue. The InterruptedException is thrown if the caller is interrupted
      * rather than being triggered.
+     * 
+     * @param _queue the queue to place this process.
+     * @throws SimulationException thrown if an error occurs.
+     * @throws RestartException thrown if the simulation has been restarted.
+     * @throws InterruptedException thrown if this instance has been interrupted.
      */
 
     protected void waitForTrigger (TriggerQueue _queue)
