@@ -56,7 +56,7 @@ public class Bucket
     }
 
     /**
-     * Is the name of the bucket equal to 'value'?
+     * @return whether or not the name of the bucket equal to 'value'?
      */
 
     public boolean equals (double value)
@@ -68,7 +68,7 @@ public class Bucket
     }
 
     /**
-     * Is the name of the bucket greater than 'value'?
+     * @return whether or not the name of the bucket greater than 'value'?
      */
 
     public boolean greaterThan (double value)
@@ -80,7 +80,7 @@ public class Bucket
     }
 
     /**
-     * Is the name of the bucket greater than or equal to 'value'?
+     * @return whether or not the name of the bucket greater than or equal to 'value'?
      */
 
     public boolean greaterThanOrEqual (double value)
@@ -92,7 +92,7 @@ public class Bucket
     }
 
     /**
-     * Is the name of the bucket less than 'value'?
+     * @return whether or not the name of the bucket less than 'value'?
      */
 
     public boolean lessThan (double value)
@@ -104,7 +104,7 @@ public class Bucket
     }
 
     /**
-     * Is the name of the bucket less than or equal to 'value'?
+     * @return whether or not the name of the bucket less than or equal to 'value'?
      */
 
     public boolean lessThanOrEqual (double value)
@@ -116,7 +116,7 @@ public class Bucket
     }
 
     /**
-     * Returns the name of the bucket.
+     * @returns the name of the bucket.
      */
 
     public double name ()
@@ -126,6 +126,8 @@ public class Bucket
 
     /**
      * Increment the number of entries by 'value'.
+     * 
+     * @param value the increment.
      */
 
     public void incrementSize (long value)
@@ -135,6 +137,8 @@ public class Bucket
 
     /**
      * Set the number of entries to 'value'.
+     * 
+     * @param value the size of the bucket.
      */
 
     public void size (long value)
@@ -143,7 +147,7 @@ public class Bucket
     }
 
     /**
-     * Return the number of entries.
+     * @return the number of entries.
      */
 
     public long size ()
@@ -152,7 +156,7 @@ public class Bucket
     }
 
     /**
-     * Return the next bucket.
+     * @return the next bucket.
      */
 
     public Bucket cdr ()
@@ -162,6 +166,8 @@ public class Bucket
 
     /**
      * Set the next bucket.
+     * 
+     * @param n the next bucket.
      */
 
     public void setCdr (Bucket n)
