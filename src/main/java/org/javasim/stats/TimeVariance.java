@@ -48,7 +48,7 @@ public class TimeVariance extends Variance
     }
 
     /**
-     * Add 'value', updating the statistics.
+     * @param value Add to the instance, updating the statistics.
      */
 
     public void setValue (double value) throws IllegalArgumentException
@@ -71,7 +71,7 @@ public class TimeVariance extends Variance
     }
 
     /**
-     * Return the average value given up to the current simulation time.
+     * @return the average value given up to the current simulation time.
      */
 
     public double timeAverage ()
@@ -84,6 +84,9 @@ public class TimeVariance extends Variance
 
     /**
      * Save the state of the histogram to the file named 'fileName'.
+     * 
+     * @param fileName the file to use.
+     * @return <code>true</code> if it succeeds, <code>false</code> otherwise.
      */
 
     public boolean saveState (String fileName) throws IOException
@@ -100,6 +103,9 @@ public class TimeVariance extends Variance
 
     /**
      * Save the state of the histogram to the stream 'oFile'.
+     * 
+     * @param oFile the stream to use.
+     * @return <code>true</code> if it succeeds, <code>false</code> otherwise.
      */
 
     public boolean saveState (DataOutputStream oFile) throws IOException
@@ -115,6 +121,9 @@ public class TimeVariance extends Variance
 
     /**
      * Restore the histogram state from the file 'fileName'.
+     * 
+     * @param fileName the file to use.
+     * @return <code>true</code> if it succeeds, <code>false</code> otherwise.
      */
 
     public boolean restoreState (String fileName) throws FileNotFoundException,
@@ -132,6 +141,9 @@ public class TimeVariance extends Variance
 
     /**
      * Restore the histogram state from the stream 'iFile'.
+     * 
+     * @param iFile the stream to use.
+     * @return <code>true</code> if it succeeds, <code>false</code> otherwise.
      */
 
     public boolean restoreState (DataInputStream iFile) throws IOException
