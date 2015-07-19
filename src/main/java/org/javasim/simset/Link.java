@@ -32,21 +32,39 @@ public class Link {
         this.next = null;
         this.prev = null;
         this.theList = null;
-        };
+        }
 
+     /**
+      * @return the successor to this list element.
+      */
+      
     synchronized public Link suc () {
         return next;
-    };
+    }
 
+     /**
+      * @return the predecessor to this list element.
+      */
+      
     synchronized public Link pred () {
         return prev;
-    };
+    }
 
+     /**
+      * @return this element in the list and remove it from the list.
+      */
+      
     synchronized public Link out () {
         RemoveElement ();
         return this;
-    };
+    }
 
+     /**
+      * Add this entrt to the list.
+      * 
+      * @param list the list to add this element.
+      */
+      
     synchronized public void inTo (Head list) {
         if (list != null) {
 
@@ -55,8 +73,17 @@ public class Link {
             return;
 
         }
-    };
+    }
 
+     /**
+      * Add this list element to the same list as the element provided. Make
+      * sure elements are only on one list.
+      * 
+      * @param toPrecede the element to add before in its list. If null, or the element
+      * is not in a list, then remove this element from any list it may be in to
+      * match.
+      */
+      
     synchronized public void precede (Link toPrecede) {
         if ((toPrecede == null) || ( ! toPrecede.inList()))
 
@@ -70,6 +97,15 @@ public class Link {
         }
     };
 
+     /**
+      * Add this list element to the same list as the element provided. Make
+      * sure elements are only on one list.
+      * 
+      * @param toFollow the element to add after in its list. If null, or the element
+      * is not in a list, then remove this element from any list it may be in to
+      * match.
+      */
+      
     synchronized public void follow (Link toFollow) {
         if ((toFollow == null) || ( ! toFollow.inList()))
 
@@ -81,16 +117,26 @@ public class Link {
             
             toFollow.addAfter(this);
         }
-    };
+    }
 
+     /**
+      * Add this element to the head of a list.
+      * 
+      * @param list the list to use.
+      */
+      
     synchronized public void follow (Head list) {
         if (list != null)
             list.addFirst(this);
-    };
+    }
 
+     /**
+      * @return <code>true</code> if this element is in a list, <code>false</code> otherwise.
+      */
+      
     synchronized public boolean inList () {
         return (boolean) (theList != null);
-    };
+    }
 
     private void RemoveElement () {
 
@@ -115,7 +161,6 @@ public class Link {
         next = null;
     }
 
-
     private void addAfter  (Link toAdd) {
         toAdd.prev = this;
         toAdd.theList = theList;
@@ -131,7 +176,7 @@ public class Link {
 
         if (theList.last == this)
             theList.last = toAdd;
-    };
+    }
 
     private void addBefore (Link toAdd) {
         toAdd.theList = theList;
@@ -148,7 +193,7 @@ public class Link {
 
         if (theList.first == this)
             theList.first = toAdd;
-    };
+    }
 
     protected Link next;
     protected Link prev;
