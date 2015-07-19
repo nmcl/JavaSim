@@ -68,7 +68,7 @@ public class Head  {
             element.precede(first);
             first = element;
         }
-    };
+    }
 
     /**
      * @param element make this the last entry in the list.
@@ -92,7 +92,7 @@ public class Head  {
             element.follow(last);
             last = element;
         }
-    };
+    }
 
     /**
      * @return the number of elements in the list.
@@ -109,13 +109,13 @@ public class Head  {
         }
     
         return numberOfElements;
-    };
+    }
 
     /**
      * @return <code>true</code> if the list is empty, <code>false</code> otherwise.
      */
      
-    synchronized public boolean empty () {return cardinal() == 0;};
+    synchronized public boolean empty () {return cardinal() == 0;}
 
     /**
      * Empty the list.
@@ -133,7 +133,7 @@ public class Head  {
 
         first = null;
         last  = null;
-    };
+    }
 
     protected Link first;
     protected Link last;
