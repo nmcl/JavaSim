@@ -34,10 +34,22 @@ public class Head  {
         this.last = null;
     }
 
+    /**
+     * @return the first entry in the list.
+     */
+     
     synchronized public Link first () {return first;};
 
+    /**
+     * @return the last entry in the list.
+     */
+     
     synchronized public Link last  () {return last;};
 
+    /**
+     * @param element make this the first element in the list.
+     */
+     
     public void addFirst (Link element) {
 
         if (element == null)       // nothing to add
@@ -58,6 +70,10 @@ public class Head  {
         }
     };
 
+    /**
+     * @param element make this the last entry in the list.
+     */
+     
     public void addLast (Link element) {
 
         if (element == null)       // nothing to add
@@ -78,6 +94,10 @@ public class Head  {
         }
     };
 
+    /**
+     * @return the number of elements in the list.
+     */
+     
     synchronized public long cardinal () {
         long numberOfElements = 0;
         Link tempPtr = first;
@@ -91,8 +111,16 @@ public class Head  {
         return numberOfElements;
     };
 
+    /**
+     * @return <code>true</code> if the list is empty, <code>false</code> otherwise.
+     */
+     
     synchronized public boolean empty () {return cardinal() == 0;};
 
+    /**
+     * Empty the list.
+     */
+     
     synchronized public void clear () {
         Link tempPtr = first, marker = null;
     
