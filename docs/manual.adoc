@@ -39,3 +39,28 @@ Thus, the first step towards building a simulation model of a system is to deter
 The system components chosen for the simulation are termed simulation entities. Associated with each _entity_ in the simulation are zero or more _attributes_ that describe the state of the entity and which may vary during the course of the simulation. The interaction of entities and the changes they cause in the system state are termed _events_.
 
 The collection of these component attributes at any given time _t_ defines the system state at _t_. In general, the system state can take any of a variety of values, and a given simulation run results in one realisation of a set of these values (the _operation path_) over the _observation period_.
+
+=== Categories of simulation models
+
+There are three categories of simulation model, described by the way in which the system state changes as a function of time:
+
+- _Continuous time_: is one whose state varies continuously with time; such systems are usually described by sets of differential equations. 
+
+- _Discrete time_: the system is considered only at selected moments in time (the observation points). These moments are typically evenly spaced. Some economics models are examples of this, where economics data becomes available at fixed intervals. Changes in state are noticed only at observation points. By choosing a suitably small interval between observation points, a continuous time simulation can be approximated by a discrete time simulation. 
+
+- _Continuous time-discrete event_: the time parameter is (conceptually) continuous and the observation period is a real interval, usually starting at zero for simplicity. The operation path is completely determined by the sequence of event times (which need not be evenly spaced and can be of arbitrary increments) and by the discrete changes in the system state which take place at these times (i.e., the interactions of the events). In between consecutive event times the system state may vary continuously. Although it is possible to model the passage of real time by suitable event timing, this is not necessary for a discrete event system: the simulation model can advance its own internal time directly from one discrete event to another, taking any appropriate action to advance the state accordingly. 
+
+It is this latter category of simulation modelling that JavaSim supports. Examples of discrete-event simulations are most queuing problems: entities (e.g., customers in a bank) arrive according to a given distribution and change the system state instantaneously (e.g., the number of customers in the queue). The operation paths for this system are step functions: they jump up (or down) by one when a customer joins (or leaves) the queue.
+
+=== Event scheduling
+
+Given that a simulation consists of a series of interacting events (the operation path), a simulator can be defined as that program devoted to the generation of operation paths. The simulator allows the creation of events and controls their interactions according to a set of rules, using an internal “clock” to keep track of the passage of (simulation) time.
+
+It maintains an _event list_, which indicates which events are to be scheduled for execution at specific simulation times. Events are executed according to their simulation times. There are two approaches to the way in which a simulator can schedule events to produce an operation path:
+
+- _event-oriented_: there is a procedure associated with each type of event in the system: it performs the action required to handle that type of event and it is invoked every time such an event occurs. In an event-oriented approach, an operation path is obtained by taking a global view of everything that happens in the system; the manipulation of events is explicit. 
+
+- _process-oriented_: an operation path is obtained by the interacting of a number of processes running in parallel. The management of events is implicit in the management of the processes. The simulation system provides primitives for placing processes at particular points on the event list, removing and re-scheduling them. 
+The JavaSim User’s Manuals
+
+The process-oriented approach best fits with the object-oriented paradigm which we want to present to the programmer of JavaSim. As in SIMULA, simulation processes then become active objects which interact with each other through message passing and the simulation primitives. Refinements of these objects can then be obtained by inheriting from them and redefining the appropriate methods.
