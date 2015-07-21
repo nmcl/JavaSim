@@ -12,3 +12,7 @@ These requirements were realised in the following design decisions:
 - the discrete-event process based simulation facilities provided by SIMULA and its simulation classes and libraries have a considerable experience and user community which have found them to be successful for a wide variety of simulations. In later versions of the system additional simulation classes were added which provide extra functionality.
 
 - inheritance was to be used throughout the design to even a greater extent than is already provided in SIMULA. This enables JavaSim to be more flexible and extensible, allowing new functionality to be added without affecting the overall system structure. For example, our I/O facilities, random number generators and probability distribution functions are entirely object-oriented, relying on inheritance to specialise their behaviour.
+
+NOTE: It is not necessary for the reader to know anything about the SIMULA programming language or its simulation classes, but such knowledge would aid in the understanding of the concepts and classes presented within.
+
+Currently JavaSim has been tested with JDK 1.7 and 1.8. In the past it has worked with all versions of Java starting with 1.0.2. However, we have not tested with older versions for a long time, so your mileage may vary. If you have any problems, questions, suggestions etc. then consider raising an issue on the link:https://github.com/nmcl/JavaSim/issues[github page] or even fork JavaSim and raise a pull request.
