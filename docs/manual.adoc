@@ -16,3 +16,25 @@ These requirements were realised in the following design decisions:
 NOTE: It is not necessary for the reader to know anything about the SIMULA programming language or its simulation classes, but such knowledge would aid in the understanding of the concepts and classes presented within.
 
 Currently JavaSim has been tested with JDK 1.7 and 1.8. In the past it has worked with all versions of Java starting with 1.0.2. However, we have not tested with older versions for a long time, so your mileage may vary. If you have any problems, questions, suggestions etc. then consider raising an issue on the link:https://github.com/nmcl/JavaSim/issues[github page] or even fork JavaSim and raise a pull request.
+
+== Introduction
+
+This manual is not intended as a tutorial on the concepts of simulation in general, but rather how to write simulations in the JavaSim system. However, in order to be able to do this certain key simulation concepts will be briefly described. The interested reader is referred to link:http://dl.acm.org/citation.cfm?id=539335 [this book] for detailed descriptions of these concepts and for further discussions on simulation modelling.
+
+=== Simulation Models
+
+To model a system is to replace it by something which is:
+
+- simpler and/or easier to study. 
+
+- equivalent to the original in all important respects. 
+
+Therefore, before constructing the actual simulation, it is first necessary to abstract from the real system those components and their interactions that are considered important for the actual model. Building a simulation system model involves making certain simplifying assumptions to aid in the actual implementation and study of the simulation (without such simplifications the model would be as complex as the system it is meant to be simulating). However, the accuracy of the results obtained from the simulation depend upon how valid the initial assumptions are. For example, when considering the trajectory of a projectile through the atmosphere, the friction due to the air molecules is usually ignored. This assumption is valid only within certain boundaries: if the size of the projectile is on the same scale as the air molecules and its speed is sufficiently small then friction plays a significant role in its movement.
+
+Thus, the first step towards building a simulation model of a system is to determine exactly what are the important features which are to be measured, and what characteristics of the system have an affect on them. Any boundary conditions for the simulation (e.g., size of projectile) should be considered at the same time in order to simplify this procedure. Building a final model can often take several phases, where results from the initial model are compared with those obtained from the real system to determine their accuracy. Any discrepancies are taken into account by possibly adding new components to the simulation until, within certain error boundaries, the simulation results match those from the real system.
+
+=== Terminology
+
+The system components chosen for the simulation are termed simulation entities. Associated with each entity in the simulation are zero or more attributes that describe the state of the entity and which may vary during the course of the simulation. The interaction of entities and the changes they cause in the system state are termed events.
+
+The collection of these component attributes at any given time t defines the system state at t. In general, the system state can take any of a variety of values, and a given simulation run results in one realisation of a set of these values (the operation path) over the observation period.
