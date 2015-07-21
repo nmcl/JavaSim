@@ -36,6 +36,6 @@ Thus, the first step towards building a simulation model of a system is to deter
 
 === Terminology
 
-The system components chosen for the simulation are termed simulation entities. Associated with each entity in the simulation are zero or more attributes that describe the state of the entity and which may vary during the course of the simulation. The interaction of entities and the changes they cause in the system state are termed events.
+The system components chosen for the simulation are termed simulation entities. Associated with each _entity_ in the simulation are zero or more _attributes_ that describe the state of the entity and which may vary during the course of the simulation. The interaction of entities and the changes they cause in the system state are termed _events_.
 
-The collection of these component attributes at any given time t defines the system state at t. In general, the system state can take any of a variety of values, and a given simulation run results in one realisation of a set of these values (the operation path) over the observation period.
+The collection of these component attributes at any given time _t_ defines the system state at _t_. In general, the system state can take any of a variety of values, and a given simulation run results in one realisation of a set of these values (the _operation path_) over the _observation period_.
