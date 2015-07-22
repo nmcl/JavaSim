@@ -64,3 +64,15 @@ It maintains an _event list_, which indicates which events are to be scheduled f
 The JavaSim User’s Manuals
 
 The process-oriented approach best fits with the object-oriented paradigm which we want to present to the programmer of JavaSim. As in SIMULA, simulation processes then become active objects which interact with each other through message passing and the simulation primitives. Refinements of these objects can then be obtained by inheriting from them and redefining the appropriate methods.
+
+== Basic simulation classes
+
+This section describes the core elements of the JavaSim simulation system. It is not intended as a tutorial on Java, and basic knowledge of the language is assumed. Note, all of the classes described in this section can be found in the org.javasim package.
+
+=== The simulation scheduler
+
+The previous section described the event list and how simulation entities (processes) are executed according to their position on the event list (i.e., with increasing simulation time). In JavaSim, as in SIMULA, simulation processes are managed by a _scheduler_ and are placed on a _scheduler queue_ (the event list). Processes are executed in pseudo-parallel, i.e., only one process executes at any instance of real time, but many processes may execute concurrently at any instance of simulation time. The simulation clock is only advanced when all processes have been executed for the current instance of simulation time.
+
+Inactive processes are placed on to the scheduler queue, and when the current active process yields control to the scheduler (either because it has finished or been placed back onto the scheduler queue), the scheduler removes the process at the head of the queue and re-activates it. (In SIMULA the currently active process is not removed from the head of the queue.) When the scheduler queue is empty, i.e., there are no further processes left to execute, the scheduler terminates the simulation.
+
+FIGURE 1 GOES HERE!!
