@@ -76,3 +76,39 @@ The previous section described the event list and how simulation entities (proce
 Inactive processes are placed on to the scheduler queue, and when the current active process yields control to the scheduler (either because it has finished or been placed back onto the scheduler queue), the scheduler removes the process at the head of the queue and re-activates it. (In SIMULA the currently active process is not removed from the head of the queue.) When the scheduler queue is empty, i.e., there are no further processes left to execute, the scheduler terminates the simulation.
 
 FIGURE 1 GOES HERE!!
+
+Figure 1: Scheduler-Process Interaction
+
+As Figure 1 shows, the scheduler co-ordinates the entire simulation run, effectively monitoring the active and passive processes to enable it to determine when, and which, process to activate next. A simulation application cannot affect the scheduler directly, but can do so only indirectly through modifications of the scheduler queue.
+
+NOTE: the scheduler queue can be structured in a variety of ways, including a linear list or a tree. The implementation of the queue can depend upon the type of simulation being conducted. For example, a simulation which involves many (concurrent) processes would suffer from using a linear ordered queue which would typically have insertion and removal routines with overheads proportional to the number of entries in the queue. However, a linear list may work best for a low number of simulation processes. JavaSim comes with a suite of scheduler queue implementations which can be chosen when the system is built.
+
+==== Scheduler and Simulation classes
+
+The simulation scheduler is an instance of the Scheduler class. It is the responsibility of the application programmer to ensure that only a single instance of this class is created.
+
+NOTE: In recent versions of JavaSim the Simulation class has taken on some of the functionality previously incorporated within the Scheduler class.
+
+----
+public class Scheduler extends Thread
+{
+    public static double currentTime ();
+}
+----
+
+The scheduler maintains the simulation clock, and the current value of this clock is obtained by invoking the CurrentTime() method.
+
+----
+public class Simulation
+{
+    public static synchronized void reset () throws SimulationException;
+    
+    public static synchronized boolean isReset ();
+    
+    public static synchronized void stop ();
+    
+    public static synchronized void start ();
+}
+----
+
+To enable multiple simulation runs to occur within a single application, it is possible to reset it and the simulation clock by calling the reset() method of the Simulation class. This causes the simulation to remove all processes (simulation objects) currently registered on the scheduler queue and to invoke a class specific method on each of them which resets their states (detailed in the next section). Once this is finished the simulation is ready for an additional run. A suspended process is informed that it has been “reset” by having the method it called to originally suspend itself (i.e., place itself on the scheduler queue) raise the RestartSimulation exception, which the object should catch. It must then perform any work necessary to put itself back in a state ready for restarting the simulation, and should then suspend itself again before the simulation can be restarted (typically by calling cancel.)
