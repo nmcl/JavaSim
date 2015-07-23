@@ -169,5 +169,73 @@ public class SimulationProcess extends Thread
     public static double currentTime ();
     public static void mainSuspend ();
     public static void mainResume () throws SimulationException;
+    
+    protected void hold (double t) throws SimulationException, RestartException;
+    protected void passivate () throws RestartException;
+    protected void setEvtime (double time) throws SimulationException;
+    protected void suspendProcess () throws RestartException;
+    protected void resumeProcess ();
+}
+----
+
+There are five ways to activate a currently passive process, which results in it being brought to the correct position in the scheduler queue corresponding to its associated simulation time. If this is the head of the queue then it will become the active process.
+
+- activate(): this activates the process at the current simulation time. 
+
+- activateBefore(SimulationProcess proc): this positions the process in the scheduler queue before proc, and gives it the same simulation time. If proc is not present then a SimulationException will be thrown. 
+
+- activateAfter(SimulationProcess proc): this positions the process in the scheduler queue after proc, and gives it the same simulation time. If proc is not present then a SimulationException will be thrown. 
+
+- activateAt(double AtTime, boolean prior): the process is inserted into the scheduler queue at the position corresponding to the simulation time specified by AtTime. The default for this time is the current simulation time. The prior parameter is used to determine whether this process should be inserted before or after any processes with the same simulation time which may already be present in the queue. The default is false. 
+
+- activateDelay(double AtTime, boolean prior): the process is activated after a specified delay (AtTime). The process is inserted into the queue with the new simulation time, and the prior parameter is used to determine its ordering with respect to other processes in the queue with the same time. The default is false. 
+
+There are correspondingly five reActivate methods, which work on either passive or scheduled processes. These will not be described in detail as they have similar signatures to their Activate counterparts and work in the same way.
+
+- hold(double period) schedules the currently active process for re-activation after the simulated delay of period time. If this is invoked by the object (e.g., through a publicly available method) when it is not the current active process then it does nothing.
+
+- evtime() returns the time at which the process is scheduled for activation.
+
+- nextEv() returns a reference to the next process to be scheduled for execution. If the queue is empty then null is returned.
+
+The static method current() returns a reference to the currently active process.
+
+The current simulation time can be obtained by using either the currentTime() or time() methods. The former method is static and as such can be invoked without an instance of the SimulationProcess class.
+
+cancel() removes the process from the scheduler queue or suspends it if it is the currently active process. In either case, the process is set to the passive state. passivate() functions similarly but only works on the currently active process, i.e., if it is invoked by the object (e.g., through a publicly available method) when it is not the current active process then it does nothing.
+
+terminate() removes the process from the scheduler queue or it is suspended if it is currently active. The process is then set to the terminated state, and can take no further part in this simulation run.
+
+idle() returns false if the process is either active or scheduled to become active. Otherwise true is returned.
+
+passivated() and terminated() indicate whether the process is in the passive or terminated state, respectively.
+
+Because SimulationProcess extends the java.lang.Thread class it is necessary for the simulation class to provide an implementation of the run method which will do the actual work for the process. If this method ever returns then the thread is destroyed. However, in order for JavaSim to detect the termination of the thread, the terminate() method _must_ be used instead.
+
+===== Example
+
+To illustrate how a simulation process could be implemented from the Process class we shall consider the example of a queue of customers arriving at a bank. For this example, this involves three classes:
+
+- Customer: instances of this class represent the customers in the queue. 
+
+- Queue: the instance of this class (queue) is the queue into which customers are places. 
+
+- Arrivals: this is the process which creates new customers for insertion in queue. 
+
+The implementations of the Customer and Queue classes are not important to this example. The implementation of the Arrivals class could be:
+
+----
+class Arrivals extends SimulationProcess
+{
+    public void run ()
+    {
+        for  (;;)
+        {
+            Customer c = new Customer();
+            
+            queue.insert(c);
+            hold(20.0);
+        }
+    }
 }
 ----
