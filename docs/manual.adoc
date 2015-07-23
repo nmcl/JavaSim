@@ -259,3 +259,47 @@ Because Controller is a simulation process itself, it derives from Simulationroc
 - await(): this method is called within the main application thread and suspends it, effectively transferring control the Controller process. 
 
 - exit(): this method is called to exit the simulation. 
+
+==== Suspending the main thread
+
+When a threaded application is started it is important to realise that before any application threads are created, the Java virtual machine has already created one to run the application. This thread must be suspended before any simulation threads can run.
+
+The await() method of Controller is responsible for suspending this thread:
+
+----
+public  void  await  ()
+{
+    resume();
+    
+    SimulationProcess.mainSuspend();
+}
+----
+
+It must first resume the thread associated with the Controller instance (since Controller is a SimulationProcess it starts in the passive state). This thread does not execute until the main thread is suspended by the call to the static mainSuspend method.
+
+The code for main would then become:
+
+----
+public  static  void  main  (String[]  args)
+{
+    Controller c = new Controller(); c.await();
+}
+----
+
+==== Exiting the application
+
+In order to exit a simulation application, the application can call System.exit. However, if it is only necessary to resume the main thread, then this can be accomplished by using the static mainResume method of the SimulationProcess class. Once the main thread has been resumed, it will continue to execute from the point it was suspended. In the example above, this would be from within the await method. The thread which calls mainResume can then suspend or terminate itself, depending upon the application requirements.
+
+----
+public  void  exit  ()
+{
+    if  (resumeMainRequired)
+    {
+        SimulationProcess.mainResume();
+        
+        suspend();
+    }
+    else
+        System.exit(0);
+}
+----
