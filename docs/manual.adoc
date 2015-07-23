@@ -239,3 +239,23 @@ class Arrivals extends SimulationProcess
     }
 }
 ----
+
+=== Starting, ending and controlling a simulation
+
+When a SimulationProcess object is created in JavaSim it starts in the passive state, and must be activated before it can take part in the simulation. This is typically performed by the first process object to which control is transferred after the simulation is initially started. When writing JavaSim applications it is typical for the main thread to create a single _controller process_ which is responsible for co-ordinating the entire simulation run. This creates and activates all of the simulation entities and the scheduler, and provides methods for suspending the main thread, thus allowing the controller object to execute, and exiting the application. An example controller interface is shown below, and the implementations for its methods will be described in the following sections:
+
+----
+public  class  Controller  extends  SimulationProcess
+{
+    public  void  run  ();
+
+    public void await ();
+    public void exit (); 
+}
+----
+
+Because Controller is a simulation process itself, it derives from Simulationrocess and defines a run() method, which will do the actual controlling of the simulation. It also provides the following methods:
+
+- await(): this method is called within the main application thread and suspends it, effectively transferring control the Controller process. 
+
+- exit(): this method is called to exit the simulation. 
