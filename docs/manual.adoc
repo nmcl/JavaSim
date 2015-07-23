@@ -303,3 +303,60 @@ public  void  exit  ()
         System.exit(0);
 }
 ----
+
+==== Controlling the simulation
+
+The controller’s body creates and activates the other simulation entities and the scheduler, and controls the overall simulation (e.g., resetting the system between consecutive runs).
+
+----
+public  void  run  ()
+{
+    sc  =  new  Scheduler();
+
+    //  create  and  activate  any  other  simulation  entities
+
+    sc.resume();    //  we  must  create  a  scheduler  for  the  simulation  to  run execute  the  simulation 
+    
+    // print  results 
+
+    sc.Suspend(); // suspend scheduler 
+    
+    // suspend simulation entities
+
+    mainResume();
+}
+----
+
+The final call to mainResume prevents run() from exiting, which we must do to ensure the application is portable between thread implementations.
+
+=== Resetting a simulation
+
+Resetting a simulation involves resetting all of the objects involved in it which will be required for subsequent runs. When the reset method is invoked on the Scheduler, this causes the current simulation run to be terminated, and all simulation objects which are currently suspended on the scheduler queue will be woken and the RestartException will be thrown to each. Any objects which are required to participate within a new simulation run must catch this exception, reset themselves to a state consistent with the start of another simulation, and then become suspended, to await the restart of the simulation.
+
+==== Example
+
+If we take the Arrivals example above and add a reset method then the code could be:
+
+----
+public  class  Arrivals  extends  SimulationProcess
+{
+    public  void  run  ()
+    {
+        for  (;;)
+        {
+            try
+            {
+                for  (;;)
+                {
+                    Customer c = new Customer(); queue.insert(c);
+
+                    hold(20.0);
+                }
+            }
+            catch  (RestartException  e)
+            {
+            }
+        }
+        }
+}
+----
