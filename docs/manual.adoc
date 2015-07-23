@@ -114,3 +114,60 @@ public class Simulation
 To enable multiple simulation runs to occur within a single application, it is possible to reset it and the simulation clock by calling the reset() method of the Simulation class. This causes the simulation to remove all processes (simulation objects) currently registered on the scheduler queue and to invoke a class specific method on each of them which resets their states (detailed in the next section). Once this is finished the simulation is ready for an additional run. A suspended process is informed that it has been “reset” by having the method it called to originally suspend itself (i.e., place itself on the scheduler queue) raise the RestartSimulation exception, which the object should catch. It must then perform any work necessary to put itself back in a state ready for restarting the simulation, and should then suspend itself again before the simulation can be restarted (typically by calling cancel.)
 
 A process can use isReset to determine whether or not the simulation has been reset. The start and stop operations allow the simulation to be halted or resumed respectively.
+
+=== Simulation processes
+
+As was described in the previous sections, JavaSim supports the process-oriented approach to simulation, where each simulation entity can be considered a separate process. Therefore in JavaSim the entities within a simulation are represented by _process objects_. These are Java objects which have an independent thread of control associated with them at creation time, allowing them to convey the notion of activity necessary for participating in the simulation.
+
+In keeping with the object-oriented paradigm, and to make development of process objects simpler, classes inherit the process functionality from the appropriate base class (SimulationProcess). This class defines all of the necessary operations for the simulation system to control the simulation entities within it, and for them to interact with it and each other.
+
+At any point in simulation time, a process can be in one (and only one) of the following states:
+
+- _active_: the process has been removed from the head of the scheduler queue and its actions are being executed. 
+
+- _suspended_: the process is on the scheduler queue, scheduled to become active at a specified simulation time. 
+
+- _passive_: the process is not on the scheduler queue. Unless another process brings it back on to the queue it will not execute any further actions.
+
+- _terminated_: the process is not on the scheduler queue and has no further actions to execute. Once a process has been terminated it cannot be made to execute further in the same simulation run. 
+
+A process which is either active or suspended is said to be _scheduled_.
+
+==== SimulationProcess class
+
+The SimulationProcess class definition is shown below. Before considering how to build an example class derived from SimulationProcess we shall discuss the methods which it provides.
+
+Because the constructors are protected, it is not possible to create an instance of the SimulationProcess class, i.e., classes must be derived from this. Processes are threaded objects, and typically each thread package schedules execution of threads according to a priority. By default, all processes in JavaSim are created with the same priority, but this can be altered by calling the setPriority method of java.lang.Thread.
+
+NOTE: Thread priorities have no effect on a simulation run.
+
+----
+public class SimulationProcess extends Thread
+{
+    public final double time ();
+    public synchronized SimulationProcess nextEv () throws SimulationException, NoSuchElementException;
+    public final double evtime ();
+    public void activateBefore (SimulationProcess p) throws SimulationException, RestartException;
+    public void activateAfter (SimulationProcess p) throws SimulationException, RestartException;
+    public void activateAt (double AtTime, boolean prior) throws SimulationException, RestartException;
+    public void activateAt (double AtTime) throws SimulationException, RestartException;
+    public void activateDelay (double Delay, boolean prior) throws SimulationException, RestartException;
+    public void activate () throws SimulationException, RestartException;
+    public void reactivateBefore (SimulationProcess p) throws SimulationException, RestartException;
+    public void reactivateAfter (SimulationProcess p) throws SimulationException, RestartException;
+    public void reactivateAt (double AtTime, boolean prior) throws SimulationException, RestartException;
+    public void reactivateAt (double AtTime) throws SimulationException, RestartException;
+    public void reactivateDelay (double Delay, boolean prior) throws SimulationException, RestartException;
+    public void reactivateDelay (double Delay) throws SimulationException, RestartException;
+    public void reactivate () throws SimulationException, RestartException;
+    public void cancel () throws RestartException;
+    public void terminate ();
+    public synchronized boolean idle ();
+    public boolean passivated ();
+    public boolean terminated ();
+    public static SimulationProcess current () throws SimulationException;
+    public static double currentTime ();
+    public static void mainSuspend ();
+    public static void mainResume () throws SimulationException;
+}
+----
