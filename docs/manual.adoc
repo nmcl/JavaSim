@@ -365,6 +365,32 @@ public  class  Arrivals  extends  SimulationProcess
 
 Many of the aspects of the real world which a simulation attempts to model have properties which correspond to various distribution functions, e.g., inter-arrival rates of customers at a bank queue. Therefore, simulation studies require sources of random numbers. Ideally these sources should produce an endless stream of such numbers, but to do so either requires specialised hardware or the ability to store an infinite (large) table of such numbers generated in advance.
 
-Without such aids, which are either impractical or not generally available, the alternative is to use numerical algorithms. No deterministic algorithm can produce a sequence of numbers that would have all of the properties of a truly random sequence (Thanks to Professor I. Mitrani for his help in developing this.) However, for all practical purposes it is only necessary that the numbers produced appear random, i.e., pass certain statistical tests for randomness. Although these generators produce pseudo-random numbers, we continue to call the random number generators.
+Without such aids, which are either impractical or not generally available, the alternative is to use numerical algorithms. No deterministic algorithm can produce a sequence of numbers that would have all of the properties of a truly random sequence (see link:http://www.amazon.com/Art-Computer-Programming-Volume-Seminumerical/dp/0201896842[Knuth, Volume 2]) However, for all practical purposes it is only necessary that the numbers produced appear random, i.e., pass certain statistical tests for randomness. Although these generators produce pseudo-random numbers, we continue to call the random number generators.
 
 The starting point for generating arbitrary distribution functions is to produce a standard uniform distribution. As we shall see, all other distributions can be produced based upon this. (Interested readers are referred to link:http://dl.acm.org/citation.cfm?id=539335[this] for a more complete treatment of this topic). All of the distribution functions in JavaSim rely upon inheritance to specialise the behaviour obtained from the uniform distribution class. These classes can be found in the org.javasim.streams package.
+
+=== RandomStream
+
+The actual uniform distribution class is called RandomStream. This returns a series of random numbers uniformly distributed between 0 and 1. We experimented with several random number generators before settling on a shuffle of a multiplicative generator with a linear congruential generator, which provides a reasonably uniform stream of pseudo-random numbers.
+
+----
+public  abstract  class  RandomStream
+{
+    public abstract double getNumber () throws IOException, ArithmeticException;
+
+    public  final  double  error  ();
+
+    protected  RandomStream  ();
+    protected  RandomStream  (long  MGSeed,  long  LCGSeed);
+
+    protected final double Uniform (); 
+}
+----
+
+The multiplicative generator uses the following algorithm:
+
+Y[i+1] = Y[i] * 55  mod 226
+
+THIS NEEDS FIXING!!
+
+, where the period is 224, and the initial seed must be odd (Thanks to Professor I. Mitrani for his help in developing this.)
