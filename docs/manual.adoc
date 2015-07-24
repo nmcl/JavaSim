@@ -361,7 +361,7 @@ public  class  Arrivals  extends  SimulationProcess
 }
 ----
 
-=== Distribution Functions
+== Distribution Functions
 
 Many of the aspects of the real world which a simulation attempts to model have properties which correspond to various distribution functions, e.g., inter-arrival rates of customers at a bank queue. Therefore, simulation studies require sources of random numbers. Ideally these sources should produce an endless stream of such numbers, but to do so either requires specialised hardware or the ability to store an infinite (large) table of such numbers generated in advance.
 
