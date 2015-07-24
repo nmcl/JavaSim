@@ -389,11 +389,11 @@ public  abstract  class  RandomStream
 
 The multiplicative generator uses the following algorithm:
 
-Y[i+1] = Y[i] * 55  mod 226
+Y[i+1] = Y[i] * 5^5  mod 2^26
 
 THIS NEEDS FIXING!!
 
-, where the period is 224, and the initial seed must be odd (Thanks to Professor I. Mitrani for his help in developing this.)
+, where the period is 2^24, and the initial seed must be odd (Thanks to Professor I. Mitrani for his help in developing this.)
 
 The uniform() method uses the linear congruential generator (seed is LCGSeed, with the default value of 1878892440L) based on the algorithm in link:http://algs4.cs.princeton.edu/home/[this text], and the results of this are shuffled with the multiplicative generator (see is MGSeed, with a default value of 772531L) as suggested by link:http://www.amazon.com/Art-Computer-Programming-Volume-Seminumerical/dp/0201896842[Maclaren and Marsaglia], to obtain a sufficiently uniform random distribution, which is then returned.
 
