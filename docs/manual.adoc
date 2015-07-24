@@ -389,9 +389,9 @@ public  abstract  class  RandomStream
 
 The multiplicative generator uses the following algorithm:
 
-Y[i+1] = Y[i] * 5^5   mod  2^26
+Y[i+1] = Y[i] * 5^5 mod 2^26
 
-THIS NEEDS FIXING!!
+THIS NEEDS FIXING!! plus mod superscripted?!
 
 , where the period is 2^24, and the initial seed must be odd (Thanks to Professor I. Mitrani for his help in developing this.)
 
