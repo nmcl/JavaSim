@@ -389,7 +389,7 @@ public  abstract  class  RandomStream
 
 The multiplicative generator uses the following algorithm:
 
-Y[i+1] = Y[i] * 5^5  mod 2^26
+Y[i+1] = Y[i] * 5^5   mod  2^26
 
 THIS NEEDS FIXING!!
 
