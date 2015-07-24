@@ -402,3 +402,20 @@ The error() method returns a chi-square error measure on the uniform distributio
 By abstract method getNumber must be provided by derived classes, and is used to obtain a uniform means of accessing random numbers.
 
 The  RandomStream class  returns  a  large  sequence  of  random  numbers,  whose  period  is 2^24. However, unless the seeds are modified when each random distribution class is created, the starting position in this sequence will always be the same, i.e., the same sequence of numbers will be obtained. To prevent this, each class derived from RandomStream has an additional parameter for one of its constructors which indicates the offset in this sequence from which to begin sampling.
+
+=== UniformStream
+
+The UniformStream class inherits from RandomStream and returns random numbers uniformly distributed over a range specified when the instance is created.
+
+----
+public  class  UniformStream  extends  RandomStream
+{
+    public  UniformStream  (double  lo,  double  hi);
+    public UniformStream (double lo, double hi, int StreamSelect);
+    public UniformStream (double lo, double hi, int StreamSelect, long  MGSeed,  long  LCGSeed);
+
+    public double getNumber () throws IOException, ArithmeticException;
+};
+----
+
+The range covers the interval specified by lo and hi. StreamSelect indicates the offset in the random number sequence to begin sampling, and MGSeed and LCGSeed can be used to modify the seed values used by the RandomStream class.
