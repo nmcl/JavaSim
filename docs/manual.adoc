@@ -436,3 +436,21 @@ public  class  ExponentialStream  extends  RandomStream
 ----
 
 StreamSelect indicates the offset in the random number sequence to begin sampling, and MGSeed and LCGSeed can be used to modify the seed values used by the RandomStream class.
+
+=== ErlangStream
+
+ErlangStream returns an erlang distribution with mean mean and standard deviation sd.
+
+----
+public  class  ErlangStream  extends  RandomStream
+{
+    public  ErlangStream  (double  mean,  double  sd);
+    public ErlangStream (double mean, double sd, int StreamSelect); 
+    public ErlangStream (double mean, double sd, int StreamSelect, long  MGSeed,  long  LCGSeed);
+
+    public double getNumber () throws IOException, ArithmeticException; 
+};
+----
+
+
+=== 
