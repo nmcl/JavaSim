@@ -419,3 +419,20 @@ public  class  UniformStream  extends  RandomStream
 ----
 
 The range covers the interval specified by lo and hi. StreamSelect indicates the offset in the random number sequence to begin sampling, and MGSeed and LCGSeed can be used to modify the seed values used by the RandomStream class.
+
+=== ExponentialStream
+
+The ExponentialStream class returns an exponentially distributed stream of random numbers with mean value specified by mean.
+
+----
+public  class  ExponentialStream  extends  RandomStream
+{
+    public  ExponentialStream  (double  mean);
+    public ExponentialStream (double mean, int StreamSelect); 
+    public ExponentialStream (double mean, int StreamSelect, long  MGSeed,  long  LCGSeed);
+
+    public double getNumber () throws IOException, ArithmeticException; 
+};
+----
+
+StreamSelect indicates the offset in the random number sequence to begin sampling, and MGSeed and LCGSeed can be used to modify the seed values used by the RandomStream class.
