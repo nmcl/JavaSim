@@ -452,5 +452,59 @@ public  class  ErlangStream  extends  RandomStream
 };
 ----
 
+StreamSelect indicates the offset in the random number sequence to begin sampling, and MGSeed and LCGSeed can be used to modify the seed values used by the RandomStream class.
 
-=== 
+=== HyperExponentialStream
+
+The HyperExponential class returns a hyper-exponential distribution of random numbers, with mean mean and standard deviation sd.
+
+----
+public  class  HyperExponentialStream  extends  RandomStream
+{
+    public  HyperExponentialStream  (double  mean,  double  sd);
+    public HyperExponentialStream (double mean, double sd, int StreamSelect); 
+    public HyperExponentialStream (double mean, double sd, int StreamSelect, long  MGSeed,  long  LCGSeed);
+
+    public double getNumber () throws IOException, ArithmeticException; 
+};
+----
+
+StreamSelect indicates the offset in the random number sequence to begin sampling, and MGSeed and LCGSeed can be used to modify the seed values used by the RandomStream class.
+
+=== NormalStream
+
+NormalStream returns a normal distribution of random numbers, with mean mean and standard deviation sd. operator() uses the polar method due to link:http://www.amazon.com/Art-Computer-Programming-Volume-Seminumerical/dp/0201896842[Box, Muller, and Marsaglia.]
+
+----
+public  class  NormalStream  extends  RandomStream
+{
+    public  NormalStream  (double  mean,  double  sd);
+    public NormalStream (double mean, double sd, int StreamSelect); 
+    public NormalStream (double mean, double sd, int StreamSelect, long  MGSeed,  long  LCGSeed);
+
+    public double getNumber () throws IOException, ArithmeticException; 
+};
+----
+
+StreamSelect indicates the offset in the random number sequence to begin sampling, and MGSeed and LCGSeed can be used to modify the seed values used by the RandomStream class.
+
+=== Draw
+
+The Draw class is the exception to the inheritance rule, instead using RandomStream through delegation (for historical reasons). This returns true with the probability prob, and false otherwise.
+
+----
+public  class  Draw
+{
+    public  Draw  (double  p);
+    public  Draw  (double  p,  int  StreamSelect);
+    public  Draw  (double  p,  int  StreamSelect,  long  MGSeed,  long  LCGSeed);
+
+    public boolean getBoolean () throws IOException; 
+};
+----
+
+StreamSelect indicates the offset in the random number sequence to begin sampling, and MGSeed and LCGSeed can be used to modify the seed values used by the RandomStream class.
+
+=== Example
+
+TODO
