@@ -508,3 +508,27 @@ StreamSelect indicates the offset in the random number sequence to begin samplin
 === Example
 
 TODO
+
+== Advanced Simulation Classes
+
+Simulations formed by the interaction of objects derived from SimulationProcess can be considered _causal_ (synchronous) in nature: events occur at specific times and form a well defined order. However, it is sometimes necessary to simulate asynchronous real world events, e.g., processor interrupts. To do this requires finer-grained control of the scheduling of simulation processes than it provided by the scheduler; the scheduler simply activates according to simulation time, whereas asynchronous events may have different activation rules, e.g., activate when another process is terminated.
+
+The SimulationEntity class and others to be described in the following sections gives this required level of control to the user, extending the types of simulation which are possible with JavaSim. Asynchronous simulation processes are derived from SimulationEntity, but the implementation enables these asynchronous process to execute in the same simulation as SimulationProcess objects. However, because these processes are suspended and resumed outside of the control of the scheduler, it is possible for deadlock situations to occur. Therefore, some care must be taken when using these classes.
+
+In addition to the active, suspended, passive and terminated states which a simulation process can be in, asynchronous objects can also be in the following states:
+
+- _waiting_: the process is suspended waiting for a specific event to occur (e.g., a process to be terminated). The waiting process is _not_ placed on the scheduler queue.
+
+- _interrupted_: the process, which was in the waiting state, has been interrupted from this before the condition it was awaiting occurred. 
+
+The conditions on which a process can wait, and can thus be interrupted from, are:
+
+- _time_: a process can attempt to wait for a specified period of simulation time. 
+
+- _process termination_: a process can wait for the termination of another SimultionEntity process before continuing execution. 
+
+- _semaphore_: critical regions of a simulation can be protected by semaphores, where only a single Entity process can acquire the semaphore; other processes are suspended until the semaphore is released. 
+
+- _user specific_: it is possible for other asynchronous conditions to occur which are not covered above.
+
+The classes to be described in this chapter can be found in the org.javasim package.
