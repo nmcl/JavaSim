@@ -532,3 +532,38 @@ The conditions on which a process can wait, and can thus be interrupted from, ar
 - _user specific_: it is possible for other asynchronous conditions to occur which are not covered above.
 
 The classes to be described in this chapter can be found in the org.javasim package.
+
+=== Asynchronous entities
+
+----
+public  class  SimulationEntity  extends  SimulationProcess
+{
+    public void Interrupt (SimulationEntity toInterrupt, boolean immediate) throws SimulationException, RestartException;
+
+    public final void trigger (); 
+    public void terminate ();
+
+    protected void timedWait (double waitTime) throws SimulationException, RestartException, InterruptedException;
+
+    protected void waitFor (SimulationEntity controller, boolean reAct) throws SimulationException, RestartException, InterruptedException;
+    protected void waitFor (SimulationEntity controller) throws SimulationException, RestartException, InterruptedException;
+
+    protected void waitForTrigger (TriggerQueue  _queue) throws SimulationException, RestartException, InterruptedException;
+
+    protected void waitForSemaphore (Semaphore _sem) throws RestartException; 
+};
+----
+
+Because SimulationEntity is derived from SimulationProcess, all of the usual simulation methods are available, and can be used in conjunction with those provided by the derived class.
+
+interrupt(SimulationEntity toInterrupt, boolean immediate) interrupts the asynchronous process toInterrupt, which _must_ not be *terminated* and _must_ be in the *waiting* state. toInterrupt becomes the next active process (i.e., it is moved to the head of the scheduler queue). If immediate is true then the current process is suspended immediately; it is scheduled for reactivation at the current simulation time. Otherwise, the current process continues to execute and can be suspended later in an application specific way.
+
+Because it is now possible for one process to wait for another to terminate the terminate() method must differ from that provided by SimulationProcess. Before the terminating process ends it moves the waiting process to the head of the scheduler queue, and then calls SimulationProcess.terminate(). Currently only a single process can wait on this termination condition, but this may change in future versions.
+
+wait(double t) is similar to hold(double t), with the exception that the process is moved into the *waiting* state as well as being placed on the scheduler queue. It is therefore possible to interrupt this process before the wait period has elapsed. true is returned if the process was interrupted, otherwise false is returned.
+
+waitFor(SimulationEntity controller, boolean reAct) suspends the current process until controller has terminated. The process is placed in the *waiting* state. If reAct is true then controller is moved to the head of the scheduler queue to become the next activate process, otherwise (the default behaviour) the application will have to activate controller. If the waiting process is interrupted then the method returns true, otherwise false. The controller and the current process must be different, i.e., it is not possible for a process to wait for itself.
+
+_Trigger queues_ are lists maintained by the simulation system of process waiting for specific events to occur, which are outside the scope of those described above. These will be described in the next section. waitForTrigger(TriggerQueue queue) places the current process on the trigger queue and passivates it. As with the previous methods, the return value indicates whether the process was interrupted, or triggered.
+
+In addition to trigger queues, process can wait on semaphores, allowing the creation of monitor regions, for example. waitForSemaphore(Semaphore sem) causes the current process to attempt to exclusively acquire the semaphore. If this is not possible then the process is suspended. Currently, a process which is waiting on a semaphore cannot be interrupted, and is not placed into the *waiting* state. As such, when this method returns the semaphore has been acquired.
