@@ -567,3 +567,25 @@ waitFor(SimulationEntity controller, boolean reAct) suspends the current process
 _Trigger queues_ are lists maintained by the simulation system of process waiting for specific events to occur, which are outside the scope of those described above. These will be described in the next section. waitForTrigger(TriggerQueue queue) places the current process on the trigger queue and passivates it. As with the previous methods, the return value indicates whether the process was interrupted, or triggered.
 
 In addition to trigger queues, process can wait on semaphores, allowing the creation of monitor regions, for example. waitForSemaphore(Semaphore sem) causes the current process to attempt to exclusively acquire the semaphore. If this is not possible then the process is suspended. Currently, a process which is waiting on a semaphore cannot be interrupted, and is not placed into the *waiting* state. As such, when this method returns the semaphore has been acquired.
+
+=== Trigger queues
+
+Processes waiting for the same application controlled event can be grouped together into a TriggerQueue, as described in the previous section. When this event occurs the application can use one of the two trigger methods to activate the queue members. This involves placing the process(es) onto the head of the scheduler queue.
+
+----
+public  class  TriggerQueue
+{
+    public TriggerQueue ();
+
+    public synchronized void triggerFirst (boolean  setTrigger) throws NoSuchElementException; 
+    public synchronized void triggerFirst () throws NoSuchElementException;
+
+    public synchronized void triggerAll () throws NoSuchElementException; 
+};
+----
+
+- triggerAll(): triggers all of the members on the queue. 
+
+- triggerFirst(boolean setTrigger): triggers only the head of the queue. If setTrigger is true (the default behaviour) then the trigger() method of the SimulationEntity object is also invoked. 
+
+If the queue is not empty when it is garbage collected by the virtual machine then all remaining queue members will be triggered, and placed back onto the scheduler queue.
