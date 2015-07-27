@@ -589,3 +589,45 @@ public  class  TriggerQueue
 - triggerFirst(boolean setTrigger): triggers only the head of the queue. If setTrigger is true (the default behaviour) then the trigger() method of the SimulationEntity object is also invoked. 
 
 If the queue is not empty when it is garbage collected by the virtual machine then all remaining queue members will be triggered, and placed back onto the scheduler queue.
+
+=== Semaphores
+
+Application code can be protected from simulation processes through semaphores, which are instances of the Semaphore class.
+
+----
+public  class  Semaphore
+{
+    enum Outcome { DONE, NOTDONE, WOULD_BLOCK };
+
+    public Semaphore  ();
+    public Semaphore  (long number);
+
+    public synchronized long numberWaiting  ();
+
+    public synchronized Outcome get (SimulationEntity toWait) throws RestartException; 
+    
+    public synchronized Outcome tryGet (SimulationEntity toWait) throws RestartException;
+
+    public synchronized Outcome release (); 
+};
+----
+
+A semaphore can be used to restrict the number of processes which can use shared resources. The number of shared resources available must be presented to the Semaphore when it is created. By default, a Semaphore will assume that there is only a single resource, in which case a semaphore is exclusively acquired by a simulation process. However, it is possible to create a Semaphore with different resource counts.
+
+A Semaphore can exist in one of two states:
+
+- _available_: the semaphore is available to be acquired. 
+
+- _unavailable_: a process (or number of processes) currently has the semaphore. If another process attempts to acquire the semaphore then it is automatically suspended until the semaphore is *available*, i.e., until a resource has been freed. 
+
+To be able to manipulate semaphores a process must be derived from the SimulationEntity class. To obtain the semaphore, the get(SimulationEntity toWait) method should be used, where toWait is the calling process. If the semaphore is *unavailable* then the process referenced by toWait is suspended. If the semaphore is successfully acquired, then Outcome.DONE is returned, otherwise Outcome.NOTDONE.
+
+If the process wishes to attempt to acquire the semaphore but does not want to block in the situation where the semaphore is currently unavailable, then it can use the tryGet method, which takes the same parameter as get. However, unlike get, tryGet will return Outcome.WOULD_BLOCK in the case where the caller would normally block if it had called get, i.e., the semaphore is currently in use. If the semaphore is not being used, then tryGet will acquire it for the caller. Errors will result in Outcome.NOT_DONE being returned.
+
+When the semaphore is no longer required release() should be called by the process which currently has it. Successful release of the semaphore results in Outcome.DONE being returned, otherwise Outcome.NOTDONE is returned.
+
+numberWaiting() returns the number of processes currently suspended waiting for the semaphore.
+
+If the semaphore is garbage collected with processes waiting for it then an error message is displayed. No further action is attempted on behalf of these waiting processes.
+
+=== Example
