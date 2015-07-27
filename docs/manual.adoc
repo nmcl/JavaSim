@@ -631,3 +631,7 @@ numberWaiting() returns the number of processes currently suspended waiting for 
 If the semaphore is garbage collected with processes waiting for it then an error message is displayed. No further action is attempted on behalf of these waiting processes.
 
 === Example
+
+== Statistical classes
+
+The purpose of a simulation typically involves the gathering of relevant statistical information, e.g., the average length of time spent in a queue. JavaSim provides a number of different classes for gathering such information. These classes can be found in the org.javasim.stats package.
