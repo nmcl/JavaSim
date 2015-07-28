@@ -635,3 +635,54 @@ If the semaphore is garbage collected with processes waiting for it then an erro
 == Statistical classes
 
 The purpose of a simulation typically involves the gathering of relevant statistical information, e.g., the average length of time spent in a queue. JavaSim provides a number of different classes for gathering such information. These classes can be found in the org.javasim.stats package.
+
+=== Mean
+
+This is the basic class from which others are derived, gathering statistical information on the samples provided to it.
+
+----
+public  class  Mean
+{
+    public  void  setValue  (double  value)  throws  IllegalArgumentException;
+
+    public  void  reset  ();
+
+    public int numberOfSamples (); public double min ();
+
+    public double max (); public double sum (); public double mean ();
+
+    public  boolean  saveState  (String  fileName)  throws  IOException;
+
+    public  boolean  saveState  (DataOutputStream  oFile)  throws  IOException;
+
+    public boolean restoreState (String fileName) throws FileNotFoundException, IOException;
+
+    public  boolean  restoreState  (DataInputStream  iFile)  throws  IOException;
+
+    public void print ();
+};
+----
+
+New values can be supplied to the instance of the Mean class using the setValue(double) method. The number of samples which have been give can be obtained from numberOfSamples().
+
+The maximum and minimum of the samples supplied can be obtained from the max() and min() methods, respectively.
+
+sum() returns the summation of all of the samples:
+
+n
+Σ Si
+
+i=1
+
+mean() returns the mean value:
+
+n
+1_n   Σ Si
+
+i=1
+
+An instance of Mean can be reset between samples using the reset() method.
+
+If the state of a Mean object is required to be saved between simulation runs then it can be made persistent by using either of the saveState methods. The first instance saves the state to a file, whereas the second can be used to save the state to an instance of the java.io.DataOutputStream class. There are likewise two corresponding ways in which the state can be restored.
+
+The print method simply prints to System.out the current state of the object.
