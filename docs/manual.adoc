@@ -686,3 +686,47 @@ An instance of Mean can be reset between samples using the reset() method.
 If the state of a Mean object is required to be saved between simulation runs then it can be made persistent by using either of the saveState methods. The first instance saves the state to a file, whereas the second can be used to save the state to an instance of the java.io.DataOutputStream class. There are likewise two corresponding ways in which the state can be restored.
 
 The print method simply prints to System.out the current state of the object.
+
+=== Variance
+
+This class is derived from Mean, and in addition to providing the above mentioned functionality also provides the following:
+
+----
+public  class  Variance  extends  Mean
+{
+    public  void  setValue  (double  value)  throws  IllegalArgumentException;
+
+    public  void  reset  ();
+
+    public double variance (); 
+    public double stdDev ();
+
+    public  double  confidence  (double  value);
+
+    public  void  print  ();
+
+    public  boolean  saveState  (String  fileName)  throws  IOException;
+    public  boolean  saveState  (DataOutputStream  oFile)  throws  IOException;
+
+    public boolean restoreState (String fileName) throws FileNotFoundException, IOException;
+    public boolean restoreState (DataInputStream iFile) throws IOException; 
+};
+----
+
+variance() returns the variance of the samples:
+
+1
+n
+
+
+2
+
+_
+Σ (Si-Mean())
+
+n
+
+i=1
+
+
+stdDev() returns the standard deviation of the samples, which is the square root of the variance.
