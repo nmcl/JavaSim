@@ -730,3 +730,26 @@ i=1
 
 
 stdDev() returns the standard deviation of the samples, which is the square root of the variance.
+
+=== TimeVariance
+
+The TimeVariance class makes it possible to determine how long, in terms of simulation time, specific values were maintained. In effect, values are weighted according to the length of time that they were held, whereas with the Variance class only the specific values are taken into account.
+
+----
+public  class  TimeVariance  extends  Variance
+{
+    public  void  reset  ();
+
+    public  void  setValue  (double  value)  throws  IllegalArgumentException;
+
+    public  double  timeAverage  ();
+
+    public  boolean  saveState  (String  fileName)  throws  IOException;
+    public  boolean  saveState  (DataOutputStream  oFile)  throws  IOException;
+
+    public boolean restoreState (String fileName) throws FileNotFoundException, IOException;
+    public boolean restoreState (DataInputStream iFile) throws IOException; 
+};
+----
+
+Whenever a value is supplied to an instance of the TimeVariance class the simulation time at which it occurred is also noted. If a value changes, or the timeAverage() method is invoked, then the time it has been maintained for is calculated and the statistical data is updated.
