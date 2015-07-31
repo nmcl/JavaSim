@@ -753,3 +753,35 @@ public  class  TimeVariance  extends  Variance
 ----
 
 Whenever a value is supplied to an instance of the TimeVariance class the simulation time at which it occurred is also noted. If a value changes, or the timeAverage() method is invoked, then the time it has been maintained for is calculated and the statistical data is updated.
+
+=== Histograms
+
+Mean, Variance, and TimeVariance provide a snapshot of values in the simulation. However, histograms can yield better information about how a range of values change over the course of a simulation run. This information can be viewed in a number of ways, but typically it is plotted in graphical form.
+
+A histogram typically maintains a slot for each value, or range of values, given to it. These slots are termed _buckets_, and the way in which these buckets are maintained and manipulated gives rise to a variety of different histogram implementations. The following sections detail this variety of different histogram classes.
+
+==== PrecisionHistogram
+
+The PrecisionHistogram class represents the core histogram class from which all others are derived. This class keeps an exact tally of all values given to it, i.e., a bucket is created for each value. Although buckets are only created when requires, over the course of a simulation this can still utilise a large amount of resources, and so other, less precise, histogram classes are provided.
+
+----
+public  class  PrecisionHistogram  extends  Variance
+{
+    public  void  setValue  (double  value)  throws  IllegalArgumentException;
+
+    public  void  reset  ();
+
+    public  long  numberOfBuckets  ();
+
+    public double sizeByIndex (long index) throws StatisticsException, IllegalArgumentException;
+    public  double  sizeByName  (double  name)  throws  IllegalArgumentException;
+
+    public  boolean  saveState  (String  fileName)  throws  IOException;
+    public  boolean  saveState  (DataOutputStream  oFile)  throws  IOException;
+
+    public boolean restoreState (String fileName) throws FileNotFoundException, IOException;
+    public  boolean  restoreState  (DataInputStream  iFile)  throws  IOException;
+
+    public void print (); 
+};
+----
