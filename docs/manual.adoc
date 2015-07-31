@@ -785,3 +785,17 @@ public  class  PrecisionHistogram  extends  Variance
     public void print (); 
 };
 ----
+
+As with the Variance class from which it is derived, and whose methods are obviously available, values can be supplied to the histogram through the setValue(double) method.
+
+The number of buckets maintained by the histogram can be obtained from the numberOfBuckets() method. Each bucket is uniquely named by the values it contains, and can also be accessed by its index in the entire list of buckets.
+
+There are therefore two ways of getting the number of entries in a bucket:
+
+- by the index number of the bucket: sizeByIndex(long  index).
+
+- by the unique name of the bucket: sizeByName(double  name).
+
+If      the      bucket      does      not      exist      then      each      of      these      methods      throws IllegalArgumentException.
+
+It is possible to output the contents of the histogram to standard output using the print()method.
