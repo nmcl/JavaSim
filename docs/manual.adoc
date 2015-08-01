@@ -799,3 +799,33 @@ There are therefore two ways of getting the number of entries in a bucket:
 If      the      bucket      does      not      exist      then      each      of      these      methods      throws IllegalArgumentException.
 
 It is possible to output the contents of the histogram to standard output using the print()method.
+
+==== Histogram
+
+The problem with the PrecisionHistogram class is that it can use up a lot of system resources, especially over the course of a long simulation. Histogram attempts to alleviate this by presenting a histogram which is less accurate, but consumes less resources. Instead of maintaining a bucket for each individual value, it keeps a fixed number of buckets. Initially each bucket will store separate values as in the PrecisionHistogram, but when the number of required buckets would exceed the specified maximum number it merges pairs of buckets, thus reducing their total. The policy used when merging buckets it set on a per instance basis when created. Current policies are:
+
+- ACCUMULATE: create a new bucket with the same name as the largest of the two buckets, and it has the sum of the two old bucket entries as its entry number.
+
+- MEAN: create a new bucket with the name as the mean of the two old buckets, and it has the sum of the two old bucket entries as its entry number. 
+
+- MAX: create a new bucket with the name as the largest of the two buckets, and it has the same number of entries. 
+- MIN: create a new bucket with the name as the smallest of the two old buckets, and it has the same number of entries. 
+
+----
+public  class  Histogram  extends  PrecisionHistogram
+{
+    public Histogram (long maxIndex, int mergeChoice); public Histogram (long maxIndex);
+
+    public  void  setValue  (double  value)  throws  IllegalArgumentException;
+
+    public  boolean  saveState  (String  fileName)  throws  IOException;
+    public  boolean  saveState  (DataOutputStream  oFile)  throws  IOException;
+
+    public boolean restoreState (String fileName) throws FileNotFoundException, IOException;
+    public  boolean  restoreState  (DataInputStream  iFile)  throws  IOException;
+
+    public void print (); 
+};
+----
+
+When an instance of Histogram is created, the maximum number of allowed buckets must be specified. The merging algorithm can also be provided, with the default being the MEAN policy.
