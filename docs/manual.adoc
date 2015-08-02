@@ -829,3 +829,37 @@ public  class  Histogram  extends  PrecisionHistogram
 ----
 
 When an instance of Histogram is created, the maximum number of allowed buckets must be specified. The merging algorithm can also be provided, with the default being the MEAN policy.
+
+==== SimpleHistogram
+
+As with the Histogram class above, SimpleHistogram keeps the number of assigned buckets to a minimum. However, it does this by pre-creating the buckets when it is created, i.e., the number of required buckets must be provided at the start. A width is the assigned for each bucket, and whenever a value if given to the histogram class it is placed into the bucket whose width it falls within.
+
+----
+public  class  SimpleHistogram  extends  PrecisionHistogram
+{
+    public SimpleHistogram (double min, double max, long nbuckets); 
+    public SimpleHistogram (double min, double max, double w);
+
+    public  void  setValue  (double  value)  throws  IllegalArgumentException;
+
+    public  void  reset  ();
+
+    public  double  sizeByName  (double  name)  throws  IllegalArgumentException;
+
+    public  double  width  ();
+
+    public  void  print  ();
+
+    public  boolean  saveState  (String  fileName)  throws  IOException;
+    public  boolean  saveState  (DataOutputStream  oFile)  throws  IOException;
+
+    public boolean restoreState (String fileName) throws FileNotFoundException, IOException;
+    public boolean restoreState (DataInputStream iFile) throws IOException; 
+};
+----
+
+When the class is instantiated, the range of values it will receive must be provided. Then, either the width of each bucket or the actual number of buckets can be given. If the width is
+provided, then the histogram automatically calculates the number of buckets, otherwise it calculates the width for each bucket by equally dividing the range between each bucket.
+The values of a bucket can be obtained from the sizeByName  method.
+
+The width of each bucket is provided by the width method.
