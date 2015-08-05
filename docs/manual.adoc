@@ -20,7 +20,7 @@ Currently JavaSim has been tested with JDK 1.7 and 1.8. In the past it has worke
 
 == Introduction
 
-This manual is not intended as a tutorial on the concepts of simulation in general, but rather how to write simulations in the JavaSim system. However, in order to be able to do this certain key simulation concepts will be briefly described. The interested reader is referred to link:http://dl.acm.org/citation.cfm?id=539335 [this book] for detailed descriptions of these concepts and for further discussions on simulation modelling.
+This manual is not intended as a tutorial on the concepts of simulation in general, but rather how to write simulations in the JavaSim system. However, in order to be able to do this certain key simulation concepts will be briefly described. The interested reader is referred to link:http://dl.acm.org/citation.cfm?id=539335[this book] for detailed descriptions of these concepts and for further discussions on simulation modelling.
 
 === Simulation Models
 
