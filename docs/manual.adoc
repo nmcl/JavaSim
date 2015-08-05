@@ -395,7 +395,7 @@ THIS NEEDS FIXING!! plus mod superscripted?!
 
 , where the period is 2^24, and the initial seed must be odd (Thanks to Professor I. Mitrani for his help in developing this.)
 
-The uniform() method uses the linear congruential generator (seed is LCGSeed, with the default value of 1878892440L) based on the algorithm in link:http://algs4.cs.princeton.edu/home/[this text], and the results of this are shuffled with the multiplicative generator (see is MGSeed, with a default value of 772531L) as suggested by link:http://www.amazon.com/Art-Computer-Programming-Volume-Seminumerical/dp/0201896842[Maclaren and Marsaglia], to obtain a sufficiently uniform random distribution, which is then returned.
+The uniform() method uses the linear congruential generator (seed is LCGSeed, with the default value of 1878892440L) based on the algorithm in link:http://algs4.cs.princeton.edu/home/[this text], and the results of this are shuffled with the multiplicative generator (seed is MGSeed, with a default value of 772531L) as suggested by link:http://www.amazon.com/Art-Computer-Programming-Volume-Seminumerical/dp/0201896842[Maclaren and Marsaglia], to obtain a sufficiently uniform random distribution, which is then returned.
 
 The error() method returns a chi-square error measure on the uniform distribution function.
 
