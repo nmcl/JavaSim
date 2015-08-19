@@ -75,7 +75,7 @@ The previous section described the event list and how simulation entities (proce
 
 Inactive processes are placed on to the scheduler queue, and when the current active process yields control to the scheduler (either because it has finished or been placed back onto the scheduler queue), the scheduler removes the process at the head of the queue and re-activates it. (In SIMULA the currently active process is not removed from the head of the queue.) When the scheduler queue is empty, i.e., there are no further processes left to execute, the scheduler terminates the simulation.
 
-img::images/queues.jpg[simulation queues]
+image::images/queues.jpg[simulation queues]
 
 Figure 1: Scheduler-Process Interaction
 
