@@ -667,17 +667,11 @@ The maximum and minimum of the samples supplied can be obtained from the max() a
 
 sum() returns the summation of all of the samples:
 
-n
-Σ Si
-
-i=1
+image::images/maths1.jpg
 
 mean() returns the mean value:
 
-n
-1_n   Σ Si
-
-i=1
+image::images/maths2.jpg
 
 An instance of Mean can be reset between samples using the reset() method.
 
