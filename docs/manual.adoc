@@ -707,19 +707,7 @@ public  class  Variance  extends  Mean
 
 variance() returns the variance of the samples:
 
-1
-n
-
-
-2
-
-_
-Σ (Si-Mean())
-
-n
-
-i=1
-
+image::images/maths3.jpg[]
 
 stdDev() returns the standard deviation of the samples, which is the square root of the variance.
 
