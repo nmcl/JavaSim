@@ -214,7 +214,7 @@ Because SimulationProcess extends the java.lang.Thread class it is necessary for
 
 ===== Example
 
-To illustrate how a simulation process could be implemented from the Process class we shall consider the example of a queue of customers arriving at a bank. For this example, this involves three classes:
+To illustrate how a simulation process could be implemented from the SimulationProcess class we shall consider the example of a queue of customers arriving at a bank. For this example, this involves three classes:
 
 - Customer: instances of this class represent the customers in the queue. 
 
