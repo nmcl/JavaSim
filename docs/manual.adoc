@@ -776,9 +776,9 @@ There are therefore two ways of getting the number of entries in a bucket:
 
 - by the unique name of the bucket: sizeByName(double  name).
 
-If      the      bucket      does      not      exist      then      each      of      these      methods      throws IllegalArgumentException.
+If the bucket does not exist then each of these methods throws IllegalArgumentException.
 
-It is possible to output the contents of the histogram to standard output using the print()method.
+It is possible to output the contents of the histogram to standard output using the print() method.
 
 ==== Histogram
 
