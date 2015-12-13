@@ -145,8 +145,10 @@ NOTE: Thread priorities have no effect on a simulation run.
 public class SimulationProcess extends Thread
 {
     public final double time ();
+    
     public synchronized SimulationProcess nextEv () throws SimulationException, NoSuchElementException;
     public final double evtime ();
+    
     public void activateBefore (SimulationProcess p) throws SimulationException, RestartException;
     public void activateAfter (SimulationProcess p) throws SimulationException, RestartException;
     public void activateAt (double AtTime, boolean prior) throws SimulationException, RestartException;
@@ -160,13 +162,16 @@ public class SimulationProcess extends Thread
     public void reactivateDelay (double Delay, boolean prior) throws SimulationException, RestartException;
     public void reactivateDelay (double Delay) throws SimulationException, RestartException;
     public void reactivate () throws SimulationException, RestartException;
+    
     public void cancel () throws RestartException;
     public void terminate ();
     public synchronized boolean idle ();
     public boolean passivated ();
     public boolean terminated ();
+    
     public static SimulationProcess current () throws SimulationException;
     public static double currentTime ();
+    
     public static void mainSuspend ();
     public static void mainResume () throws SimulationException;
     
@@ -408,7 +413,7 @@ The UniformStream class inherits from RandomStream and returns random numbers un
 ----
 public  class  UniformStream  extends  RandomStream
 {
-    public  UniformStream  (double  lo,  double  hi);
+    public UniformStream  (double  lo,  double  hi);
     public UniformStream (double lo, double hi, int StreamSelect);
     public UniformStream (double lo, double hi, int StreamSelect, long  MGSeed,  long  LCGSeed);
 
@@ -425,7 +430,7 @@ The ExponentialStream class returns an exponentially distributed stream of rando
 ----
 public  class  ExponentialStream  extends  RandomStream
 {
-    public  ExponentialStream  (double  mean);
+    public ExponentialStream  (double  mean);
     public ExponentialStream (double mean, int StreamSelect); 
     public ExponentialStream (double mean, int StreamSelect, long  MGSeed,  long  LCGSeed);
 
@@ -442,7 +447,7 @@ ErlangStream returns an erlang distribution with mean mean and standard deviatio
 ----
 public  class  ErlangStream  extends  RandomStream
 {
-    public  ErlangStream  (double  mean,  double  sd);
+    public ErlangStream  (double  mean,  double  sd);
     public ErlangStream (double mean, double sd, int StreamSelect); 
     public ErlangStream (double mean, double sd, int StreamSelect, long  MGSeed,  long  LCGSeed);
 
@@ -459,7 +464,7 @@ The HyperExponential class returns a hyper-exponential distribution of random nu
 ----
 public  class  HyperExponentialStream  extends  RandomStream
 {
-    public  HyperExponentialStream  (double  mean,  double  sd);
+    public HyperExponentialStream  (double  mean,  double  sd);
     public HyperExponentialStream (double mean, double sd, int StreamSelect); 
     public HyperExponentialStream (double mean, double sd, int StreamSelect, long  MGSeed,  long  LCGSeed);
 
@@ -476,7 +481,7 @@ NormalStream returns a normal distribution of random numbers, with mean mean and
 ----
 public  class  NormalStream  extends  RandomStream
 {
-    public  NormalStream  (double  mean,  double  sd);
+    public NormalStream  (double  mean,  double  sd);
     public NormalStream (double mean, double sd, int StreamSelect); 
     public NormalStream (double mean, double sd, int StreamSelect, long  MGSeed,  long  LCGSeed);
 
@@ -493,9 +498,9 @@ The Draw class is the exception to the inheritance rule, instead using RandomStr
 ----
 public  class  Draw
 {
-    public  Draw  (double  p);
-    public  Draw  (double  p,  int  StreamSelect);
-    public  Draw  (double  p,  int  StreamSelect,  long  MGSeed,  long  LCGSeed);
+    public Draw  (double  p);
+    public Draw  (double  p,  int  StreamSelect);
+    public Draw  (double  p,  int  StreamSelect,  long  MGSeed,  long  LCGSeed);
 
     public boolean getBoolean () throws IOException; 
 };
