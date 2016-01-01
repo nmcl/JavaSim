@@ -874,18 +874,18 @@ The actual quantile value is provided by getValue method.
 
 == References
 
-[1] G. M. Birtwistle, O-J. Dahl, B. Myhrhaug, K. Nygaard, “Simula Begin”, Academic Press, 1973
+[1] link:http://dl.acm.org/citation.cfm?id=1096934[G. M. Birtwistle, O-J. Dahl, B. Myhrhaug, K. Nygaard, “Simula Begin”, Academic Press, 1973].
 
-[2] O-J. Dahl, B. Myhrhaug, K. Nygaard, “SIMULA Common Base Language”, Norwegian Computing Centre
+[2] link:https://books.google.co.uk/books?id=4cCqCAAAQBAJ&pg=PA185&lpg=PA185&dq=O-J.+Dahl,+B.+Myhrhaug,+K.+Nygaard,+“SIMULA+Common+Base+Language”,+Norwegian+Computing+Centre&source=bl&ots=ZY5oBb1Hcy&sig=UurKDDPwtl_AMg6CgZcZ5Yyk8Ew&hl=en&sa=X&ved=0ahUKEwiygoLsiofKAhWDShQKHbtgDLkQ6AEIIjAA#v=onepage&q=O-J.%20Dahl%2C%20B.%20Myhrhaug%2C%20K.%20Nygaard%2C%20“SIMULA%20Common%20Base%20Language”%2C%20Norwegian%20Computing%20Centre&f=false[O-J. Dahl, B. Myhrhaug, K. Nygaard, “SIMULA Common Base Language”, Norwegian Computing Centre].
 
-[3] Knuth Vol2, “Seminumerical Algorithms”, Addison-Wesley, 1969, p. 117.
+[3] link:http://www.amazon.com/The-Computer-Programming-Volume-Seminumerical/dp/0201038226[Knuth Vol2, “Seminumerical Algorithms”, Addison-Wesley, 1969, p. 117].
 
-[4] R. Sedgewick, “Algorithms”, Addison-Wesley, Reading MA, 1983, pp. 36-38.
+[4] link:http://algs4.cs.princeton.edu/home/[R. Sedgewick, “Algorithms”, Addison-Wesley, Reading MA, 1983, pp. 36-38].
 
-[5] D. L. McCue and M. C. Little, “Computing Replica Placement in Distributed Systems”, Proceedings of the 2 IEEE Workshop on the Management of Replicated Data, November 1992, pp. 58-61.
+[5] link:http://www.cs.ncl.ac.uk/publications/inproceedings/papers/630.pdf[D. L. McCue and M. C. Little, “Computing Replica Placement in Distributed Systems”, Proceedings of the 2 IEEE Workshop on the Management of Replicated Data, November 1992, pp. 58-61].
 
-[6] I. Mitrani, “Simulation Techniques for Discrete Event Systems”, Cambridge University Press, Cambridge, 1982.
+[6] link:https://books.google.co.uk/books?id=CF04AAAAIAAJ&pg=PR4&lpg=PR4&dq=I.+Mitrani,+“Simulation+Techniques+for+Discrete+Event+Systems”,+Cambridge+University+Press&source=bl&ots=zw-1g5mS30&sig=GxA8y1Moew5QYY3tYR6Hh19ifLw&hl=en&sa=X&ved=0ahUKEwjM0dCIiYfKAhVFwBQKHYogAcAQ6AEINDAD#v=onepage&q=I.%20Mitrani%2C%20“Simulation%20Techniques%20for%20Discrete%20Event%20Systems”%2C%20Cambridge%20University%20Press&f=false[I. Mitrani, “Simulation Techniques for Discrete Event Systems”, Cambridge University Press, Cambridge, 1982].
 
-[7] M. C. Little and D. L. McCue, “The Replica Management System: a Scheme for Flexible and Dynamic Replication”, Proceedings of the 2 International Workshop on Configurable Distributed Systems, March 1994, pp. 46-57.
+[7] link:http://www.cs.newcastle.ac.uk/publications/inproceedings/papers/29.pdf[M. C. Little and D. L. McCue, “The Replica Management System: a Scheme for Flexible and Dynamic Replication”, Proceedings of the 2 International Workshop on Configurable Distributed Systems, March 1994, pp. 46-57].
 
-[8] G. D. Parrington et al, “The Design and Implementation of Arjuna”, Broadcast Project Technical Report, October 1994.
+[8] link:https://www.usenix.org/legacy/publications/compsystems/1995/sum_parrington.pdf[G. D. Parrington et al, “The Design and Implementation of Arjuna”, Broadcast Project Technical Report, October 1994].
