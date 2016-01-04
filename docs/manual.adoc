@@ -1,4 +1,4 @@
-= JavaSim Manual Version 2.0
+= JavaSim User Manual
 :numbered:
 
 JavaSim is an object-oriented, discrete event simulation toolkit for Java. It's a Java implementation of the original link:http://www.cs.newcastle.ac.uk/publications/articles/papers/200.pdf[C++SIM simulation toolkit], which was developed as a direct consequence of research conducted within the scope of the link:http://www.ncl.ac.uk/computing/research/publication/159390[Arjuna project from Newcastle University] in the 1980's. Therefore, it shares many of the same requirements:
