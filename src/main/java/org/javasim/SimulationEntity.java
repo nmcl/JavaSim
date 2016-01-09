@@ -43,10 +43,10 @@ public class SimulationEntity extends SimulationProcess
             throws SimulationException, RestartException
     {
         if (toInterrupt.terminated())
-            throw (new SimulationException("Entity already terminated."));
+            throw new SimulationException("Entity already terminated.");
 
         if (!toInterrupt._waiting)
-            throw (new SimulationException("Entity not waiting."));
+            throw new SimulationException("Entity not waiting.");
 
         toInterrupt._interrupted = true;
 
@@ -149,7 +149,7 @@ public class SimulationEntity extends SimulationProcess
         }
         catch (SimulationException e)
         {
-            throw (new SimulationException("Invalid entity."));
+            throw new SimulationException("Invalid entity.");
         }
 
         _waiting = false;
@@ -157,7 +157,7 @@ public class SimulationEntity extends SimulationProcess
         if (_interrupted)
         {
             _interrupted = false;
-            throw (new InterruptedException());
+            throw new InterruptedException();
         }
     }
 
@@ -252,7 +252,7 @@ public class SimulationEntity extends SimulationProcess
         if (_triggered)
             _triggered = false;
         else
-            throw (new InterruptedException());
+            throw new InterruptedException();
     }
 
     /**

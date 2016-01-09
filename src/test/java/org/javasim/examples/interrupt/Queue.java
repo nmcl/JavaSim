@@ -46,7 +46,7 @@ public class Queue
     public Job dequeue () throws NoSuchElementException
     {
         if (isEmpty())
-            throw (new NoSuchElementException());
+            throw new NoSuchElementException();
 
         List ptr = head;
         head = head.next;

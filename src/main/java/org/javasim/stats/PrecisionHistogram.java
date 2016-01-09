@@ -121,7 +121,7 @@ public class PrecisionHistogram extends Variance
         Bucket ptr = Head;
 
         if ((index < 0) || (index > length))
-            throw (new IllegalArgumentException("index out of range."));
+            throw new IllegalArgumentException("index out of range.");
 
         for (long i = 0; (i < index) && (ptr != null); i++)
             ptr = ptr.cdr();
@@ -131,7 +131,7 @@ public class PrecisionHistogram extends Variance
 
         // we should never get here!
 
-        throw (new StatisticsException("sizeByIndex went off end of list."));
+        throw new StatisticsException("sizeByIndex went off end of list.");
     }
 
     /**
@@ -150,8 +150,7 @@ public class PrecisionHistogram extends Variance
                 break;
         }
 
-        throw (new IllegalArgumentException("Bucket name " + name
-                + " not found."));
+        throw new IllegalArgumentException("Bucket name " + name + " not found.");
     }
 
     /**

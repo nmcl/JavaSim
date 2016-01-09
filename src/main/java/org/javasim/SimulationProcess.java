@@ -85,8 +85,7 @@ public class SimulationProcess extends Thread
         if (!idle())
             return Scheduler.getQueue().getNext(this);
         else
-            throw (new SimulationException(
-                    "SimulationProcess not on run queue."));
+            throw new SimulationException("SimulationProcess not on run queue.");
     }
 
     /**

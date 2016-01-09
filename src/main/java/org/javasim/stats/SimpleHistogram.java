@@ -97,9 +97,9 @@ public class SimpleHistogram extends PrecisionHistogram
     public void setValue (double value) throws IllegalArgumentException
     {
         if ((value < minIndex) || (value > maxIndex))
-            throw (new IllegalArgumentException("Value " + value
+            throw new IllegalArgumentException("Value " + value
                     + " is beyond histogram range [ " + minIndex + ", "
-                    + maxIndex + " ]"));
+                    + maxIndex + " ]");
 
         for (Bucket ptr = Head; ptr != null; ptr = ptr.cdr())
         {
@@ -114,8 +114,8 @@ public class SimpleHistogram extends PrecisionHistogram
 
         // shouldn't get here!!
 
-        throw (new IllegalArgumentException("Something went wrong with "
-                + value));
+        throw new IllegalArgumentException("Something went wrong with "
+                + value);
     }
 
     /**
@@ -145,7 +145,7 @@ public class SimpleHistogram extends PrecisionHistogram
     public double sizeByName (double name) throws IllegalArgumentException
     {
         if ((name < minIndex) || (name > maxIndex))
-            throw (new IllegalArgumentException("Argument out of range."));
+            throw new IllegalArgumentException("Argument out of range.");
 
         for (Bucket ptr = Head; ptr != null; ptr = ptr.cdr())
         {
@@ -155,7 +155,7 @@ public class SimpleHistogram extends PrecisionHistogram
                 return ptr.size();
         }
 
-        throw (new IllegalArgumentException("Name " + name + " out of range."));
+        throw new IllegalArgumentException("Name " + name + " out of range.");
     }
 
     /**

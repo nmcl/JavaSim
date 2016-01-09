@@ -76,7 +76,7 @@ public class TriggerQueue
             throws NoSuchElementException
     {
         if (head.size() == 0)
-            throw (new NoSuchElementException());
+            throw new NoSuchElementException();
 
         SimulationEntity removed = this.remove();
 
@@ -118,7 +118,7 @@ public class TriggerQueue
         long currentNumber = head.size();
 
         if (currentNumber == 0)
-            throw (new NoSuchElementException());
+            throw new NoSuchElementException();
 
         for (int i = 0; i < currentNumber; i++)
             triggerFirst();
@@ -128,7 +128,7 @@ public class TriggerQueue
             throws SimulationException
     {
         if (toAdd.isWaiting())
-            throw (new SimulationException("Entity already waiting on event."));
+            throw new SimulationException("Entity already waiting on event.");
 
         head.add(toAdd);
     }

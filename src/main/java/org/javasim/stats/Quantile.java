@@ -48,8 +48,8 @@ public class Quantile extends PrecisionHistogram
         qProb = q;
 
         if ((q <= 0.0) || (q > 1.0))
-            throw (new IllegalArgumentException("Quantile::Quantile ( " + q
-                    + " ) : bad value."));
+            throw new IllegalArgumentException("Quantile::Quantile ( " + q
+                    + " ) : bad value.");
     }
 
     /**

@@ -120,7 +120,7 @@ public class SimulationProcessList
         // Take care of boundary condition - empty list
 
         if (Head == null)
-            throw (new NoSuchElementException());
+            throw new NoSuchElementException();
 
         SimulationProcess p = null;
 
@@ -145,7 +145,7 @@ public class SimulationProcessList
             }
         }
 
-        throw (new NoSuchElementException());
+        throw new NoSuchElementException();
     }
 
     public synchronized SimulationProcess remove ()
@@ -156,7 +156,7 @@ public class SimulationProcessList
         if (Head != null)
             return (remove(Head.car()));
         else
-            throw (new NoSuchElementException());
+            throw new NoSuchElementException();
     }
 
     public synchronized SimulationProcess getNext (SimulationProcess current)
@@ -165,7 +165,7 @@ public class SimulationProcessList
         // take care of boundary condition - empty list.
 
         if ((Head == null) || (current == null))
-            throw (new NoSuchElementException());
+            throw new NoSuchElementException();
 
         for (SimulationProcessCons ptr = Head; ptr != null; ptr = ptr.cdr())
         {
