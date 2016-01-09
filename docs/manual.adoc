@@ -915,6 +915,61 @@ The actual quantile value is provided by the getValue() method.
 
 === Example
 
+In this example, similar to the one we saw earlier when discussing streams, takes a NormalStream and pushes the data obtained from it into a Quantile instance (also a PrecisionHistogram, as seen above).
+
+----
+NormalStream str = new NormalStream(100.0, 2.0);
+Quantile hist = new Quantile();
+
+for (int i = 0; i < 20; i++)
+{
+	hist.setValue(str.getNumber());
+}
+
+System.out.println("NormalStream error: "+str.error());
+
+hist.print();
+----
+
+If you execute this code then you will see something like the following:
+
+----
+NormalStream error: -0.12180000000000302
+Quantile precentage : 0.95
+Value below which percentage occurs 103.2525536140605
+PrecisionHistogram Data:
+Number of buckets: 20
+Bucket : < 95.4184404867909, 1 >
+Bucket : < 96.77470267057221, 1 >
+Bucket : < 98.06420534765873, 1 >
+Bucket : < 98.51326185839879, 1 >
+Bucket : < 98.83083271038129, 1 >
+Bucket : < 99.02208650724813, 1 >
+Bucket : < 99.25398638929686, 1 >
+Bucket : < 99.61818993348244, 1 >
+Bucket : < 99.69668527826141, 1 >
+Bucket : < 99.90066145276452, 1 >
+Bucket : < 100.13242192897384, 1 >
+Bucket : < 100.16716965330903, 1 >
+Bucket : < 100.29000453526925, 1 >
+Bucket : < 100.6675785365828, 1 >
+Bucket : < 100.79956320347745, 1 >
+Bucket : < 100.8830352383034, 1 >
+Bucket : < 101.04146043991506, 1 >
+Bucket : < 101.30326745585228, 1 >
+Bucket : < 103.2525536140605, 1 >
+Bucket : < 103.56896793616222, 1 >
+Variance          : 3.588431232925933
+Standard Deviation: 1.8943155051168041
+Number of samples : 20
+Minimum           : 95.4184404867909
+Maximum           : 103.56896793616222
+Sum               : 1997.199075176761
+Mean              : 99.85995375883805
+----
+
+Because Quantile is also a PrecisionHistogram, every unique number is assigned a unique bucket instance.
+
 == References
 
 [1] link:http://dl.acm.org/citation.cfm?id=1096934[G. M. Birtwistle, O-J. Dahl, B. Myhrhaug, K. Nygaard, “Simula Begin”, Academic Press, 1973].
