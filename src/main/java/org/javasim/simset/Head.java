@@ -27,6 +27,10 @@ package org.javasim.simset;
 
 // Thanks to Jim Bean for converting the C++SIM classes
 
+/**
+ * @deprecated  As of release 2.1 use Java's own linked lists.
+ */
+
 public class Head  {
 
     public Head () {
