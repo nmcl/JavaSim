@@ -868,7 +868,7 @@ public class Quantile extends PrecisionHistogram
 
 The p-quantile probability range must be specified when the object is instantiated, and can be obtained via the range method.
 
-The actual quantile value is provided by getValue method.
+The actual quantile value is provided by the getValue() method.
 
 === Example
 
