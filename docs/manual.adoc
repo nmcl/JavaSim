@@ -510,7 +510,50 @@ StreamSelect indicates the offset in the random number sequence to begin samplin
 
 === Example
 
-TODO
+In this example we will take a NormalStream instance obtain values from it which are then inserted in a Histogram so that we can then print out the contents and associated data. As we have already seen that NormalStream derives from RandomStream along with the other stream types, this example can be easily changed to use something else, such as the ExponentialStream.
+
+----
+NormalStream str = new NormalStream(100.0, 2.0);
+Histogram hist = new Histogram(10);
+
+for (int i = 0; i < 1000; i++)
+{
+	hist.setValue(str.getNumber());
+}
+
+System.out.println("NormalStream error: "+str.error());
+
+hist.print();
+----
+
+If you were to execute this code then the output would be similar to the following:
+
+----
+NormalStream error: -0.047600000000002085
+Maximum number of buckets 10
+Merge choice is MEAN
+PrecisionHistogram Data:
+Number of buckets: 10
+Bucket : < 98.63959917087956, 541 >
+Bucket : < 99.41934896772582, 1 >
+Bucket : < 99.89948948370221, 17 >
+Bucket : < 100.00514051631782, 2 >
+Bucket : < 100.26527227806514, 1 >
+Bucket : < 100.85347549916973, 3 >
+Bucket : < 101.31195503916659, 1 >
+Bucket : < 101.38562305997606, 1 >
+Bucket : < 101.72199923851397, 432 >
+Bucket : < 102.68618953365238, 1 >
+Variance          : 4.00810615160317
+Standard Deviation: 2.002025512225848
+Number of samples : 1000
+Minimum           : 93.19494510640277
+Maximum           : 105.9001968416066
+Sum               : 100013.85724011554
+Mean              : 100.01385724011554
+----
+
+We will learn more about the Histogram class later in this document.
 
 == Advanced Simulation Classes
 
