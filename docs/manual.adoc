@@ -318,9 +318,14 @@ public  void  run  ()
 {
     sc  =  new  Scheduler();
 
-    //  create  and  activate  any  other  simulation  entities
+    /*
+     * create and activate any other simulation entities before
+     * moving on to the next step ...
+     */
 
-    sc.resume();    //  we  must  create  a  scheduler  for  the  simulation  to  run execute  the  simulation 
+    // we must create a scheduler for the simulation to  run the simulation
+    
+    sc.resume();
     
     // print  results 
 
