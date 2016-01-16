@@ -272,9 +272,9 @@ When a threaded application is started it is important to realise that before an
 The await() method of Controller is responsible for suspending this thread:
 
 ----
-public  void  await  ()
+public void await  ()
 {
-    resume();
+    resumeProcess();
     
     SimulationProcess.mainSuspend();
 }
