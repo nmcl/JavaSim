@@ -359,7 +359,9 @@ public  class  Arrivals  extends  SimulationProcess
             {
                 for  (;;)
                 {
-                    Customer c = new Customer(); queue.insert(c);
+                    Customer c = new Customer(); 
+
+		    queue.insert(c);
 
                     hold(20.0);
                 }
