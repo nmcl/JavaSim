@@ -632,6 +632,9 @@ public  class  TriggerQueue
     public synchronized void triggerFirst () throws NoSuchElementException;
 
     public synchronized void triggerAll () throws NoSuchElementException; 
+    
+    protected synchronized void insert (SimulationEntity toAdd) throws SimulationException;
+    protected synchronized SimulationEntity remove () throws NoSuchElementException;
 };
 ----
 
@@ -640,6 +643,8 @@ public  class  TriggerQueue
 - triggerFirst(boolean setTrigger): triggers only the head of the queue. If setTrigger is true (the default behaviour) then the trigger() method of the SimulationEntity object is also invoked. 
 
 If the queue is not empty when it is garbage collected by the virtual machine then all remaining queue members will be triggered, and placed back onto the scheduler queue.
+
+Typically TriggerQueues are used by the Semaphore implementation. However, they are available to be used by the application developer if you use the insert() and remove() methods directly in derived classes.
 
 === Semaphores
 
