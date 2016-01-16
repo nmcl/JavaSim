@@ -39,7 +39,7 @@ public class Semaphore
      * could be returned.
      */
      
-    enum Outcome { DONE, NOTDONE, WOULD_BLOCK };
+    public enum Outcome { DONE, NOTDONE, WOULD_BLOCK };
     
     /**
      * Create a new mutex (resources = 1).
