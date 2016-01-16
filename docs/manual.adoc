@@ -683,6 +683,60 @@ If the semaphore is garbage collected with processes waiting for it then an erro
 
 === Example
 
+If you check the _interrupt_ example in the source distribution you will find it uses the SimulationEntity to model asynchronous behaviour. For instance, the Processor class, some of which is shown below:
+
+----
+public class Processor extends SimulationEntity
+{
+    public void run ()
+    {
+        Job j = null;
+
+        while (!terminated())
+        {
+            try
+            {
+                try
+                {
+                    timedWait(sTime.getNumber());
+
+                    if (!MachineShop.JobQ.isEmpty())
+                    {
+                        j = MachineShop.JobQ.dequeue();
+                        MachineShop.ProcessedJobs++;
+                    }
+                }
+                catch (InterruptedException e)
+                {
+                    if (MachineShop.SignalQ.isEmpty())
+                        System.out
+                                .println("Error - signal caught, but no message given!");
+                    else
+                    {
+                        j = MachineShop.SignalQ.dequeue();
+                        MachineShop.SignalledJobs++;
+                    }
+                }
+
+                if (MachineShop.SignalledJobs == 2)
+                    terminate();
+            }
+            catch (SimulationException e)
+            {
+            }
+            catch (RestartException e)
+            {
+            }
+            catch (IOException e)
+            {
+            }
+        }
+    }
+}
+----
+
+As can be seen, the Processor uses timedWait to hold for a specified period of time but this can be interrupted by an event, in this case that a message has been delivered.
+
 == Statistical classes
 
 The purpose of a simulation typically involves the gathering of relevant statistical information, e.g., the average length of time spent in a queue. JavaSim provides a number of different classes for gathering such information. These classes can be found in the org.javasim.stats package.
