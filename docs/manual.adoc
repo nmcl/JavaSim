@@ -316,20 +316,21 @@ The controller’s body creates and activates the other simulation entities and 
 ----
 public  void  run  ()
 {
-    sc  =  new  Scheduler();
-
     /*
      * create and activate any other simulation entities before
      * moving on to the next step ...
      */
 
-    // we must create a scheduler for the simulation to  run the simulation
-    
-    sc.resume();
+    // we must create a scheduler for the simulation to  run the simulation.
+    // starting the simulation does this for us.
+
+    Simulation.start();
+
+    // do whatever we need to in order to suspend this thread/process.
     
     // print  results 
 
-    sc.Suspend(); // suspend scheduler 
+    Simulation.stop(); // suspends the scheduler
     
     // suspend simulation entities
 
