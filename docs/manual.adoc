@@ -742,6 +742,39 @@ public class Processor extends SimulationEntity
 
 As can be seen, the Processor uses timedWait to hold for a specified period of time but this can be interrupted by an event, in this case that a message has been delivered.
 
+Semaphores are used within the simulation system. However, they can also be used by the application developer. For instance, the following example creates a Semaphore which protected 2 resources that are being accessed by 3 SimulationEntities:
+
+----
+public void test () throws Exception
+    {
+	Semaphore sem = new Semaphore(2);
+	DummyEntity e1 = new DummyEntity(10);
+	DummyEntity e2 = new DummyEntity(20);
+	DummyEntity e3 = new DummyEntity(30);
+
+	assertTrue(sem.numberWaiting() == 0);
+
+	Semaphore.Outcome result = sem.get(e1);
+
+	assertTrue(result == Semaphore.Outcome.DONE);
+
+	result = sem.get(e2);
+
+	assertTrue(result == Semaphore.Outcome.DONE);
+
+	result = sem.tryGet(e3);
+
+	assertTrue(result == Semaphore.Outcome.WOULD_BLOCK);
+
+	result = sem.get(e3);
+
+	assertTrue(result == Semaphore.Outcome.DONE);
+	assertTrue(sem.numberWaiting() == 1);
+    }
+----
+
+As can be seen, the number of resources is passed to the Semaphore when it is created. We then create 3 SimulationEntities. At this stage there are no entities waiting (blocked waiting) on the Semaphore (numberWaiting returns 0). The first two entities gain access to the resources by calling Semaphore.get() before they would access or manipulate the resource(s). In this example we know that because no entity has yet released its access to the resource (e.g., lock on the resource), the next entity to try to acquire access via Semaphore.get() will block. To verify this we can use Semaphore.tryGet(), which in this case returns Outcome.WOULD_BLOCK to indicate this fact. Regardless, we then try to acquire access to the resource(s) and that entity is then blocked. This is verified by checking the number of entities waiting on the semaphore being released, i.e., numberWaiting() returns 1 in this case.
+
 == Statistical classes
 
 The purpose of a simulation typically involves the gathering of relevant statistical information, e.g., the average length of time spent in a queue. JavaSim provides a number of different classes for gathering such information. These classes can be found in the org.javasim.stats package.
