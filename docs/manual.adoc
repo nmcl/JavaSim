@@ -749,7 +749,7 @@ Semaphores are used within the simulation system. However, they can also be used
 
 ----
 public void test () throws Exception
-    {
+{
 	Semaphore sem = new Semaphore(2);
 	DummyEntity e1 = new DummyEntity(10);
 	DummyEntity e2 = new DummyEntity(20);
@@ -773,7 +773,7 @@ public void test () throws Exception
 
 	assertTrue(result == Semaphore.Outcome.DONE);
 	assertTrue(sem.numberWaiting() == 1);
-    }
+}
 ----
 
 As can be seen, the number of resources is passed to the Semaphore when it is created. We then create 3 SimulationEntities. At this stage there are no entities waiting (blocked waiting) on the Semaphore (numberWaiting returns 0). The first two entities gain access to the resources by calling Semaphore.get() before they would access or manipulate the resource(s). In this example we know that because no entity has yet released its access to the resource (e.g., lock on the resource), the next entity to try to acquire access via Semaphore.get() will block. To verify this we can use Semaphore.tryGet(), which in this case returns Outcome.WOULD_BLOCK to indicate this fact. Regardless, we then try to acquire access to the resource(s) and that entity is then blocked. This is verified by checking the number of entities waiting on the semaphore being released, i.e., numberWaiting() returns 1 in this case.
