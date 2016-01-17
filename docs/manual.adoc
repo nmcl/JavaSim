@@ -370,7 +370,7 @@ public  class  Arrivals  extends  SimulationProcess
             {
             }
         }
-        }
+    }
 }
 ----
 
