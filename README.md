@@ -10,7 +10,7 @@ The system also comes with complete examples and test routines which illustrate 
 
 Prior to 2007 both C++SIM and JavaSim were freely available in source and binary from Newcastle University, under their own licence. However, in late 2007 the University decided that the code can be released into open source under LGPL.
 
-We are in the process of providing new releases of JavaSim and C++SIM. Older versions of binary distributions have been removed as they are too far out of date to be maintained.
+You can find details of the releases in the https://github.com/nmcl/JavaSim/releases section as well as binary downloads.
 
 In 2015 we moved from Codehaus due to that being closed down. All JIRAs from there were also migrated to github issues.
 
