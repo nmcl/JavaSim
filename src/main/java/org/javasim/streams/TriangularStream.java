@@ -23,12 +23,12 @@ package org.javasim.streams;
 import java.io.IOException;
 
 /**
- * Returns a number drawn from a uniform distribution with the given lower and upper bounds.
+ * Returns a number drawn from a triangular distribution with lower limit a, upper limit b and mode c, where a < b and a ≤ c ≤ b.
  */
 
 public class TriangularStream extends RandomStream {
   /**
-   * Create stream with low bound 'l' and high bound 'h' and 'm' value.
+   * Create stream with low bound 'l'(a) and high bound 'h'(b) and 'm'(c) value.
    */
 
   public TriangularStream(double a, double b, double c) {
@@ -40,7 +40,7 @@ public class TriangularStream extends RandomStream {
   }
 
   /**
-   * Create stream with low bound 'l' and high bound 'h' and 'm' value. Skip the first 'StreamSelect' values before returning numbers from the stream.
+   * Create stream with low bound 'l'(a) and high bound 'h'(b) and 'm'(c) value. Skip the first 'StreamSelect' values before returning numbers from the stream.
    */
 
   public TriangularStream(double a, double b, double c, int StreamSelect) {
@@ -55,8 +55,8 @@ public class TriangularStream extends RandomStream {
   }
 
   /**
-   * Create stream with low bound 'l' and high bound 'h' and 'm' value. Skip the first 'StreamSelect' values before returning numbers from the stream. Pass the seeds 'MGSeed' and 'LCGSeed' to the base
-   * class.
+   * Create stream with low bound 'l'(a) and high bound 'h'(b) and 'm'(c) value. Skip the first 'StreamSelect' values before returning numbers from the stream. Pass the seeds 'MGSeed' and 'LCGSeed' to
+   * the base class.
    */
 
   public TriangularStream(double a, double b, double c, int StreamSelect, long MGSeed, long LCGSeed) {
