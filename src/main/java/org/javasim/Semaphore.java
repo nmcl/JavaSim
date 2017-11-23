@@ -110,7 +110,7 @@ public class Semaphore
             catch (SimulationException e)
             {
             }
-
+	    
             toWait.cancel();
         }
 

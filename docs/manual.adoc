@@ -111,7 +111,7 @@ public class Simulation
 }
 ----
 
-To enable multiple simulation runs to occur within a single application, it is possible to reset it and the simulation clock by calling the reset() method of the Simulation class. This causes the simulation to remove all processes (simulation objects) currently registered on the scheduler queue and to invoke a class specific method on each of them which resets their states (detailed in the next section). Once this is finished the simulation is ready for an additional run. A suspended process is informed that it has been “reset” by having the method it called to originally suspend itself (i.e., place itself on the scheduler queue) raise the RestartSimulation exception, which the object should catch. It must then perform any work necessary to put itself back in a state ready for restarting the simulation, and should then suspend itself again before the simulation can be restarted (typically by calling cancel.)
+To enable multiple simulation runs to occur within a single application, it is possible to reset it and the simulation clock by calling the reset() method of the Simulation class. This causes the simulation to remove all processes (simulation objects) currently registered on the scheduler queue and to invoke a class specific method on each of them which resets their states (detailed in the next section). Once this is finished the simulation is ready for an additional run. A suspended process is informed that it has been “reset” by having the method it called to originally suspend itself (i.e., place itself on the scheduler queue) raise the RestartSimulation exception, which the object should catch. It must then perform any work necessary to put itself back in a state ready for restarting the simulation, and should then suspend itself again before the simulation can be restarted (typically by calling cancel, which is available on the SimulationProcess class.)
 
 A process can use isReset() to determine whether or not the simulation has been reset. The start() and stop() operations allow the simulation to be halted or resumed respectively.
 
@@ -370,7 +370,7 @@ public  class  Arrivals  extends  SimulationProcess
             {
             }
         }
-        }
+    }
 }
 ----
 
@@ -749,7 +749,7 @@ Semaphores are used within the simulation system. However, they can also be used
 
 ----
 public void test () throws Exception
-    {
+{
 	Semaphore sem = new Semaphore(2);
 	DummyEntity e1 = new DummyEntity(10);
 	DummyEntity e2 = new DummyEntity(20);
@@ -773,7 +773,7 @@ public void test () throws Exception
 
 	assertTrue(result == Semaphore.Outcome.DONE);
 	assertTrue(sem.numberWaiting() == 1);
-    }
+}
 ----
 
 As can be seen, the number of resources is passed to the Semaphore when it is created. We then create 3 SimulationEntities. At this stage there are no entities waiting (blocked waiting) on the Semaphore (numberWaiting returns 0). The first two entities gain access to the resources by calling Semaphore.get() before they would access or manipulate the resource(s). In this example we know that because no entity has yet released its access to the resource (e.g., lock on the resource), the next entity to try to acquire access via Semaphore.get() will block. To verify this we can use Semaphore.tryGet(), which in this case returns Outcome.WOULD_BLOCK to indicate this fact. Regardless, we then try to acquire access to the resource(s) and that entity is then blocked. This is verified by checking the number of entities waiting on the semaphore being released, i.e., numberWaiting() returns 1 in this case.
