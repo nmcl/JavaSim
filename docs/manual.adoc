@@ -489,9 +489,26 @@ NormalStream returns a normal distribution of random numbers, with mean mean and
 ----
 public  class  NormalStream  extends  RandomStream
 {
-    public NormalStream  (double  mean,  double  sd);
-    public NormalStream (double mean, double sd, int StreamSelect); 
-    public NormalStream (double mean, double sd, int StreamSelect, long  MGSeed,  long  LCGSeed);
+    public NormalStream (double  mean,  double  sd);
+    public NormalStream (double  mean,  double  sd, int StreamSelect); 
+    public NormalStream (double  mean,  double  sd, int StreamSelect, long  MGSeed,  long  LCGSeed);
+
+    public double getNumber () throws IOException, ArithmeticException; 
+};
+----
+
+StreamSelect indicates the offset in the random number sequence to begin sampling, and MGSeed and LCGSeed can be used to modify the seed values used by the RandomStream class.
+
+=== TriangularStream
+
+TriangularStream returns a triangular distribution of random numbers, with lower limit a, upper limit b and mode c, where a < b and a ≤ c ≤ b.
+
+----
+public  class  TriangularStream  extends  RandomStream
+{
+    public NormalStream (double  a, double  b, double  c);
+    public NormalStream (double  a, double  b, double  c, int StreamSelect); 
+    public NormalStream (double  a, double  b, double  c, int StreamSelect, long  MGSeed,  long  LCGSeed);
 
     public double getNumber () throws IOException, ArithmeticException; 
 };
