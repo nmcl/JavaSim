@@ -29,19 +29,19 @@ public class TriangularExampleStreamTest {
   public void test() {
     try {
 
-      TriangularStream triagular = new TriangularStream(0, 20, 7);
+      TriangularStream triangular = new TriangularStream(0, 20, 7);
 
       Histogram hist = new Histogram(25);
 
       for (int i = 0; i < 10000; i++) {
-        int value = (int) Math.round(triagular.getNumber());
+        int value = (int) Math.round(triangular.getNumber());
 
         System.out.println(" " + value);
 
         hist.setValue(value);
       }
 
-      System.out.println("NormalStream error: " + triagular.error());
+      System.out.println("RandomStream error: " + triangular.error());
 
       hist.print();
 
