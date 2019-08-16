@@ -18,45 +18,24 @@
  * (C) 1990-2008,
  */
 
-package org.javasim.examples.basic;
+package org.javasim.tests.examples.streams;
 
+import org.javasim.examples.streams.*;
 import org.javasim.Simulation;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class BasicExampleUnitTest
+
+public class StreamsExampleUnitTest
 {
     @Test
-    public void testNoBreaks ()
+    public void test ()
     {
-        boolean isBreaks = false;
-
-        MachineShop m = new MachineShop(isBreaks);
-
-        m.await();
-        
         try
         {
-            Simulation.reset();
-        }
-        catch (final Throwable ex)
-        {
-        }
-    }
-
-    @Test
-    public void testBreaks ()
-    {
-        boolean isBreaks = true;
-        
-        MachineShop m = new MachineShop(isBreaks);
-
-        m.await();
-
-        try
-        {
-            Simulation.reset();
+	    Streams.main(null);
         }
         catch (final Throwable ex)
         {

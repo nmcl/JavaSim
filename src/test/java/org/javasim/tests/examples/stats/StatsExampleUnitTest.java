@@ -18,23 +18,23 @@
  * (C) 1990-2008,
  */
 
-package org.javasim.examples.streams;
+package org.javasim.tests.examples.stats;
 
+import org.javasim.examples.stats.*;
 import org.javasim.Simulation;
 
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-
-public class StreamsExampleUnitTest
+public class StatsExampleUnitTest
 {
     @Test
     public void test ()
     {
         try
         {
-	    Streams.main(null);
+	    Stats.main(null);
         }
         catch (final Throwable ex)
         {

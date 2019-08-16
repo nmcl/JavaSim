@@ -18,8 +18,9 @@
  * (C) 1990-2008,
  */
 
-package org.javasim.examples.interrupt;
+package org.javasim.tests.examples.interrupt;
 
+import org.javasim.examples.interrupt.*;
 import org.javasim.Simulation;
 
 import org.junit.Test;

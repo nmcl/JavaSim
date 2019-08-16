@@ -18,25 +18,36 @@
  * (C) 1990-2008,
  */
 
-package org.javasim.examples.stats;
+package org.javasim.tests.examples.streams;
 
-import org.javasim.Simulation;
+import org.javasim.stats.Histogram;
+import org.javasim.streams.TriangularStream;
+import org.javasim.examples.streams.*;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+public class TriangularExampleStreamTest {
+  @Test
+  public void test() {
+    try {
 
-public class StatsExampleUnitTest
-{
-    @Test
-    public void test ()
-    {
-        try
-        {
-	    Stats.main(null);
-        }
-        catch (final Throwable ex)
-        {
-        }
+      TriangularStream triangular = new TriangularStream(0, 20, 7);
+
+      Histogram hist = new Histogram(25);
+
+      for (int i = 0; i < 10000; i++) {
+        int value = (int) Math.round(triangular.getNumber());
+
+        System.out.println(" " + value);
+
+        hist.setValue(value);
+      }
+
+      System.out.println("RandomStream error: " + triangular.error());
+
+      hist.print();
+
+    } catch (final Throwable ex) {
     }
+  }
 }

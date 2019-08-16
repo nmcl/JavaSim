@@ -18,34 +18,50 @@
  * (C) 1990-2008,
  */
 
-package org.javasim.examples.streams;
+package org.javasim.tests.examples.basic;
 
-import org.javasim.stats.Histogram;
-import org.javasim.streams.TriangularStream;
+import org.javasim.Simulation;
+import org.javasim.examples.basic.*;
+    
 import org.junit.Test;
 
-public class TriangularExampleStreamTest {
-  @Test
-  public void test() {
-    try {
+import static org.junit.Assert.*;
 
-      TriangularStream triangular = new TriangularStream(0, 20, 7);
+public class BasicExampleUnitTest
+{
+    @Test
+    public void testNoBreaks ()
+    {
+        boolean isBreaks = false;
 
-      Histogram hist = new Histogram(25);
+        MachineShop m = new MachineShop(isBreaks);
 
-      for (int i = 0; i < 10000; i++) {
-        int value = (int) Math.round(triangular.getNumber());
-
-        System.out.println(" " + value);
-
-        hist.setValue(value);
-      }
-
-      System.out.println("RandomStream error: " + triangular.error());
-
-      hist.print();
-
-    } catch (final Throwable ex) {
+        m.await();
+        
+        try
+        {
+            Simulation.reset();
+        }
+        catch (final Throwable ex)
+        {
+        }
     }
-  }
+
+    @Test
+    public void testBreaks ()
+    {
+        boolean isBreaks = true;
+        
+        MachineShop m = new MachineShop(isBreaks);
+
+        m.await();
+
+        try
+        {
+            Simulation.reset();
+        }
+        catch (final Throwable ex)
+        {
+        }
+    }
 }
