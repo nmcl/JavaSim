@@ -1,4 +1,4 @@
-JavaSIM is an object-oriented simulation package based upon C++SIM and has been around since 1997. It provides discrete event process-based simulation similar to SIMULA's simulation class and libraries. A complete list of the facilities provided follows:
+JavaSIM is an object-oriented simulation package based upon C++SIM and has been around since 1997. It provides discrete event process-based simulation similar to SIMULA's simulation class and libraries. A complete list of the capabilities provided follows:
 
 - The core of the system gives SIMULA-like simulation routines, random number generators, queueing algorithms and thread package interfaces.
 - Entity and set manipulation facilities similar to SIMSET.
