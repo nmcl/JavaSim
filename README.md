@@ -13,7 +13,7 @@ Prior to 2007 both C++SIM and JavaSim were freely available in source and binary
 
 You can find details of the releases in the https://github.com/nmcl/JavaSim/releases section as well as binary downloads for some releases.
 
-In 2015 the code was moved from Codehaus to github. All JIRAs from there were also migrated to github issues.
+In 2015 the code was moved from Codehaus to github. All JIRAs from there were also recreated as github issues.
 
 ----
 
