@@ -1,1 +1,1 @@
-Shows the distributions produced when using the NormalStream and Quantile implementations.
+Shows the output of the NormalStream and Histogram implementations working together.
