@@ -544,6 +544,7 @@ public class SimulationProcess extends Thread
 
     protected SimulationProcess()
     {
+	Thread.currentThread().dumpStack();
         wakeuptime = SimulationProcess.NEVER;
         terminated = false;
         passivated = true;

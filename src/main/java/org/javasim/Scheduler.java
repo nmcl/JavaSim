@@ -130,6 +130,7 @@ public class Scheduler extends Thread
 	Scheduler.SimulatedTime = 0.0;
 
 	SimulationProcess.Current = null;
+	SimulationProcess.allProcesses = new SimulationProcessList();
     }
 
     private Scheduler ()
@@ -148,10 +149,16 @@ public class Scheduler extends Thread
 	if (Simulation.isStarted())
 	{
 	    SimulationProcess p = SimulationProcess.current();
-	    
+
 	    try
 	    {
 		SimulationProcess.Current = Scheduler.ReadyQueue.remove();
+
+		if (SimulationProcess.Current.getThreadGroup() == null)
+		{
+		    SimulationProcess.Current = Scheduler.ReadyQueue.remove();
+		    p = SimulationProcess.Current;
+		}
 	    }
 	    catch (NoSuchElementException e)
 	    {
@@ -165,6 +172,8 @@ public class Scheduler extends Thread
 
 	    if (p != SimulationProcess.Current)
 	    {
+		Simulation.printQueue();
+		
 		SimulationProcess.Current.resumeProcess();
 		
 		return true;
