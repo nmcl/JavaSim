@@ -95,6 +95,15 @@ public class Simulation
     }
 
     /**
+     * Print out the contents of the current simulation queue.
+     */
+    
+    public static synchronized void printQueue ()
+    {
+	SimulationProcess.allProcesses.print();
+    }
+    
+    /**
      * Has the simulation started?
      * 
      * @return <code>true</code> if the simulation is running, <code>false</code>
