@@ -152,18 +152,52 @@ public class Scheduler extends Thread
 
 	    try
 	    {
-		SimulationProcess.Current = Scheduler.ReadyQueue.remove();
+		/*
+		 * For some reason when executing tests in junit an old and dead
+		 * thread appears in the simulation queue. Have only ever seen this
+		 * be a single thread instance, but it is reproducible every time.
+		 *
+		 * https://github.com/nmcl/JavaSim/issues/64
+		 *
+		 * Will try to find out what actually causes this and remove the
+		 * workaround eventually.
+		 *
+		 * https://github.com/nmcl/JavaSim/issues/76
+		 */
 
-		if (SimulationProcess.Current.getThreadGroup() == null)
+		SimulationProcess.Current = Scheduler.ReadyQueue.remove();
+		boolean done = true;
+
+		do
 		{
-		    SimulationProcess.Current = Scheduler.ReadyQueue.remove();
-		    p = SimulationProcess.Current;
+		    if (SimulationProcess.Current != null)
+		    {
+			if (SimulationProcess.Current.getThreadGroup() == null)
+			{
+			    SimulationProcess.Current = Scheduler.ReadyQueue.remove();
+			    p = SimulationProcess.current();			    
+			    done = false;
+			}
+			else
+			    done = true;
+		    }
+		    else
+			throw new NoSuchElementException();
 		}
+		while (!done);
 	    }
 	    catch (NoSuchElementException e)
 	    {
 		System.out.println("Simulation queue empty.");
+
+		return false;
 	    }
+	    catch (NullPointerException e)
+	    {
+		System.out.println("Simulation queue empty.");
+
+		return false;
+	    }	    
 
 	    if (SimulationProcess.Current.evtime() < 0)
 		throw new SimulationException("Invalid SimulationProcess wakeup time.");
