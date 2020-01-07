@@ -69,7 +69,7 @@ public class Scheduler extends Thread
      * 
      * @throws SimulationException if an error occurs.
      */
-    
+
     static synchronized void reset () throws SimulationException
     {
 	boolean finished = false;
@@ -206,7 +206,7 @@ public class Scheduler extends Thread
 
 	    if (p != SimulationProcess.Current)
 	    {
-		Simulation.printQueue();
+		//		Simulation.printQueue();
 		
 		SimulationProcess.Current.resumeProcess();
 		
