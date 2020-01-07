@@ -33,11 +33,10 @@ public class BasicExampleUnitTest
     public void testNoBreaks ()
     {
         boolean isBreaks = false;
-
         MachineShop m = new MachineShop(isBreaks);
 
         m.await();
-        
+
         try
         {
             Simulation.reset();
@@ -51,7 +50,6 @@ public class BasicExampleUnitTest
     public void testBreaks ()
     {
         boolean isBreaks = true;
-        
         MachineShop m = new MachineShop(isBreaks);
 
         m.await();
