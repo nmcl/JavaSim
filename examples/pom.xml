@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>javasim-examples</groupId>
+  <artifactId>javasim-examples</artifactId>
+  <name>javasim-examples</name>
+  <version>2.3</version>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+	<groupId>org.apache.maven.plugins</groupId>
+	<version>3.6.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+	  <encoding>UTF-8</encoding>
+          <classpath>../target/classes</classpath>
+        </configuration>
+      </plugin>
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-surefire-plugin</artifactId>
+	<version>2.17</version>
+	<configuration>
+	  <forkCount>1</forkCount>
+	  <reuseForks>false</reuseForks>
+	  <additionalClasspathElements>
+            <additionalClasspathElement>../target/classes</additionalClasspathElement>
+          </additionalClasspathElements>
+        <!-- see:
+	     https://stackoverflow.com/questions/53010200/maven-surefire-could-not-find-forkedbooter-class
+	-->
+		<argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+	</configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+  <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.0</version>
+      <type>jar</type>
+      <scope>test</scope>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
+</project>
+
