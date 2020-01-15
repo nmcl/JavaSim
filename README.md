@@ -21,9 +21,17 @@ To build:
 
 mvn compile
 
+Run tests:
+
+mvn tests
+
 Run tests and create installation:
 
 mvn install
+
+Run examples, go into examples directory:
+
+mvn compile
 
 To cleanup:
 
