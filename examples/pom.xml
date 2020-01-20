@@ -19,7 +19,6 @@
           <source>1.8</source>
           <target>1.8</target>
 	  <encoding>UTF-8</encoding>
-          <classpath>../target/classes</classpath>
         </configuration>
       </plugin>
       <plugin>
@@ -29,9 +28,6 @@
 	<configuration>
 	  <forkCount>1</forkCount>
 	  <reuseForks>false</reuseForks>
-	  <additionalClasspathElements>
-            <additionalClasspathElement>../target/classes</additionalClasspathElement>
-          </additionalClasspathElements>
         <!-- see:
 	     https://stackoverflow.com/questions/53010200/maven-surefire-could-not-find-forkedbooter-class
 	-->
@@ -48,7 +44,14 @@
       <type>jar</type>
       <scope>test</scope>
       <optional>true</optional>
-    </dependency>
+  </dependency>
+  <dependency>
+    <groupId>javasim</groupId>
+    <artifactId>javasim</artifactId>
+    <version>2.3</version>
+    <scope>system</scope>
+    <systemPath>${basedir}/../target/javasim-${version}.jar</systemPath>
+  </dependency>
   </dependencies>
 </project>
 
