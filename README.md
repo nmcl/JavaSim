@@ -23,7 +23,7 @@ mvn compile
 
 Run tests:
 
-mvn tests
+mvn test
 
 Run tests and create installation:
 
