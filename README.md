@@ -29,10 +29,4 @@ Run tests and create installation:
 
 mvn install
 
-Run examples, go into examples directory:
-
-mvn compile
-
-To cleanup:
-
-mvn clean
+Run examples check the README in that directory.
