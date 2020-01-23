@@ -29,4 +29,4 @@ Run tests and create installation:
 
 mvn install
 
-Run examples check the README in that directory.
+To run the examples check the README in that directory.
