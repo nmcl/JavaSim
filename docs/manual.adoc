@@ -12,7 +12,7 @@ These requirements were realised in the following design decisions:
 
 - the discrete-event process based simulation facilities provided by SIMULA and its simulation classes and libraries have a considerable experience and user community which have found them to be successful for a wide variety of simulations. In later versions of the system additional simulation classes were added which provide extra functionality.
 
-- inheritance was to be used throughout the design to even a greater extent than is already provided in SIMULA. This enables JavaSim to be more flexible and extensible, allowing new functionality to be added without affecting the overall system structure. For example, our I/O facilities, random number generators and probability distribution functions are entirely object-oriented, relying on inheritance to specialise their behaviour.
+- inheritance was to be used throughout the design to an even greater extent than is already provided in SIMULA. This enables JavaSim to be more flexible and extensible, allowing new functionality to be added without affecting the overall system structure. For example, our I/O facilities, random number generators and probability distribution functions are entirely object-oriented, relying on inheritance to specialise their behaviour.
 
 NOTE: It is not necessary for the reader to know anything about the SIMULA programming language or its simulation classes, but such knowledge would aid in the understanding of the concepts and classes presented within.
 
@@ -36,7 +36,7 @@ Thus, the first step towards building a simulation model of a system is to deter
 
 === Terminology
 
-The system components chosen for the simulation are termed simulation entities. Associated with each _entity_ in the simulation are zero or more _attributes_ that describe the state of the entity and which may vary during the course of the simulation. The interaction of entities and the changes they cause in the system state are termed _events_.
+The system components chosen for the simulation are termed _simulation entities_. Associated with each _entity_ in the simulation are zero or more _attributes_ that describe the state of the entity and which may vary during the course of the simulation. The interaction of entities and the changes they cause in the system state are termed _events_.
 
 The collection of these component attributes at any given time _t_ defines the system state at _t_. In general, the system state can take any of a variety of values, and a given simulation run results in one realisation of a set of these values (the _operation path_) over the _observation period_.
 
